@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,7 +16,7 @@ public class ManageUNOs extends javax.swing.JPanel {
     /**
      * Creates new form ManageUNOs
      */
-    public ManageUNOs() {
+    public ManageUNOs(JSplitPane jSplitPane1) {
         initComponents();
     }
 

@@ -6,6 +6,7 @@
 package Userinterface;
 
 import Userinterface.SysAdminWorkArea.ManageHospital;
+import Userinterface.SysAdminWorkArea.ManageJpanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -173,7 +174,7 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        ManageHospital muajp = new ManageHospital(jSplitPane1);
+        ManageJpanel muajp = new ManageJpanel(jSplitPane1);
         jSplitPane1.setRightComponent(muajp);
 
     }//GEN-LAST:event_btnLoginActionPerformed

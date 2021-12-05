@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import javax.swing.JSplitPane;
+
 
 
 
@@ -18,8 +20,11 @@ public class ManageJpanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageJpanel
      */
-    public ManageJpanel() {
+    JSplitPane jSplitPane1;
+    
+    public ManageJpanel(JSplitPane jSplitPane1) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
     }
 
     /**
@@ -81,10 +86,15 @@ public class ManageJpanel extends javax.swing.JPanel {
 
         btnUNOs.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         btnUNOs.setText("Manage UNOs");
+        btnUNOs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUNOsActionPerformed(evt);
+            }
+        });
         Jpanel1.add(btnUNOs, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 330, -1, -1));
 
         btnTransportation.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
-        btnTransportation.setText("Manage Registry System");
+        btnTransportation.setText("Manage Transportation");
         btnTransportation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransportationActionPerformed(evt);
@@ -94,6 +104,11 @@ public class ManageJpanel extends javax.swing.JPanel {
 
         btnPharmacy.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         btnPharmacy.setText("Manage Pharmacy");
+        btnPharmacy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPharmacyActionPerformed(evt);
+            }
+        });
         Jpanel1.add(btnPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 660, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pr1.png"))); // NOI18N
@@ -105,17 +120,33 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnRegistrySys1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrySys1ActionPerformed
         // TODO add your handling code here:
+                ManageRegistry mr = new ManageRegistry(jSplitPane1);
+                jSplitPane1.setRightComponent(mr);
     }//GEN-LAST:event_btnRegistrySys1ActionPerformed
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
         // TODO add your handling code here:
-         
+        ManageHospital mh = new ManageHospital(jSplitPane1);
+        jSplitPane1.setRightComponent(mh);
     }//GEN-LAST:event_btnHospitalActionPerformed
 
     private void btnTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransportationActionPerformed
         // TODO add your handling code here:
-       
+         ManageTransportation mt= new ManageTransportation(jSplitPane1);
+        jSplitPane1.setRightComponent(mt);
     }//GEN-LAST:event_btnTransportationActionPerformed
+
+    private void btnUNOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUNOsActionPerformed
+        // TODO add your handling code here:
+        ManageUNOs mu= new ManageUNOs(jSplitPane1);
+        jSplitPane1.setRightComponent(mu);
+    }//GEN-LAST:event_btnUNOsActionPerformed
+
+    private void btnPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyActionPerformed
+        // TODO add your handling code here:
+          ManagePharmacy mp= new ManagePharmacy(jSplitPane1);
+        jSplitPane1.setRightComponent(mp);
+    }//GEN-LAST:event_btnPharmacyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

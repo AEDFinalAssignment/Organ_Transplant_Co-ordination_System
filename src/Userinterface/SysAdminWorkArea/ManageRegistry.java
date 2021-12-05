@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,7 +16,7 @@ public class ManageRegistry extends javax.swing.JPanel {
     /**
      * Creates new form ManageRegistry
      */
-    public ManageRegistry() {
+    public ManageRegistry(JSplitPane jSplitPane1) {
         initComponents();
     }
 
@@ -124,9 +126,6 @@ public class ManageRegistry extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(btnSave))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -150,7 +149,10 @@ public class ManageRegistry extends javax.swing.JPanel {
                                         .addComponent(txtRegaddress)
                                         .addComponent(txtRegcity)
                                         .addComponent(txtRegstate)
-                                        .addComponent(txtRegzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(txtRegzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addComponent(btnSave)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,14 +214,13 @@ public class ManageRegistry extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
-                    .addComponent(btnView))
+                    .addComponent(btnView)
+                    .addComponent(btnSave))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(402, 402, 402))
+                .addGap(402, 795, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,7 +16,7 @@ public class ManageTransportation extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransportation
      */
-    public ManageTransportation() {
+    public ManageTransportation(JSplitPane jSplitPane1) {
         initComponents();
     }
 

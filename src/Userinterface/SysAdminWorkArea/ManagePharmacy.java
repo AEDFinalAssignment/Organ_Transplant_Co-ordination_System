@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,7 +16,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacy
      */
-    public ManagePharmacy() {
+    public ManagePharmacy(JSplitPane jSplitPane1) {
         initComponents();
     }
 
