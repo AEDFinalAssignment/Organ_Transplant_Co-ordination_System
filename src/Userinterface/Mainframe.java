@@ -5,8 +5,12 @@
  */
 package Userinterface;
 
+import SQL_Connection.SQL_Connect;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -20,6 +24,11 @@ public class Mainframe extends javax.swing.JFrame {
      */
     public Mainframe() {
         initComponents();
+        try {
+            SQL_Connect sqlConnect = new SQL_Connect();
+        } catch (SQLException ex) {
+            Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
