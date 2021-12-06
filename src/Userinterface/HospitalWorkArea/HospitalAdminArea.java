@@ -5,6 +5,8 @@
  */
 package Userinterface.HospitalWorkArea;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -29,19 +31,24 @@ public class HospitalAdminArea extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnManagestaff = new javax.swing.JButton();
+        btnManagePatient = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblHospitalname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Manage Staff");
+        btnManagestaff.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnManagestaff.setText("Manage Staff");
+        btnManagestaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagestaffActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Manage Patient");
+        btnManagePatient.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnManagePatient.setText("Manage Patient");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,20 +57,20 @@ public class HospitalAdminArea extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnManagePatient, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnManagestaff, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManagePatient, btnManagestaff});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(286, 286, 286)
-                .addComponent(jButton1)
+                .addComponent(btnManagestaff)
                 .addGap(91, 91, 91)
-                .addComponent(jButton2)
+                .addComponent(btnManagePatient)
                 .addContainerGap(459, Short.MAX_VALUE))
         );
 
@@ -112,6 +119,12 @@ public class HospitalAdminArea extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManagestaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagestaffActionPerformed
+        // TODO add your handling code here:
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1);
+        jSplitPane1.setRightComponent(msd);
+    }//GEN-LAST:event_btnManagestaffActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,8 +162,8 @@ public class HospitalAdminArea extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnManagePatient;
+    private javax.swing.JButton btnManagestaff;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

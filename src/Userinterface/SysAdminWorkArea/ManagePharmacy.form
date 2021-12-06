@@ -70,6 +70,7 @@
                           </Group>
                       </Group>
                   </Group>
+                  <EmptySpace pref="107" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -81,18 +82,13 @@
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtHospitalsearch" min="-2" pref="236" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="761" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtHospitalsearch" min="-2" pref="236" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="761" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="65" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -101,14 +97,23 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtHospitalsearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtHospitalsearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="262" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnHospitalupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHospitaldelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHospitalview" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacyname" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,24 +148,11 @@
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacyzipcode" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnHospitalupdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHospitaldelete" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHospitalview" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="403" max="32767" attributes="0"/>
+                  <EmptySpace pref="351" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
