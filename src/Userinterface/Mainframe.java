@@ -24,11 +24,11 @@ public class Mainframe extends javax.swing.JFrame {
      */
     public Mainframe() {
         initComponents();
-        try {
+  /*      try {
             SQL_Connect sqlConnect = new SQL_Connect();
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } */
     }
 
     /**
