@@ -11,14 +11,16 @@ package System;
  */
 public class Organization {
 
+
     protected String Name;
     protected String UserName;
     protected String Password;
     protected String Address;
     protected String City;
     protected String State;
-    protected String ZipCode;
+    protected int ZipCode;
     protected String email;
+
 
 
     public String getName() {
@@ -69,11 +71,11 @@ public class Organization {
         this.State = State;
     }
 
-    public String getZipCode() {
+    public int getZipCode() {
         return ZipCode;
     }
 
-    public void setZipCode(String ZipCode) {
+    public void setZipCode(int ZipCode) {
         this.ZipCode = ZipCode;
     }
 

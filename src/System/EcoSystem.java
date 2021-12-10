@@ -7,6 +7,7 @@ package System;
 
 
 import SQL_Connection.SQL_Connect;
+import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import System.Pharmacy.PharmacyDirectory;
 import System.Registry.RegistryDirectory;
@@ -39,6 +40,7 @@ public class EcoSystem{
     
     public EcoSystem() throws SQLException {
             this.sqlConnect = new SQL_Connect();
+            this.HospitalDirectory = new HospitalDirectory(); 
             
     }
 
@@ -48,6 +50,12 @@ public class EcoSystem{
 
     public void setHospitalDirectory(HospitalDirectory HospitalDirectory) {
         this.HospitalDirectory = HospitalDirectory;
+    }
+    
+    public Hospital addHospital(){
+        Hospital hos = new Hospital();
+        HospitalDirectory.getHospitalDirectory().add(hos);
+        return hos;
     }
 
     public RegistryDirectory getRegistryDirectory() {
@@ -108,6 +116,12 @@ public class EcoSystem{
                 }
             }
             return this.UserId;
+    }
+    public void saveHospitalDB(Hospital hos) throws SQLException {
+        String query = "INSERT INTO public.\"Hospital\"(\"Name\",\"TransplantEquipped\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\")\n" +
+                       "VALUES ('{"+ hos.getName() + "}',"+ String.valueOf(hos.isTransplantEquipped()) + ",'{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{"+ hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ");";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
     }
     
 }
