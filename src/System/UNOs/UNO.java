@@ -15,10 +15,6 @@ public class UNO {
     private String UNO_Username;
     private String UNO_Password;
 
-    public UNO() {
-        
-    }
-    
     public int getUNO_ID() {
         return UNO_ID;
     }
