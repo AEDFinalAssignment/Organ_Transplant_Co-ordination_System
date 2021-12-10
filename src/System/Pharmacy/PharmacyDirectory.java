@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class PharmacyDirectory {
     private ArrayList<Pharmacy> PharmacyDirectory;
 
+    public PharmacyDirectory() {
+        this.PharmacyDirectory = new ArrayList <Pharmacy>();
+    }
+
+    
     public ArrayList<Pharmacy> getPharmacyDirectory() {
         return PharmacyDirectory;
     }

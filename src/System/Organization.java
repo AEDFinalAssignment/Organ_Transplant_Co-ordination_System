@@ -10,13 +10,13 @@ package System;
  * @author Subhash
  */
 public class Organization {
-    private String Name;
-    private String UserName;
-    private String Password;
-    private String Address;
-    private String City;
-    private String State;
-    private String ZipCode;
+    protected String Name;
+    protected String UserName;
+    protected String Password;
+    protected String Address;
+    protected String City;
+    protected String State;
+    protected int ZipCode;
 
     public String getName() {
         return Name;
@@ -66,11 +66,11 @@ public class Organization {
         this.State = State;
     }
 
-    public String getZipCode() {
+    public int getZipCode() {
         return ZipCode;
     }
 
-    public void setZipCode(String ZipCode) {
+    public void setZipCode(int ZipCode) {
         this.ZipCode = ZipCode;
     }
     

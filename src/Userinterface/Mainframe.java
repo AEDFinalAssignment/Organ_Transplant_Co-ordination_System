@@ -194,28 +194,27 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
-                ManageJpanel muajp = new ManageJpanel(jSplitPane1);
+                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){
-                this.id = Integer.parseInt(Useraccount.replace("Hospital_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Hospital", ""));
                 
             }
             else if(Useraccount.contains("Pharmacy")){
-                this.id = Integer.parseInt(Useraccount.replace("Pharmacy_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Pharmacy", ""));
                 
             }
             else if(Useraccount.contains("Registry")){
-                this.id = Integer.parseInt(Useraccount.replace("Registry_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Registry", ""));
                 
             }
             else if(Useraccount.contains("Transportation")){
-                this.id = Integer.parseInt(Useraccount.replace("Transportation_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Transportation", ""));
                 
             }
             else if(Useraccount.contains("UNO")){
-                this.id = Integer.parseInt(Useraccount.replace("UNO_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("UNO", ""));
                 
             }
         } catch (SQLException ex) {

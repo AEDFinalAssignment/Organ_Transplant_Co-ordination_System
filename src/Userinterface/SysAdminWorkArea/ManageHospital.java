@@ -5,6 +5,11 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import System.EcoSystem;
+import System.Hospital.Hospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -17,8 +22,12 @@ public class ManageHospital extends javax.swing.JPanel {
     /**
      * Creates new form ManageHospital
      */
-    public ManageHospital(JSplitPane jSplitPane1) {
+    EcoSystem system;
+    JSplitPane jSplitPane1;
+    public ManageHospital(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.system = system;
+        this.jSplitPane1 = jSplitPane1;
     }
 
     /**
@@ -88,6 +97,11 @@ public class ManageHospital extends javax.swing.JPanel {
         jCheckBox4.setText("NO");
 
         btnSave1.setText("SAVE");
+        btnSave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSave1ActionPerformed(evt);
+            }
+        });
 
         btnSearch1.setText("Search");
 
@@ -247,6 +261,28 @@ public class ManageHospital extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHospitallogin1ActionPerformed
 
+    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
+        // TODO add your handling code here:
+       Hospital hos = system.addHospital();
+       hos.setName(txtHospitalname1.getText());
+       hos.setUserName(txtHospitallogin1.getText());
+       hos.setPassword(txtHospitalpassword1.getText());
+       hos.setAddress(txtHospitaladdress1.getText());
+       hos.setCity(txtHospitalcity1.getText());
+       hos.setState(txtHospitalstate1.getText());
+       hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
+       if(jCheckBox3.isSelected())
+       hos.setTransplantEquipped(true);
+       else
+       hos.setTransplantEquipped(false);
+       
+        try {
+            system.saveHospitalDB(hos);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSave1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
@@ -276,4 +312,5 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalstate1;
     private javax.swing.JTextField txtHospitalzipcode1;
     // End of variables declaration//GEN-END:variables
+
 }
