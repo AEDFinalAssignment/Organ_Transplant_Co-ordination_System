@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Subhash
  */
-public class RegistryDirevtory {
+public class RegistryDirectory {
     private ArrayList<Registry> RegistryDirectory;
 
     public ArrayList<Registry> getRegistryDirectory() {
