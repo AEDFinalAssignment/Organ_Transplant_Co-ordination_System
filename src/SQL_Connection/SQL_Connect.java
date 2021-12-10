@@ -18,27 +18,22 @@ import java.util.logging.Logger;
  */
 public class SQL_Connect {
 
+    java.sql.Statement stat;
     public SQL_Connect() throws SQLException {
         try {
             Class.forName("org.postgresql.Driver");
             String dburl = "jdbc:postgresql://localhost:5432/AED_FinalProject";
             String username = "postgres";
-            String password = "ece18670!";
+            String password = "Mavericks@123";
             Connection connection = DriverManager.getConnection(dburl, username, password);
-            java.sql.Statement stat;
-            stat = connection.createStatement();
-            String query = "SELECT * FROM public.\"Patient\"";
-            java.sql.ResultSet rs = stat.executeQuery(query);
-            
-            
-            while(rs.next())
-            {
-                System.out.println(rs.getString(1)+rs.getString(2));
-            }
+            this.stat = connection.createStatement();
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SQL_Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public java.sql.Statement retStatement()
+    {
+        return stat;
+    }
 }

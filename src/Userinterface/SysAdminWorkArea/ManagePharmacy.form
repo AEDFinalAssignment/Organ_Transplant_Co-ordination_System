@@ -32,48 +32,46 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-                          <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                      <Component id="txtPharmacyname" min="-2" pref="261" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <Component id="txtPharmacyname" min="-2" pref="261" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="loginLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="zipcodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtPharmacylogin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPharmacypassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPharmacycity" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPharmacystate" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPharmacyzipcode" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtPharmacylogin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtPharmacypassword" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtPharmacyaddress" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtPharmacycity" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtPharmacystate" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtPharmacyzipcode" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="txtPharmacyaddress" alignment="1" min="-2" pref="261" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="txtPharmacyEmail" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="107" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnHospitalview" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                           <Component id="btnHospitalupdate" min="-2" max="-2" attributes="0"/>
@@ -89,6 +87,11 @@
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="761" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                  <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -115,44 +118,49 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacyname" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="loginLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacylogin" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPharmacypassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPharmacypassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPharmacyEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacyaddress" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPharmacycity" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPharmacystate" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cityLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPharmacycity" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPharmacyzipcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="stateLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPharmacystate" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="zipcodeLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPharmacyzipcode" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="351" max="32767" attributes="0"/>
+                  <EmptySpace pref="378" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,6 +180,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalupdateActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -183,15 +194,60 @@
             <Component class="javax.swing.JTable" name="tblPharmacy">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="15">
+                  <Table columnCount="8" rowCount="15">
                     <Column editable="false" title="Name " type="java.lang.Object"/>
                     <Column editable="false" title="Login Name " type="java.lang.Object"/>
                     <Column editable="false" title="Password" type="java.lang.Object"/>
+                    <Column editable="false" title="Email" type="java.lang.Object"/>
                     <Column editable="false" title="Address Line" type="java.lang.Object"/>
                     <Column editable="false" title="City" type="java.lang.Object"/>
                     <Column editable="false" title="State" type="java.lang.Object"/>
                     <Column editable="false" title="Zip Code" type="java.lang.Object"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -206,25 +262,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalviewActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="nameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="loginLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Login Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="stateLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="State"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPharmacyzipcode">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="passwordLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
@@ -237,10 +296,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="SAVE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalsaveActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHospitalsearch">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="addressLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Address Line "/>
           </Properties>
@@ -250,14 +312,15 @@
         <Component class="javax.swing.JTextField" name="txtPharmacylogin">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPharmacyloginActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPharmacyloginKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="cityLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="City"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="zipcodeLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Zip Code"/>
           </Properties>
@@ -271,6 +334,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPharmacyaddress">
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Email"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPharmacyEmail">
         </Component>
       </SubComponents>
     </Container>
