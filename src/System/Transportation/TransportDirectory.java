@@ -14,11 +14,6 @@ import java.util.ArrayList;
 public class TransportDirectory {
     private ArrayList<Transportation> TransportationDirectory;
 
-    public TransportDirectory() {
-        this.TransportationDirectory = new ArrayList <Transportation>();
-    }
-
-    
     public ArrayList<Transportation> getTransportationDirectory() {
         return TransportationDirectory;
     }

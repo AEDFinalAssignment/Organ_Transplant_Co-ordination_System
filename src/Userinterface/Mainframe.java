@@ -195,37 +195,33 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-
-
                 this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
                 ManageJpanel muajp = new ManageJpanel(jSplitPane1);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){
-                this.id = Integer.parseInt(Useraccount.replace("Hospital", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Hospital_", ""));
                 
             }
             else if(Useraccount.contains("Pharmacy")){
-                this.id = Integer.parseInt(Useraccount.replace("Pharmacy", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Pharmacy_", ""));
                 
             }
             else if(Useraccount.contains("Registry")){
-                this.id = Integer.parseInt(Useraccount.replace("Registry", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Registry_", ""));
                 
             }
             else if(Useraccount.contains("Transportation")){
-                this.id = Integer.parseInt(Useraccount.replace("Transportation", ""));
+                this.id = Integer.parseInt(Useraccount.replace("Transportation_", ""));
                 
             }
             else if(Useraccount.contains("UNO")){
-                this.id = Integer.parseInt(Useraccount.replace("UNO", ""));
+                this.id = Integer.parseInt(Useraccount.replace("UNO_", ""));
                 
             }
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-
         }
-
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
