@@ -6,6 +6,7 @@
 package Userinterface;
 
 import SQL_Connection.SQL_Connect;
+import System.EcoSystem;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
 import java.sql.SQLException;
@@ -22,13 +23,18 @@ public class Mainframe extends javax.swing.JFrame {
     /**
      * Creates new form sample
      */
-    public Mainframe() {
+    public EcoSystem system;
+    private String Useraccount;
+    private int id;
+    
+    public Mainframe() throws SQLException {
         initComponents();
   /*      try {
             SQL_Connect sqlConnect = new SQL_Connect();
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
         } */
+           this.system = new EcoSystem(); 
     }
 
     /**
@@ -182,10 +188,39 @@ public class Mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        
-        ManageJpanel muajp = new ManageJpanel(jSplitPane1);
-        jSplitPane1.setRightComponent(muajp);
+        try {
+            // TODO add your handling code here:
+            Useraccount = system.AuthenticateUser(txtUsername.getText(), txtPassword1.getText());
+            System.out.println(Useraccount);
+            if(Useraccount.contains("SysAdmin"))
+            {
+                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
+                ManageJpanel muajp = new ManageJpanel(jSplitPane1);
+                jSplitPane1.setRightComponent(muajp);
+            }
+            else if(Useraccount.contains("Hospital")){
+                this.id = Integer.parseInt(Useraccount.replace("Hospital_", ""));
+                
+            }
+            else if(Useraccount.contains("Pharmacy")){
+                this.id = Integer.parseInt(Useraccount.replace("Pharmacy_", ""));
+                
+            }
+            else if(Useraccount.contains("Registry")){
+                this.id = Integer.parseInt(Useraccount.replace("Registry_", ""));
+                
+            }
+            else if(Useraccount.contains("Transportation")){
+                this.id = Integer.parseInt(Useraccount.replace("Transportation_", ""));
+                
+            }
+            else if(Useraccount.contains("UNO")){
+                this.id = Integer.parseInt(Useraccount.replace("UNO_", ""));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -220,7 +255,11 @@ public class Mainframe extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mainframe().setVisible(true);
+                try {
+                    new Mainframe().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
