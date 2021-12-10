@@ -30,6 +30,7 @@ public class ManagePatient extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
         jButton4 = new javax.swing.JButton();
 
         jButton1.setText("Existing Patient Details");
@@ -39,11 +40,14 @@ public class ManagePatient extends javax.swing.JPanel {
             }
         });
 
+
         jButton2.setText("Create New Patient Details");
 
         jButton3.setText("Transplant List");
 
+
         jButton4.setText("Patient Available as DONOR ");
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,20 +55,24 @@ public class ManagePatient extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(284, 284, 284)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(1005, Short.MAX_VALUE))
+
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(284, 284, 284)
                     .addComponent(jButton2)
+
                     .addContainerGap(1005, Short.MAX_VALUE)))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
+
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,9 +81,11 @@ public class ManagePatient extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(70, 70, 70)
                 .addComponent(jButton3)
+
                 .addGap(60, 60, 60)
                 .addComponent(jButton4)
                 .addGap(233, 233, 233))
+
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(378, 378, 378)
@@ -84,15 +94,19 @@ public class ManagePatient extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+
     private javax.swing.JButton jButton4;
+
     // End of variables declaration//GEN-END:variables
 }

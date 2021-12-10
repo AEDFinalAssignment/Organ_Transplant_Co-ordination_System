@@ -10,13 +10,16 @@ package System;
  * @author Subhash
  */
 public class Organization {
-    private String Name;
-    private String UserName;
-    private String Password;
-    private String Address;
-    private String City;
-    private String State;
-    private String ZipCode;
+
+    protected String Name;
+    protected String UserName;
+    protected String Password;
+    protected String Address;
+    protected String City;
+    protected String State;
+    protected String ZipCode;
+    protected String email;
+
 
     public String getName() {
         return Name;
@@ -73,6 +76,17 @@ public class Organization {
     public void setZipCode(String ZipCode) {
         this.ZipCode = ZipCode;
     }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
+       
+
     
 }

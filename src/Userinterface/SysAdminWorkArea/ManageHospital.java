@@ -90,6 +90,11 @@ public class ManageHospital extends javax.swing.JPanel {
         jCheckBox4.setText("NO");
 
         btnSave1.setText("SAVE");
+        btnSave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSave1ActionPerformed(evt);
+            }
+        });
 
         btnSearch1.setText("Search");
 
@@ -258,6 +263,15 @@ public class ManageHospital extends javax.swing.JPanel {
     private void txtHospitallogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitallogin1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHospitallogin1ActionPerformed
+
+    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnSave1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,7 +5,15 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import System.Hospital.Hospital;
+import System.Hospital.HospitalDirectory;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
+import System.Pharmacy.Pharmacy;
+import System.Pharmacy.PharmacyDirectory;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +24,11 @@ public class ManagePharmacy extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacy
      */
+    Hospital hospital;
+    HospitalDirectory hospitalDirectory;
+    Pharmacy pharmacy;
+    PharmacyDirectory pharmacyDirectory;
+     
     public ManagePharmacy(JSplitPane jSplitPane1) {
         initComponents();
     }
@@ -37,30 +50,37 @@ public class ManagePharmacy extends javax.swing.JPanel {
         tblPharmacy = new javax.swing.JTable();
         txtPharmacystate = new javax.swing.JTextField();
         btnHospitalview = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        loginLabel = new javax.swing.JLabel();
+        stateLabel = new javax.swing.JLabel();
         txtPharmacyzipcode = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         txtPharmacycity = new javax.swing.JTextField();
         txtPharmacyname = new javax.swing.JTextField();
         btnHospitalsave = new javax.swing.JButton();
         txtHospitalsearch = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
         txtPharmacypassword = new javax.swing.JTextField();
         txtPharmacylogin = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        cityLabel = new javax.swing.JLabel();
+        zipcodeLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtPharmacyaddress = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        txtPharmacymail = new javax.swing.JTextField();
+
+        emailLabel = new javax.swing.JLabel();
+        txtPharmacyEmail = new javax.swing.JTextField();
+
 
         btnHospitaldelete.setText("Delete");
 
         btnSearch.setText("Search");
 
         btnHospitalupdate.setText("Update");
+        btnHospitalupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalupdateActionPerformed(evt);
+            }
+        });
 
         tblPharmacy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +101,9 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name ", "Login Name ", "Password", "Address Line", "City", "State", "Zip Code", "Mail ID"
+
+                "Name ", "Login Name ", "Password", "Email", "Address Line", "City", "State", "Zip Code"
+
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -95,73 +117,87 @@ public class ManagePharmacy extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPharmacy);
 
         btnHospitalview.setText("View ");
+        btnHospitalview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalviewActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Name");
+        nameLabel.setText("Name");
 
-        jLabel3.setText("Login Name");
+        loginLabel.setText("Login Name");
 
-        jLabel7.setText("State");
+        stateLabel.setText("State");
 
-        jLabel4.setText("Password");
+        passwordLabel.setText("Password");
 
         btnHospitalsave.setText("SAVE");
+        btnHospitalsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalsaveActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setText("Address Line ");
+        addressLabel.setText("Address Line ");
 
         txtPharmacylogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPharmacyloginActionPerformed(evt);
             }
         });
+        txtPharmacylogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPharmacyloginKeyTyped(evt);
+            }
+        });
 
-        jLabel6.setText("City");
+        cityLabel.setText("City");
 
-        jLabel8.setText("Zip Code");
+        zipcodeLabel.setText("Zip Code");
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         jLabel1.setText("MANAGE PHARMACY");
 
-        jLabel19.setText("Mail ID ");
+
+        emailLabel.setText("Email");
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(nameLabel)
+                            .addGap(67, 67, 67)
+                            .addComponent(txtPharmacyname, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(loginLabel)
+                                .addComponent(passwordLabel)
+                                .addComponent(addressLabel)
+                                .addComponent(cityLabel)
+                                .addComponent(stateLabel)
+                                .addComponent(zipcodeLabel))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPharmacylogin)
+                                    .addComponent(txtPharmacypassword)
+                                    .addComponent(txtPharmacycity)
+                                    .addComponent(txtPharmacystate)
+                                    .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPharmacyaddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(btnHospitalsave))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(67, 67, 67)
-                                    .addComponent(txtPharmacyname, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtPharmacylogin)
-                                        .addComponent(txtPharmacypassword)
-                                        .addComponent(txtPharmacyaddress)
-                                        .addComponent(txtPharmacycity)
-                                        .addComponent(txtPharmacystate)
-                                        .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel19)
-                        .addGap(67, 67, 67)
-                        .addComponent(txtPharmacymail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
+                        .addComponent(emailLabel)
+                        .addGap(68, 68, 68)
+                        .addComponent(txtPharmacyEmail)))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -177,6 +213,10 @@ public class ManagePharmacy extends javax.swing.JPanel {
                         .addComponent(btnSearch))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(149, 149, 149))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(268, 268, 268)
+                .addComponent(btnHospitalsave)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,39 +238,45 @@ public class ManagePharmacy extends javax.swing.JPanel {
                             .addComponent(btnHospitalview)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(nameLabel)
                             .addComponent(txtPharmacyname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(loginLabel)
                             .addComponent(txtPharmacylogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPharmacypassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                            .addComponent(txtPharmacypassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailLabel)
+                            .addComponent(txtPharmacyEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addressLabel)
                             .addComponent(txtPharmacyaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtPharmacycity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                            .addComponent(cityLabel)
+                            .addComponent(txtPharmacycity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stateLabel)
                             .addComponent(txtPharmacystate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(zipcodeLabel)
                             .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
                             .addComponent(txtPharmacymail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+
                         .addComponent(btnHospitalsave)))
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -249,26 +295,163 @@ public class ManagePharmacy extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPharmacyloginActionPerformed
 
+    private void btnHospitalsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalsaveActionPerformed
+        // TODO add your handling code here:
+        
+    //Color changes while the text field is empty  
+       if (txtPharmacyname.getText().isEmpty()) {
+            txtPharmacyname.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacyname.setForeground(Color.red);
+
+        }
+        if (txtPharmacylogin.getText().isEmpty()) {
+            txtPharmacylogin.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacylogin.setForeground(Color.red);
+
+        }
+        if (txtPharmacypassword.getText().isEmpty()) {
+            txtPharmacypassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacypassword.setForeground(Color.red);
+
+        }
+        if (txtPharmacyaddress.getText().isEmpty()) {
+            txtPharmacyaddress.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacyaddress.setForeground(Color.red);
+
+        }
+        if (txtPharmacycity.getText().isEmpty()) {
+            txtPharmacycity.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacycity.setForeground(Color.red);
+        }
+        
+          if (txtPharmacystate.getText().isEmpty()) {
+            txtPharmacystate.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacystate.setForeground(Color.red);
+        }
+     
+          if (txtPharmacyzipcode.getText().isEmpty()) {
+            txtPharmacyzipcode.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPharmacyzipcode.setForeground(Color.red);
+        }
+          
+         //Null Value Check
+         
+         if (txtPharmacyname.getText().isEmpty()
+                || txtPharmacylogin.getText().isEmpty()
+                || txtPharmacypassword.getText().isEmpty()
+                || txtPharmacyaddress.getText().isEmpty()
+                || txtPharmacycity == null
+                || txtPharmacystate.getText().isEmpty()
+                || txtPharmacyzipcode == null) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+         else{
+             
+             // Initializing pharmacy object
+              Pharmacy newpharmacy = pharmacyDirectory.addPharmacy();
+              
+              newpharmacy.setName(txtPharmacyname.getText());
+              newpharmacy.setUserName(txtPharmacylogin.getText());
+              newpharmacy.setPassword(txtPharmacypassword.getText());
+              newpharmacy.setEmail(txtPharmacyEmail.getText());
+              newpharmacy.setAddress(txtPharmacyaddress.getText());
+              newpharmacy.setCity(txtPharmacycity.getText());
+              newpharmacy.setState(txtPharmacystate.getText());
+              newpharmacy.setZipCode(txtPharmacyzipcode.getText());
+              
+              
+              // Add the details to table
+              
+                String name = txtPharmacyname.getText();
+                String login = txtPharmacylogin.getText();
+                String password = txtPharmacypassword.getText();
+                String email = txtPharmacyEmail.getText();
+                String address = txtPharmacyaddress.getText();
+                String city = txtPharmacycity.getText();
+                String state = txtPharmacystate.getText();
+                String zipcode = txtPharmacyzipcode.getText();
+
+                int selectedRowIndex = tblPharmacy.getSelectedRow();  
+
+
+                DefaultTableModel model = (DefaultTableModel) tblPharmacy.getModel();
+                model.setValueAt(name, selectedRowIndex, 0);
+                model.setValueAt(login, selectedRowIndex, 1);
+                model.setValueAt(password, selectedRowIndex, 2);
+                model.setValueAt(email, selectedRowIndex, 3);
+                model.setValueAt(address, selectedRowIndex, 4);
+                model.setValueAt(city, selectedRowIndex, 5);
+                model.setValueAt(state, selectedRowIndex, 6);
+                model.setValueAt(zipcode, selectedRowIndex, 7);
+              
+         }
+         
+         
+        
+         
+         
+     
+
+        
+      
+        
+        
+    }//GEN-LAST:event_btnHospitalsaveActionPerformed
+
+    private void txtPharmacyloginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPharmacyloginKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPharmacyloginKeyTyped
+
+    private void btnHospitalviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalviewActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRowIndex = tblPharmacy.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblPharmacy.getModel();
+        Pharmacy selectedEntry = (Pharmacy) model.getValueAt(selectedRowIndex, 0);       
+        
+         
+        txtPharmacyname.setText(selectedEntry.getName());
+        txtPharmacylogin.setText(selectedEntry.getUserName());
+        txtPharmacypassword.setText(String.valueOf(selectedEntry.getPassword()));
+        txtPharmacyEmail.setText(selectedEntry.getEmail());
+        txtPharmacyaddress.setText(selectedEntry.getAddress());
+        txtPharmacycity.setText(String.valueOf(selectedEntry.getCity()));
+        txtPharmacystate.setText(String.valueOf(selectedEntry.getState()));
+        txtPharmacyzipcode.setText(selectedEntry.getZipCode());
+    }//GEN-LAST:event_btnHospitalviewActionPerformed
+
+    private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHospitalupdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLabel;
     private javax.swing.JButton btnHospitaldelete;
     private javax.swing.JButton btnHospitalsave;
     private javax.swing.JButton btnHospitalupdate;
     private javax.swing.JButton btnHospitalview;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JLabel cityLabel;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel loginLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel stateLabel;
     private javax.swing.JTable tblPharmacy;
     private javax.swing.JTextField txtHospitalsearch;
+    private javax.swing.JTextField txtPharmacyEmail;
     private javax.swing.JTextField txtPharmacyaddress;
     private javax.swing.JTextField txtPharmacycity;
     private javax.swing.JTextField txtPharmacylogin;
@@ -277,5 +460,6 @@ public class ManagePharmacy extends javax.swing.JPanel {
     private javax.swing.JTextField txtPharmacypassword;
     private javax.swing.JTextField txtPharmacystate;
     private javax.swing.JTextField txtPharmacyzipcode;
+    private javax.swing.JLabel zipcodeLabel;
     // End of variables declaration//GEN-END:variables
 }

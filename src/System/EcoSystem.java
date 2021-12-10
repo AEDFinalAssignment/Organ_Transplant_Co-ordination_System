@@ -86,14 +86,21 @@ public class EcoSystem{
     
     public String AuthenticateUser(String Username, String Password) throws SQLException
     {
+
+        System.out.println("444444444444");
             this.UserId = "";
             String query = "SELECT * FROM public.\"Useraccount\"";
 
+            System.out.println("333333333333");
             java.sql.Statement stat = sqlConnect.retStatement();
+            System.out.println("22222222222");
             java.sql.ResultSet rs = stat.executeQuery(query);
-
+        System.out.println("1111111111");
             while(rs.next())
             {
+                System.out.println(removeBrackets(rs.getString(1)));
+                System.out.println(removeBrackets(rs.getString(2)));
+
                 if(Username.equals(removeBrackets(rs.getString(1))) && Password.equals(removeBrackets(rs.getString(2))))
                 {
                     this.UserId = removeBrackets(rs.getString(3));

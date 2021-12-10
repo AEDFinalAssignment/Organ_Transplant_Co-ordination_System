@@ -10,6 +10,7 @@ import System.EcoSystem;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
 import java.sql.SQLException;
+import static java.time.Clock.system;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JSplitPane;
@@ -194,7 +195,9 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", "")); 
+
+                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
+
                 ManageJpanel muajp = new ManageJpanel(jSplitPane1);
                 jSplitPane1.setRightComponent(muajp);
             }
@@ -220,7 +223,9 @@ public class Mainframe extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+
+        }
+
 
     }//GEN-LAST:event_btnLoginActionPerformed
 

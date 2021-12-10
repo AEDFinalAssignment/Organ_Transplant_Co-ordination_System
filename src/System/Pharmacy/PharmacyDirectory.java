@@ -22,5 +22,26 @@ public class PharmacyDirectory {
         this.PharmacyDirectory = PharmacyDirectory;
     }
     
+
+     public Pharmacy addPharmacy() {
+        Pharmacy p = new Pharmacy();
+        PharmacyDirectory.add(p);
+        return p;
+    }
+
+    public void removePerson(Pharmacy p) {
+        PharmacyDirectory.remove(p);
+    }
+
+    public Pharmacy searchPharmacy(int id) {
+        for (Pharmacy pharmacy : PharmacyDirectory) {
+            if (pharmacy.getPharmacyID()== id) {
+                return pharmacy;
+            }
+        }
+        return null;
+    }
+    
+
     
 }
