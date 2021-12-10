@@ -66,8 +66,10 @@ public class ManagePharmacy extends javax.swing.JPanel {
         zipcodeLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtPharmacyaddress = new javax.swing.JTextField();
+
         emailLabel = new javax.swing.JLabel();
         txtPharmacyEmail = new javax.swing.JTextField();
+
 
         btnHospitaldelete.setText("Delete");
 
@@ -99,7 +101,9 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
+
                 "Name ", "Login Name ", "Password", "Email", "Address Line", "City", "State", "Zip Code"
+
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -154,7 +158,9 @@ public class ManagePharmacy extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         jLabel1.setText("MANAGE PHARMACY");
 
+
         emailLabel.setText("Email");
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,9 +193,11 @@ public class ManagePharmacy extends javax.swing.JPanel {
                                     .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtPharmacyaddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+
                         .addComponent(emailLabel)
                         .addGap(68, 68, 68)
                         .addComponent(txtPharmacyEmail)))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -260,7 +268,13 @@ public class ManagePharmacy extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(zipcodeLabel)
                             .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(txtPharmacymail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+
                         .addComponent(btnHospitalsave)))
                 .addContainerGap(378, Short.MAX_VALUE))
         );
@@ -428,6 +442,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
     private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel jLabel1;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel loginLabel;
@@ -440,6 +455,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
     private javax.swing.JTextField txtPharmacyaddress;
     private javax.swing.JTextField txtPharmacycity;
     private javax.swing.JTextField txtPharmacylogin;
+    private javax.swing.JTextField txtPharmacymail;
     private javax.swing.JTextField txtPharmacyname;
     private javax.swing.JTextField txtPharmacypassword;
     private javax.swing.JTextField txtPharmacystate;

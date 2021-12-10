@@ -10,6 +10,7 @@ package System;
  * @author Subhash
  */
 public class Organization {
+
     protected String Name;
     protected String UserName;
     protected String Password;
@@ -18,6 +19,7 @@ public class Organization {
     protected String State;
     protected String ZipCode;
     protected String email;
+
 
     public String getName() {
         return Name;
@@ -75,6 +77,7 @@ public class Organization {
         this.ZipCode = ZipCode;
     }
 
+
     public String getEmail() {
         return email;
     }
@@ -84,5 +87,6 @@ public class Organization {
     }
     
        
+
     
 }
