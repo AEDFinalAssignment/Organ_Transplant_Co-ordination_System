@@ -29,11 +29,11 @@ public class Mainframe extends javax.swing.JFrame {
     
     public Mainframe() throws SQLException {
         initComponents();
-  /*      try {
+        try {
             SQL_Connect sqlConnect = new SQL_Connect();
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-        } */
+        } 
            this.system = new EcoSystem(); 
     }
 
@@ -194,7 +194,7 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
+                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", "")); 
                 ManageJpanel muajp = new ManageJpanel(jSplitPane1);
                 jSplitPane1.setRightComponent(muajp);
             }
@@ -220,7 +220,7 @@ public class Mainframe extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
