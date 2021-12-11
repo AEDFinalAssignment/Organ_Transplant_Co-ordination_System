@@ -185,7 +185,7 @@ public class ManageUNOs extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
          
-         // Intitializing Registry Object
+         // Intitializing UNO Object
          
         UNO uno = new UNO();
          uno.setUNO_Name(txtUnoname.getText());
