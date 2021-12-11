@@ -513,4 +513,4 @@ public class ManageRegistry extends javax.swing.JPanel {
 
 
 
-}
+

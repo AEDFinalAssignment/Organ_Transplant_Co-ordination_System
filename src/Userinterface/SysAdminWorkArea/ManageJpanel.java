@@ -6,6 +6,11 @@
 package Userinterface.SysAdminWorkArea;
 
 import System.EcoSystem;
+import System.Registry.Registry;
+import System.Registry.RegistryDirectory;
+import System.Transportation.TransportDirectory;
+import System.Transportation.Transportation;
+import System.UNOs.UNO;
 import javax.swing.JSplitPane;
 
 
@@ -23,11 +28,18 @@ public class ManageJpanel extends javax.swing.JPanel {
      */
     JSplitPane jSplitPane1;
     EcoSystem system;
-    
-    public ManageJpanel(JSplitPane jSplitPane1,EcoSystem system) {
+    Transportation transportation;
+    TransportDirectory TransportationDirectory;
+    Registry registry;
+    RegistryDirectory registryDirectory;
+    UNO uno;
+    public ManageJpanel(JSplitPane jSplitPane1,EcoSystem system, TransportDirectory TransportationDirectory,RegistryDirectory registryDirectory,UNO uno) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.TransportationDirectory = TransportationDirectory;
+        this.registryDirectory = registryDirectory;
+        this.uno = uno;
     }
 
     /**
@@ -123,7 +135,7 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnRegistrySys1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrySys1ActionPerformed
         // TODO add your handling code here:
-                ManageRegistry mr = new ManageRegistry(jSplitPane1,system);
+                ManageRegistry mr = new ManageRegistry(jSplitPane1,system,registryDirectory);
                 jSplitPane1.setRightComponent(mr);
     }//GEN-LAST:event_btnRegistrySys1ActionPerformed
 
@@ -135,13 +147,13 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransportationActionPerformed
         // TODO add your handling code here:
-         ManageTransportation mt= new ManageTransportation(jSplitPane1, system);
+         ManageTransportation mt= new ManageTransportation(jSplitPane1, system,TransportationDirectory);
         jSplitPane1.setRightComponent(mt);
     }//GEN-LAST:event_btnTransportationActionPerformed
 
     private void btnUNOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUNOsActionPerformed
         // TODO add your handling code here:
-        ManageUNOs mu= new ManageUNOs(jSplitPane1,system);
+        ManageUNOs mu= new ManageUNOs(jSplitPane1,system,uno);
         jSplitPane1.setRightComponent(mu);
     }//GEN-LAST:event_btnUNOsActionPerformed
 

@@ -7,6 +7,11 @@ package Userinterface;
 
 import SQL_Connection.SQL_Connect;
 import System.EcoSystem;
+import System.Registry.Registry;
+import System.Registry.RegistryDirectory;
+import System.Transportation.TransportDirectory;
+import System.Transportation.Transportation;
+import System.UNOs.UNO;
 
 import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
 import Userinterface.HospitalAdminWorkArea.ManagePatient;
@@ -30,6 +35,11 @@ public class Mainframe extends javax.swing.JFrame {
     public EcoSystem system;
     private String Useraccount;
     private int id;
+     Transportation transportation;
+    TransportDirectory TransportationDirectory;
+    Registry registry;
+    RegistryDirectory registryDirectory;
+    UNO uno;
     
     public Mainframe() throws SQLException {
         initComponents();
@@ -198,7 +208,7 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system);
+                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system,TransportationDirectory,registryDirectory,uno);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){

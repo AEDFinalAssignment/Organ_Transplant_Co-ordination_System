@@ -8,7 +8,7 @@ package Userinterface.SysAdminWorkArea;
 
 import System.EcoSystem;
 
-import System.Pharmacy.Pharmacy;
+
 import System.Transportation.TransportDirectory;
 import System.Transportation.Transportation;
 import java.awt.Color;
@@ -36,7 +36,7 @@ public class ManageTransportation extends javax.swing.JPanel {
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
       this.TransportationDirectory = TransportationDirectory;
-
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
