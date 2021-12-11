@@ -5,6 +5,11 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+
+import System.UNOs.UNO;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
 /**
@@ -12,12 +17,15 @@ import javax.swing.JSplitPane;
  * @author sanjeev
  */
 public class ManageUNOs extends javax.swing.JPanel {
+    
+    UNO uno;
 
     /**
      * Creates new form ManageUNOs
      */
-    public ManageUNOs(JSplitPane jSplitPane1) {
+    public ManageUNOs(JSplitPane jSplitPane1, UNO uno) {
         initComponents();
+        this.uno = uno;
     }
 
     /**
@@ -39,7 +47,7 @@ public class ManageUNOs extends javax.swing.JPanel {
         txtUnoname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txtUNOmail = new javax.swing.JTextField();
+        txtUnomail = new javax.swing.JTextField();
 
         txtUnologin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +63,11 @@ public class ManageUNOs extends javax.swing.JPanel {
         jLabel4.setText("Password");
 
         btnHospitalsave.setText("SAVE");
+        btnHospitalsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalsaveActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Name");
 
@@ -90,7 +103,7 @@ public class ManageUNOs extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel19)
                         .addGap(67, 67, 67)
-                        .addComponent(txtUNOmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtUnomail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(943, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,7 +126,7 @@ public class ManageUNOs extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(txtUNOmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUnomail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnHospitalsave)
                 .addContainerGap(539, Short.MAX_VALUE))
@@ -135,6 +148,64 @@ public class ManageUNOs extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUnologinActionPerformed
 
+    private void btnHospitalsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalsaveActionPerformed
+        // TODO add your handling code here:
+        
+         if (txtUnoname.getText().isEmpty()) {
+            txtUnoname.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUnoname.setForeground(Color.red);
+
+        }
+        if (txtUnologin.getText().isEmpty()) {
+            txtUnologin.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUnologin.setForeground(Color.red);
+
+        }
+        if (txtUnopassword.getText().isEmpty()) {
+            txtUnopassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUnopassword.setForeground(Color.red);
+
+        }
+        if (txtUnomail.getText().isEmpty()) {
+            txtUnomail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUnomail.setForeground(Color.red);
+
+        }
+        
+          
+        
+          
+         //Null Value Check
+         
+         if (txtUnoname.getText().isEmpty()
+                || txtUnologin.getText().isEmpty()
+                || txtUnopassword.getText().isEmpty()
+                || txtUnomail.getText().isEmpty()
+                ) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+         // Intitializing Registry Object
+         
+        UNO uno = new UNO();
+         uno.setUNO_Name(txtUnoname.getText());
+         uno.setUNO_Username(txtUnologin.getText());
+         uno.setUNO_Password(txtUnopassword.getText());
+         uno.setUNO_email(txtUnomail.getText());
+      
+         
+         JOptionPane.showMessageDialog(this, "New UNO credential is added!!");
+         
+         txtUnoname.setText("");
+         txtUnologin.setText("");
+         txtUnopassword.setText("");
+         txtUnomail.setText("");
+        
+         
+         
+         
+    }//GEN-LAST:event_btnHospitalsaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHospitalsave;
@@ -144,8 +215,8 @@ public class ManageUNOs extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtUNOmail;
     private javax.swing.JTextField txtUnologin;
+    private javax.swing.JTextField txtUnomail;
     private javax.swing.JTextField txtUnoname;
     private javax.swing.JTextField txtUnopassword;
     // End of variables declaration//GEN-END:variables
