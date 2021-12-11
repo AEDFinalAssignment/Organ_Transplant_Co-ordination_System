@@ -17,8 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btntransplantlist" min="-2" pref="155" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="492" max="-2" attributes="0"/>
                           <Component id="btnCreatenewpatient" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -28,12 +29,8 @@
                           <Component id="btnexistingpatient" linkSize="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="502" max="-2" attributes="0"/>
-                      <Component id="btntransplantlist" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="793" max="32767" attributes="0"/>
+              <EmptySpace pref="803" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,9 +41,9 @@
               <Component id="btnCreatenewpatient" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               <Component id="btnexistingpatient" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
               <Component id="btntransplantlist" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="574" max="32767" attributes="0"/>
+              <EmptySpace pref="573" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
