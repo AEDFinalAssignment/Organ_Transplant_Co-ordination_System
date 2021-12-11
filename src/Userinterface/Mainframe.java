@@ -195,10 +195,8 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-
-
                 this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
-                ManageJpanel muajp = new ManageJpanel(jSplitPane1);
+                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){

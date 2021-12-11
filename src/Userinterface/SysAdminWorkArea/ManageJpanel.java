@@ -147,7 +147,7 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyActionPerformed
         // TODO add your handling code here:
-          ManagePharmacy mp= new ManagePharmacy(jSplitPane1);
+          ManagePharmacy mp= new ManagePharmacy(jSplitPane1,system);
         jSplitPane1.setRightComponent(mp);
     }//GEN-LAST:event_btnPharmacyActionPerformed
 
