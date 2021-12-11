@@ -5,7 +5,6 @@
  */
 package Userinterface.SysAdminWorkArea;
 
-import System.Pharmacy.Pharmacy;
 import System.Registry.Registry;
 import System.Registry.RegistryDirectory;
 import java.awt.Color;
@@ -302,9 +301,9 @@ public class ManageRegistry extends javax.swing.JPanel {
             txtReglogin.setForeground(Color.red);
 
         }
-        if (txtReglogin.getText().isEmpty()) {
-            txtReglogin.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtReglogin.setForeground(Color.red);
+        if (txtRegpassword.getText().isEmpty()) {
+            txtRegpassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegpassword.setForeground(Color.red);
 
         }
         if (txtRegistrymail.getText().isEmpty()) {
@@ -384,7 +383,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         }
         
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        Pharmacy selectedEntry = (Pharmacy) model.getValueAt(selectedRowIndex, 0);       
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
         
          
         txtRegname.setText(selectedEntry.getName());
@@ -409,7 +408,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         }
         
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        Pharmacy selectedEntry = (Pharmacy) model.getValueAt(selectedRowIndex, 0);       
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
         
         
         String name = txtRegname.getText();
