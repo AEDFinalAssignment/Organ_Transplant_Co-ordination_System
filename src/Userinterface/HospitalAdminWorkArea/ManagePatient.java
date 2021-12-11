@@ -68,18 +68,16 @@ public class ManagePatient extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btntransplantlist, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(492, 492, 492)
                             .addComponent(btnCreatenewpatient))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(343, 343, 343)
-                            .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(502, 502, 502)
-                        .addComponent(btntransplantlist, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(793, Short.MAX_VALUE))
+                            .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(803, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreatenewpatient, btnexistingpatient});
@@ -91,9 +89,9 @@ public class ManagePatient extends javax.swing.JPanel {
                 .addComponent(btnCreatenewpatient)
                 .addGap(73, 73, 73)
                 .addComponent(btnexistingpatient)
-                .addGap(79, 79, 79)
+                .addGap(80, 80, 80)
                 .addComponent(btntransplantlist)
-                .addContainerGap(574, Short.MAX_VALUE))
+                .addContainerGap(573, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

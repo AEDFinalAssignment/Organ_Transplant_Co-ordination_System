@@ -62,6 +62,7 @@ public class ManageJpanel extends javax.swing.JPanel {
         btnTransportation = new javax.swing.JButton();
         btnPharmacy = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,6 +130,15 @@ public class ManageJpanel extends javax.swing.JPanel {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pr1.png"))); // NOI18N
         Jpanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, 225, 144));
 
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
+        btnLogout.setText("jLabel3");
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+        Jpanel1.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 10, 40, 40));
+
         add(Jpanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, 880));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,12 +171,21 @@ public class ManageJpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
           ManagePharmacy mp= new ManagePharmacy(jSplitPane1,system);
         jSplitPane1.setRightComponent(mp);
+     
+        
     }//GEN-LAST:event_btnPharmacyActionPerformed
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+        // TODO add your handling code here:
+         
+         
+    }//GEN-LAST:event_btnLogoutMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel1;
     private javax.swing.JButton btnHospital;
+    private javax.swing.JLabel btnLogout;
     private javax.swing.JButton btnPharmacy;
     private javax.swing.JButton btnRegistrySys1;
     private javax.swing.JButton btnTransportation;
