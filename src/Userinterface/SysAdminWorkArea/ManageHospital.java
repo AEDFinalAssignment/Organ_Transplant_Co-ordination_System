@@ -7,11 +7,14 @@ package Userinterface.SysAdminWorkArea;
 
 import System.EcoSystem;
 import System.Hospital.Hospital;
+import System.Hospital.HospitalDirectory;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +31,11 @@ public class ManageHospital extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.jSplitPane1 = jSplitPane1;
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -140,10 +148,25 @@ public class ManageHospital extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblHospital1);
 
         btnView1.setText("View ");
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
 
         btnUpdate1.setText("Update");
+        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdate1ActionPerformed(evt);
+            }
+        });
 
         btnDelete1.setText("Delete");
+        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete1ActionPerformed(evt);
+            }
+        });
 
         jLabel19.setText("Mail ID ");
 
@@ -283,6 +306,7 @@ public class ManageHospital extends javax.swing.JPanel {
        hos.setCity(txtHospitalcity1.getText());
        hos.setState(txtHospitalstate1.getText());
        hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
+       hos.setEmail(txtHospitalmail.getText());
        if(jCheckBox3.isSelected())
        hos.setTransplantEquipped(true);
        else
@@ -293,8 +317,134 @@ public class ManageHospital extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        populateTable();
+        JOptionPane.showMessageDialog(this, "Hospital details saved sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       txtHospitalname1.setText("");
+       txtHospitallogin1.setText("");
+       txtHospitalpassword1.setText("");
+       txtHospitaladdress1.setText("");
+       txtHospitalcity1.setText("");
+       txtHospitalstate1.setText("");
+       txtHospitalzipcode1.setText("");
+       txtHospitalmail.setText("");
     }//GEN-LAST:event_btnSave1ActionPerformed
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospital1.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a hospital to view.");
+            return;
+        }
+        
+        DefaultTableModel modelhos = (DefaultTableModel) tblHospital1.getModel();
+        Hospital selectedHospital = (Hospital) modelhos.getValueAt(selectedRowIndex, 0);
+        String hospitalUsername = selectedHospital.getUserName();
+        
+        txtHospitalname1.setText(selectedHospital.getName());
+        txtHospitallogin1.setText(selectedHospital.getUserName());
+        txtHospitalpassword1.setText(selectedHospital.getPassword());
+        txtHospitaladdress1.setText(selectedHospital.getAddress());
+        txtHospitalcity1.setText(selectedHospital.getCity());
+        txtHospitalstate1.setText(selectedHospital.getState());
+        txtHospitalzipcode1.setText(String.valueOf(selectedHospital.getZipCode()));
+        txtHospitalmail.setText(selectedHospital.getEmail());
+    }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int selectedRowIndex = tblHospital1.getSelectedRow();
+            
+            if(selectedRowIndex<0)
+            {
+                JOptionPane.showMessageDialog(this, "Select a hospital to update.");
+                return;
+            }
+            
+            DefaultTableModel modelhos = (DefaultTableModel) tblHospital1.getModel();
+            Hospital selectedHospital = (Hospital) modelhos.getValueAt(selectedRowIndex, 0);
+            String hospitalUsername = selectedHospital.getUserName();
+            HospitalDirectory hosDirectory = system.getDBHospitalDirectory();
+            
+            for(Hospital hos: hosDirectory.getHospitalDirectory())
+            {   
+                if(hos.getUserName().equals(hospitalUsername))
+                {
+                    hos.setName(txtHospitalname1.getText());
+                    hos.setUserName(txtHospitallogin1.getText());
+                    hos.setPassword(txtHospitalpassword1.getText());
+                    hos.setAddress(txtHospitaladdress1.getText());
+                    hos.setCity(txtHospitalcity1.getText());
+                    hos.setState(txtHospitalstate1.getText());
+                    hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
+                    hos.setEmail(txtHospitalmail.getText());
+                    if(jCheckBox3.isSelected())
+                        hos.setTransplantEquipped(true);
+                    else
+                        hos.setTransplantEquipped(false);
+                    
+                    try {
+                        system.updateHospitalDB(hos);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Hospital details updated sucessfully");
+                    try {
+                        populateTable();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txtHospitalname1.setText("");
+                    txtHospitallogin1.setText("");
+                    txtHospitalpassword1.setText("");
+                    txtHospitaladdress1.setText("");
+                    txtHospitalcity1.setText("");
+                    txtHospitalstate1.setText("");
+                    txtHospitalzipcode1.setText("");
+                    txtHospitalmail.setText("");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdate1ActionPerformed
+
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospital1.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a hospital to delete.");
+            return;
+        }
+        
+        DefaultTableModel modelhos = (DefaultTableModel) tblHospital1.getModel();
+        Hospital selectedHospital = (Hospital) modelhos.getValueAt(selectedRowIndex, 0);
+        
+        system.getHospitalDirectory().getHospitalDirectory().remove(selectedHospital);
+        
+        try {
+            system.deleteHospitalDB(selectedHospital);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Hospital details deleted sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnDelete1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -328,9 +478,26 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalzipcode1;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    private void populateTable() throws SQLException {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       
+       DefaultTableModel model = (DefaultTableModel) tblHospital1.getModel();
+       model.setRowCount(0);
+         
+       HospitalDirectory hosDirectory = system.getDBHospitalDirectory();
+         for(Hospital h: hosDirectory.getHospitalDirectory())
+         {
+             Object[] row = new Object[9];
+             row[0]=h;
+             row[1]=h.getUserName();
+             row[2]=h.getPassword();
+             row[3]=h.getAddress();
+             row[4]=h.getCity();
+             row[5]=h.getState();
+             row[6]=h.getZipCode();
+             row[7]=h.isTransplantEquipped();
+             row[8]=h.getEmail();
+             
+             model.addRow(row);
+         }
     }
-
 }
