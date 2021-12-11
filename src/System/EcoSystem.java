@@ -122,7 +122,28 @@ public class EcoSystem{
         String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
                          "VALUES ('{"+ hos.getUserName() + "}','{"+ hos.getPassword() +"}','{Hospital}');";
         stat.execute(query1);
-    }    
+    }
+    public void updateHospitalDB(Hospital hos) throws SQLException {
+        System.out.println(hos.getUserName()); 
+        String query = "UPDATE public.\"Hospital\" SET \"Name\"='{" + hos.getName() + "}',\"TransplantEquipped\"=" + String.valueOf(hos.isTransplantEquipped()) + ",\"Username\"='{" + hos.getUserName() + "}',\"Password\"='{" + hos.getPassword() + "}',\"Address\"='{" + hos.getAddress() + "}',\"State\"='{" + hos.getState() + "}',\"City\"='{"+ hos.getCity() +"}',\"Zipcode\"="+ String.valueOf(hos.getZipCode()) +",\"EmailID\"='{"+hos.getEmail()+"}'\n" +
+                       "WHERE \"Username\"='{"+ hos.getUserName() +"}';";
+        System.out.println(query);
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + hos.getUserName() + "}',\"Password\"='{" + hos.getPassword() + "}',\"TypeID\"='{Hospital}'\n" +
+                        "WHERE \"Username\"='{"+ hos.getUserName() +"}';";
+        stat.execute(query1);
+    } 
+    
+    public void deleteHospitalDB(Hospital hos) throws SQLException {
+        String query = "DELETE FROM public.\"Hospital\" WHERE \"Username\"='{"+ hos.getUserName() + "}';";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ hos.getUserName() +"}';";
+        stat.execute(query1);
+    }
 
     public HospitalDirectory getDBHospitalDirectory() throws SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
