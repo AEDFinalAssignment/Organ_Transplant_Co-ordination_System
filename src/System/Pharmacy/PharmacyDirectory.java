@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class PharmacyDirectory {
     private ArrayList<Pharmacy> PharmacyDirectory;
 
+    public PharmacyDirectory() {
+        this.PharmacyDirectory = new ArrayList <Pharmacy>();
+    }
+
+    
     public ArrayList<Pharmacy> getPharmacyDirectory() {
         return PharmacyDirectory;
     }
@@ -22,6 +27,7 @@ public class PharmacyDirectory {
         this.PharmacyDirectory = PharmacyDirectory;
     }
     
+
      public Pharmacy addPharmacy() {
         Pharmacy p = new Pharmacy();
         PharmacyDirectory.add(p);
@@ -41,5 +47,6 @@ public class PharmacyDirectory {
         return null;
     }
     
+
     
 }
