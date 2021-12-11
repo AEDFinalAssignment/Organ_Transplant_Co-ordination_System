@@ -7,11 +7,14 @@ package Userinterface.SysAdminWorkArea;
 
 import System.EcoSystem;
 import System.Hospital.Hospital;
+import System.Hospital.HospitalDirectory;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +31,11 @@ public class ManageHospital extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.jSplitPane1 = jSplitPane1;
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -283,6 +291,7 @@ public class ManageHospital extends javax.swing.JPanel {
        hos.setCity(txtHospitalcity1.getText());
        hos.setState(txtHospitalstate1.getText());
        hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
+       hos.setEmail(txtHospitalmail.getText());
        if(jCheckBox3.isSelected())
        hos.setTransplantEquipped(true);
        else
@@ -293,7 +302,12 @@ public class ManageHospital extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        populateTable();
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Hospital details saved sucessfully");
     }//GEN-LAST:event_btnSave1ActionPerformed
 
 
@@ -328,9 +342,26 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalzipcode1;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable() {
+    private void populateTable() throws SQLException {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       
+       DefaultTableModel model = (DefaultTableModel) tblHospital1.getModel();
+       model.setRowCount(0);
+         
+       HospitalDirectory hosDirectory = system.getDBHospitalDirectory();
+         for(Hospital h: hosDirectory.getHospitalDirectory())
+         {
+             Object[] row = new Object[9];
+             row[0]=h.getName();
+             row[1]=h.getUserName();
+             row[2]=h.getPassword();
+             row[3]=h.getAddress();
+             row[4]=h.getCity();
+             row[5]=h.getState();
+             row[6]=h.getZipCode();
+             row[7]=h.isTransplantEquipped();
+             row[8]=h.getEmail();
+             
+             model.addRow(row);
+         }
     }
-
 }

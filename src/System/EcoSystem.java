@@ -114,8 +114,8 @@ public class EcoSystem{
             return this.UserId;
     }
     public void saveHospitalDB(Hospital hos) throws SQLException {
-        String query = "INSERT INTO public.\"Hospital\"(\"Name\",\"TransplantEquipped\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\")\n" +
-                       "VALUES ('{"+ hos.getName() + "}',"+ String.valueOf(hos.isTransplantEquipped()) + ",'{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{"+ hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ");";
+        String query = "INSERT INTO public.\"Hospital\"(\"Name\",\"TransplantEquipped\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\",\"EmailID\")\n" +
+                       "VALUES ('{"+ hos.getName() + "}',"+ String.valueOf(hos.isTransplantEquipped()) + ",'{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{" + hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ",'{" + hos.getEmail() + "}'" +");";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
         
@@ -123,4 +123,29 @@ public class EcoSystem{
                          "VALUES ('{"+ hos.getUserName() + "}','{"+ hos.getPassword() +"}','{Hospital}');";
         stat.execute(query1);
     }    
+
+    public HospitalDirectory getDBHospitalDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HospitalDirectory hosDirectory = new HospitalDirectory();
+        Hospital hos;
+        String query = "SELECT * FROM public.\"Hospital\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                hos = new Hospital();
+                hosDirectory.getHospitalDirectory().add(hos);
+                hos.setName(removeBrackets(rs.getString(1)));
+                hos.setTransplantEquipped(Boolean.parseBoolean(removeBrackets(rs.getString(2))));
+                hos.setUserName(removeBrackets(rs.getString(3)));
+                hos.setPassword(removeBrackets(rs.getString(4)));
+                hos.setAddress(removeBrackets(rs.getString(5)));
+                hos.setState(removeBrackets(rs.getString(6)));
+                hos.setCity(removeBrackets(rs.getString(7)));
+                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(8))));
+                if(rs.getString(9)!=null)
+                hos.setEmail(removeBrackets(rs.getString(9)));
+            }
+            return hosDirectory;
+    }
 }
