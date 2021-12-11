@@ -5,17 +5,25 @@
  */
 package Userinterface.TransplantPatientAssgnWorkArea;
 
+import System.EcoSystem;
+
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
  */
-public class TransplantPatiientAssgn extends javax.swing.JPanel {
+public class TransplantPatientAssgn extends javax.swing.JPanel {
 
     /**
      * Creates new form TransplantPatiientAssgn
      */
-    public TransplantPatiientAssgn() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public TransplantPatientAssgn(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+         this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**
@@ -31,8 +39,8 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
         tblPatientdetails = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAddTransplantdetails = new javax.swing.JButton();
+        btnChechEgdonor = new javax.swing.JButton();
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,9 +91,14 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
 
         jButton1.setText("SEARCH");
 
-        jButton2.setText("Add Transplant Details ");
+        btnAddTransplantdetails.setText("Add Transplant Details ");
+        btnAddTransplantdetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTransplantdetailsActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Check Eligibility as Donor");
+        btnChechEgdonor.setText("Check Eligibility as Donor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,9 +117,9 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
                                 .addGap(126, 126, 126))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(254, 254, 254)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChechEgdonor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(186, 186, 186)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,17 +133,23 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChechEgdonor))
                 .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransplantdetailsActionPerformed
+        // TODO add your handling code here:
+         Transplantdetails td = new Transplantdetails(jSplitPane1,system);
+                jSplitPane1.setRightComponent(td);
+    }//GEN-LAST:event_btnAddTransplantdetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddTransplantdetails;
+    private javax.swing.JButton btnChechEgdonor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblPatientdetails;

@@ -5,6 +5,9 @@
  */
 package Userinterface.TransportationWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class AssgnVehicle extends javax.swing.JPanel {
     /**
      * Creates new form AssgnVehicle
      */
-    public AssgnVehicle() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public AssgnVehicle(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

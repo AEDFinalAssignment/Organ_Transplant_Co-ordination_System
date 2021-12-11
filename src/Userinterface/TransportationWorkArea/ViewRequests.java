@@ -1,5 +1,8 @@
 package Userinterface.TransportationWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,9 +18,14 @@ public class ViewRequests extends javax.swing.JPanel {
     /**
      * Creates new form ViewRequests
      */
-    public ViewRequests() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ViewRequests(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

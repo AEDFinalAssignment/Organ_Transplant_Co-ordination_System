@@ -7,7 +7,7 @@ package Userinterface;
 
 import SQL_Connection.SQL_Connect;
 import System.EcoSystem;
-import Userinterface.HospitalAdminWorkArea.HospitalAdminArea;
+
 import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
 import Userinterface.HospitalAdminWorkArea.ManagePatient;
 import Userinterface.SysAdminWorkArea.ManageHospital;

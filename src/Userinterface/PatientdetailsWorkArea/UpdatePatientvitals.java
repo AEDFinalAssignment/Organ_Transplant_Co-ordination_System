@@ -5,6 +5,9 @@
  */
 package Userinterface.PatientdetailsWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class UpdatePatientvitals extends javax.swing.JPanel {
     /**
      * Creates new form UpdatePatientvitals
      */
-    public UpdatePatientvitals() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public UpdatePatientvitals(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+          this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

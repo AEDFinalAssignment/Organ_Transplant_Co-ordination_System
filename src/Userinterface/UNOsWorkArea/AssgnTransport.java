@@ -5,6 +5,9 @@
  */
 package Userinterface.UNOsWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,13 @@ public class AssgnTransport extends javax.swing.JPanel {
     /**
      * Creates new form AssgnTransport
      */
-    public AssgnTransport() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public AssgnTransport(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+       
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

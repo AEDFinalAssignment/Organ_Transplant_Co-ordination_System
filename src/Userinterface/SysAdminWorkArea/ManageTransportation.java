@@ -5,6 +5,7 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import System.EcoSystem;
 import javax.swing.JSplitPane;
 
 /**
@@ -16,8 +17,12 @@ public class ManageTransportation extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransportation
      */
-    public ManageTransportation(JSplitPane jSplitPane1) {
+    private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

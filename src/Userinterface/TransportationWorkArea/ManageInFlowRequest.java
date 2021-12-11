@@ -5,6 +5,9 @@
  */
 package Userinterface.TransportationWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -13,9 +16,12 @@ public class ManageInFlowRequest extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageInFlowRequest
-     */
-    public ManageInFlowRequest() {
+     */ private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ManageInFlowRequest(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

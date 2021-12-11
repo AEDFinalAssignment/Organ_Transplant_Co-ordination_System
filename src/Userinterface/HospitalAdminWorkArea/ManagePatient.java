@@ -5,6 +5,10 @@
  */
 package Userinterface.HospitalAdminWorkArea;
 
+import System.EcoSystem;
+import Userinterface.TransplantPatientAssgnWorkArea.TransplantPatientAssgn;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +18,12 @@ public class ManagePatient extends javax.swing.JPanel {
     /**
      * Creates new form ManagePatient
      */
-    public ManagePatient() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+         this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**
@@ -27,86 +35,93 @@ public class ManagePatient extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-
+        btnexistingpatient = new javax.swing.JButton();
+        btnCreatenewpatient = new javax.swing.JButton();
+        btntransplantlist = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jButton1.setText("Existing Patient Details");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnexistingpatient.setText("Existing Patient Details");
+        btnexistingpatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnexistingpatientActionPerformed(evt);
             }
         });
 
+        btnCreatenewpatient.setText("Create New Patient Details");
+        btnCreatenewpatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreatenewpatientActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Create New Patient Details");
-
-        jButton3.setText("Transplant List");
-
+        btntransplantlist.setText("Transplant List");
+        btntransplantlist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntransplantlistActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Patient Available as DONOR ");
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(1005, Short.MAX_VALUE))
-
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(284, 284, 284)
-                    .addComponent(jButton2)
-
-                    .addContainerGap(1005, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(492, 492, 492)
+                            .addComponent(btnCreatenewpatient))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(343, 343, 343)
+                            .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(502, 502, 502)
+                        .addComponent(btntransplantlist, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(793, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
-
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreatenewpatient, btnexistingpatient});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(454, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(70, 70, 70)
-                .addComponent(jButton3)
-
-                .addGap(60, 60, 60)
-                .addComponent(jButton4)
-                .addGap(233, 233, 233))
-
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(378, 378, 378)
-                    .addComponent(jButton2)
-                    .addContainerGap(481, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(btnCreatenewpatient)
+                .addGap(73, 73, 73)
+                .addComponent(btnexistingpatient)
+                .addGap(79, 79, 79)
+                .addComponent(btntransplantlist)
+                .addContainerGap(574, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnexistingpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexistingpatientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+         UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system);
+        jSplitPane1.setRightComponent(usd);
+    }//GEN-LAST:event_btnexistingpatientActionPerformed
+
+    private void btnCreatenewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatenewpatientActionPerformed
+        // TODO add your handling code here:
+        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system);
+        jSplitPane1.setRightComponent(cnp);
+    }//GEN-LAST:event_btnCreatenewpatientActionPerformed
+
+    private void btntransplantlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransplantlistActionPerformed
+        // TODO add your handling code here:
+        TransplantPatientAssgn tpa = new TransplantPatientAssgn (jSplitPane1,system);
+        jSplitPane1.setRightComponent(tpa);
+    }//GEN-LAST:event_btntransplantlistActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-
+    private javax.swing.JButton btnCreatenewpatient;
+    private javax.swing.JButton btnexistingpatient;
+    private javax.swing.JButton btntransplantlist;
     private javax.swing.JButton jButton4;
-
     // End of variables declaration//GEN-END:variables
 }

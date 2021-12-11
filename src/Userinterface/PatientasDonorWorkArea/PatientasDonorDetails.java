@@ -5,6 +5,9 @@
  */
 package Userinterface.PatientasDonorWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,13 @@ public class PatientasDonorDetails extends javax.swing.JPanel {
     /**
      * Creates new form PatientasDonorDetails
      */
-    public PatientasDonorDetails() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public PatientasDonorDetails(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+         this.jSplitPane1 = jSplitPane1;
+        this.system = system;
+        
     }
 
     /**
