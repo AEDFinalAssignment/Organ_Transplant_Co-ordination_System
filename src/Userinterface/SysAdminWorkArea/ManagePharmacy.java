@@ -81,38 +81,6 @@ public class ManagePharmacy extends javax.swing.JPanel {
         btnHospitalupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHospitalupdateActionPerformed(evt);
-            }https://github.com/AEDFinalAssignment/Organ_Transplant_Co-ordination_System/pull/10/conflict?name=src%252FUserinterface%252FSysAdminWorkArea%252FManagePharmacy.java&ancestor_oid=530da926f8b245cf29d8d975c1ba78ecc55016a3&base_oid=cc681e59431ea7a5dbb439264a76841b34d6d725&head_oid=85830b3447a73918a4b4480e8a7d0fff38c82d1e
-        });
-
-
-        tblPharmacy.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name ", "Login Name ", "Password", "Email", "Address Line", "City", "State", "Zip Code"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
 
@@ -267,7 +235,6 @@ public class ManagePharmacy extends javax.swing.JPanel {
                             .addComponent(zipcodeLabel)
                             .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(46, 46, 46)
-
                         .addComponent(btnHospitalsave)))
                 .addContainerGap(378, Short.MAX_VALUE))
         );
