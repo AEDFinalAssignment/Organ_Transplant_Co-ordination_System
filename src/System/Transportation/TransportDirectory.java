@@ -26,4 +26,21 @@ public class TransportDirectory {
     public void setTransportationDirectory(ArrayList<Transportation> TransportationDirectory) {
         this.TransportationDirectory = TransportationDirectory;
     }
+     public Transportation addTransportation() {
+        Transportation r = new Transportation();
+        TransportationDirectory.add(r);
+        return r;
+    }
+      public void removeRegistry(Transportation r) {
+        TransportationDirectory.remove(r);
+    }
+
+    public Transportation searchRegistry(String userName) {
+        for (Transportation transportation : TransportationDirectory) {
+            if (transportation.getUserName()==userName) {
+                return transportation;
+            }
+        }
+        return null;
+    }
 }

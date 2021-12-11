@@ -123,7 +123,7 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnRegistrySys1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrySys1ActionPerformed
         // TODO add your handling code here:
-                ManageRegistry mr = new ManageRegistry(jSplitPane1);
+                ManageRegistry mr = new ManageRegistry(jSplitPane1,system);
                 jSplitPane1.setRightComponent(mr);
     }//GEN-LAST:event_btnRegistrySys1ActionPerformed
 

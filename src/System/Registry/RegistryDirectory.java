@@ -27,5 +27,24 @@ public class RegistryDirectory {
         this.RegistryDirectory = RegistryDirectory;
     }
     
+    public Registry addRegistry() {
+        Registry r = new Registry();
+        RegistryDirectory.add(r);
+        return r;
+    }
+
+    public void removeRegistry(Registry r) {
+        RegistryDirectory.remove(r);
+    }
+
+    public Registry searchRegistry(String userName) {
+        for (Registry registry : RegistryDirectory) {
+            if (registry.getUserName()==userName) {
+                return registry;
+            }
+        }
+        return null;
+    }
+    
     
 }
