@@ -53,8 +53,6 @@ public class ManageRegistry extends javax.swing.JPanel {
         txtRegname = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistry = new javax.swing.JTable();
-        jLabel19 = new javax.swing.JLabel();
-        txtRegistrymail = new javax.swing.JTextField();
 
         btnView.setText("View ");
 
@@ -91,28 +89,28 @@ public class ManageRegistry extends javax.swing.JPanel {
 
         tblRegistry.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name ", "Login Name ", "Password", "Address Line", "City", "State", "Zip Code", "Mail ID "
+                "Name ", "Login Name ", "Password", "Address Line", "City", "State", "Zip Code"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -120,8 +118,6 @@ public class ManageRegistry extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblRegistry);
-
-        jLabel19.setText("Mail ID ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,15 +152,11 @@ public class ManageRegistry extends javax.swing.JPanel {
                                         .addComponent(txtRegzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(284, 284, 284)
-                        .addComponent(btnSave))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel19)
-                        .addGap(67, 67, 67)
-                        .addComponent(txtRegistrymail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSave)))
                 .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnView)
                         .addGap(237, 237, 237)
                         .addComponent(btnUpdate)
@@ -227,11 +219,7 @@ public class ManageRegistry extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
                                     .addComponent(txtRegzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(19, 19, 19)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel19)
-                                    .addComponent(txtRegistrymail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(56, 56, 56)
                                 .addComponent(btnSave)))))
                 .addContainerGap(333, Short.MAX_VALUE))
         );
@@ -260,7 +248,6 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -274,7 +261,6 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalsearch;
     private javax.swing.JTextField txtRegaddress;
     private javax.swing.JTextField txtRegcity;
-    private javax.swing.JTextField txtRegistrymail;
     private javax.swing.JTextField txtReglogin;
     private javax.swing.JTextField txtRegname;
     private javax.swing.JTextField txtRegpassword;

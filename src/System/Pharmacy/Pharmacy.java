@@ -13,6 +13,7 @@ import System.Organization;
  */
 public class Pharmacy extends Organization{
     private int pharmacyID;
+    
 
     public int getPharmacyID() {
         return pharmacyID;
