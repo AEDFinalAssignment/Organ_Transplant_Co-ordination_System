@@ -5,8 +5,16 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+
 import System.EcoSystem;
+import System.Registry.Registry;
+import System.Registry.RegistryDirectory;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -19,10 +27,19 @@ public class ManageRegistry extends javax.swing.JPanel {
      */
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManageRegistry(JSplitPane jSplitPane1,EcoSystem system) {
+   
+    Registry registry;
+    RegistryDirectory registryDirectory;
+    public ManageRegistry(JSplitPane jSplitPane1,EcoSystem system,RegistryDirectory registryDirectory) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+      this.registryDirectory = registryDirectory;
+       
+
+    
+
+     
     }
 
     /**
@@ -62,8 +79,18 @@ public class ManageRegistry extends javax.swing.JPanel {
         txtRegistrymail = new javax.swing.JTextField();
 
         btnView.setText("View ");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("City");
 
@@ -81,10 +108,20 @@ public class ManageRegistry extends javax.swing.JPanel {
         jLabel1.setText("MANAGE REGISTRY SYSTEM");
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("State");
 
         btnSave.setText("SAVE");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         txtReglogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +294,189 @@ public class ManageRegistry extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegloginActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+         if (txtRegname.getText().isEmpty()) {
+            txtRegname.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegname.setForeground(Color.red);
+
+        }
+        if (txtReglogin.getText().isEmpty()) {
+            txtReglogin.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtReglogin.setForeground(Color.red);
+
+        }
+        if (txtRegpassword.getText().isEmpty()) {
+            txtRegpassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegpassword.setForeground(Color.red);
+
+        }
+        if (txtRegistrymail.getText().isEmpty()) {
+            txtRegistrymail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegistrymail.setForeground(Color.red);
+
+        }
+        if (txtRegaddress.getText().isEmpty()) {
+            txtRegaddress.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegaddress.setForeground(Color.red);
+        }
+        
+          if (txtRegcity.getText().isEmpty()) {
+            txtRegcity.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegcity.setForeground(Color.red);
+        }
+     
+          if (txtRegstate.getText().isEmpty()) {
+            txtRegstate.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegstate.setForeground(Color.red);
+        }
+          
+          if (txtRegzipcode.getText().isEmpty()) {
+            txtRegzipcode.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtRegzipcode.setForeground(Color.red);
+        }
+          
+         //Null Value Check
+         
+         if (txtRegname.getText().isEmpty()
+                || txtReglogin.getText().isEmpty()
+                || txtRegpassword.getText().isEmpty()
+                || txtRegistrymail.getText().isEmpty()
+                || txtRegaddress.getText().isEmpty()
+                || txtRegcity.getText().isEmpty()
+                || txtRegzipcode.getText().isEmpty()
+                || txtRegstate.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+         // Intitializing Registry Object
+         
+         Registry newreRegistry = registryDirectory.addRegistry();
+         newreRegistry.setName(txtRegname.getText());
+         newreRegistry.setUserName(txtReglogin.getText());
+         newreRegistry.setPassword(txtRegpassword.getText());
+         newreRegistry.setEmail(txtRegistrymail.getText());
+         newreRegistry.setAddress(txtRegaddress.getText());
+         newreRegistry.setCity(txtRegcity.getText());
+         newreRegistry.setState(txtRegstate.getText());
+         newreRegistry.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
+         
+         JOptionPane.showMessageDialog(this, "New Registry is added!!");
+         
+         txtRegname.setText("");
+         txtReglogin.setText("");
+         txtRegpassword.setText("");
+         txtRegistrymail.setText("");
+         txtRegaddress.setText("");
+         txtRegcity.setText("");
+         txtRegstate.setText("");
+         txtRegzipcode.setText("");
+         
+         
+         
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:       
+        
+        int selectedRowIndex = tblRegistry.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
+        
+         
+        txtRegname.setText(selectedEntry.getName());
+        txtReglogin.setText(selectedEntry.getUserName());
+        txtRegpassword.setText(selectedEntry.getPassword());
+        txtRegistrymail.setText(selectedEntry.getEmail());
+        txtRegaddress.setText(selectedEntry.getAddress());
+        txtRegcity.setText(selectedEntry.getCity());
+        txtRegstate.setText(selectedEntry.getState());
+        txtRegzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        
+        
+        int selectedRowIndex = tblRegistry.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
+        
+        
+        String name = txtRegname.getText();
+        String userName = txtReglogin.getText();
+        String password = txtRegpassword.getText();
+        String email = txtRegistrymail.getText();
+        String address = txtRegaddress.getText();        
+        String city = txtRegcity.getText();
+        String state = txtRegstate.getText();
+        int zipcode = Integer.parseInt(txtRegzipcode.getText());
+          
+          
+          Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
+          
+          registry.setName(name);
+          registry.setUserName(userName);
+          registry.setPassword(password);
+          registry.setEmail(email);
+          registry.setAddress(address);
+          registry.setCity(city);
+          registry.setState(state);
+          registry.setZipCode(zipcode);
+          
+          JOptionPane.showMessageDialog(this, "Registry is updated!!");
+          
+         txtRegname.setText("");
+         txtReglogin.setText("");
+         txtRegpassword.setText("");
+         txtRegistrymail.setText("");
+         txtRegaddress.setText("");
+         txtRegcity.setText("");
+         txtRegstate.setText("");
+         txtRegzipcode.setText("");
+          
+          
+          
+                 
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+         Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
+         
+         registryDirectory.removeRegistry(registry);
+        
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -286,4 +506,11 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JTextField txtRegstate;
     private javax.swing.JTextField txtRegzipcode;
     // End of variables declaration//GEN-END:variables
+
+ 
+    }
+
+
+
+
 }

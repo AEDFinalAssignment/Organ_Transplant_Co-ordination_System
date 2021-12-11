@@ -5,8 +5,17 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+
 import System.EcoSystem;
+
+import System.Pharmacy.Pharmacy;
+import System.Transportation.TransportDirectory;
+import System.Transportation.Transportation;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +26,16 @@ public class ManageTransportation extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransportation
      */
+
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system) {
+   Transportation transportation;
+    TransportDirectory TransportationDirectory;
+    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
-    }
+      this.TransportationDirectory = TransportationDirectory;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +92,11 @@ public class ManageTransportation extends javax.swing.JPanel {
         btnSearch.setText("Search");
 
         btnHospitalupdate.setText("Update");
+        btnHospitalupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalupdateActionPerformed(evt);
+            }
+        });
 
         txtTransportlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,10 +143,20 @@ public class ManageTransportation extends javax.swing.JPanel {
         rbtnjets.setText("Private Jet");
 
         btnHospitaldelete.setText("Delete");
+        btnHospitaldelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitaldeleteActionPerformed(evt);
+            }
+        });
 
         rbtnambulance.setText("Ambulance");
 
         btnHospitalsave.setText("SAVE");
+        btnHospitalsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalsaveActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Password");
 
@@ -138,6 +165,11 @@ public class ManageTransportation extends javax.swing.JPanel {
         rbtncars.setText("Cars");
 
         btnHospitalview.setText("View ");
+        btnHospitalview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalviewActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Name");
 
@@ -291,6 +323,178 @@ public class ManageTransportation extends javax.swing.JPanel {
     private void txtTransportloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransportloginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTransportloginActionPerformed
+
+    private void btnHospitalsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalsaveActionPerformed
+        // TODO add your handling code here:
+        
+         if (txtTransportname.getText().isEmpty()) {
+            txtTransportname.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportname.setForeground(Color.red);
+
+        }
+        if (txtTransportlogin.getText().isEmpty()) {
+            txtTransportlogin.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportlogin.setForeground(Color.red);
+
+        }
+        if (txtTransportpassword.getText().isEmpty()) {
+            txtTransportpassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportpassword.setForeground(Color.red);
+
+        }
+        if (txtTransportationmail.getText().isEmpty()) {
+            txtTransportationmail.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportationmail.setForeground(Color.red);
+
+        }
+        if (txtTransportaddress.getText().isEmpty()) {
+            txtTransportaddress.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportaddress.setForeground(Color.red);
+        }
+        
+          if (txtTransportcity.getText().isEmpty()) {
+            txtTransportcity.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportcity.setForeground(Color.red);
+        }
+     
+          if (txtTransportstate.getText().isEmpty()) {
+            txtTransportstate.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportstate.setForeground(Color.red);
+        }
+          
+          if (txtTransportzipcode.getText().isEmpty()) {
+            txtTransportzipcode.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtTransportzipcode.setForeground(Color.red);
+        }
+          
+         //Null Value Check
+         
+         if (txtTransportname.getText().isEmpty()
+                || txtTransportlogin.getText().isEmpty()
+                || txtTransportpassword.getText().isEmpty()
+                || txtTransportationmail.getText().isEmpty()
+                || txtTransportaddress.getText().isEmpty()
+                || txtTransportcity.getText().isEmpty()
+                || txtTransportzipcode.getText().isEmpty()
+                || txtTransportstate.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+         // Intitializing Registry Object
+         
+         Transportation newtransporation = TransportationDirectory.addTransportation();
+         newtransporation.setName(txtTransportname.getText());
+         newtransporation.setUserName(txtTransportlogin.getText());
+         newtransporation.setPassword(txtTransportpassword.getText());
+         newtransporation.setEmail(txtTransportationmail.getText());
+         newtransporation.setAddress(txtTransportaddress.getText());
+         newtransporation.setCity(txtTransportcity.getText());
+         newtransporation.setState(txtTransportstate.getText());
+         newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
+         
+         JOptionPane.showMessageDialog(this, "New Registry is added!!");
+         
+         txtTransportname.setText("");
+         txtTransportlogin.setText("");
+         txtTransportpassword.setText("");
+         txtTransportationmail.setText("");
+         txtTransportaddress.setText("");
+         txtTransportcity.setText("");
+         txtTransportstate.setText("");
+         txtTransportzipcode.setText("");
+         
+         
+         
+        
+    }//GEN-LAST:event_btnHospitalsaveActionPerformed
+
+    private void btnHospitalviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalviewActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblTransportation.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblTransportation.getModel();
+        Transportation selectedEntry = (Transportation) model.getValueAt(selectedRowIndex, 0);       
+        
+         
+        txtTransportname.setText(selectedEntry.getName());
+        txtTransportlogin.setText(selectedEntry.getUserName());
+        txtTransportpassword.setText(selectedEntry.getPassword());
+        txtTransportationmail.setText(selectedEntry.getEmail());
+        txtTransportaddress.setText(selectedEntry.getAddress());
+        txtTransportcity.setText(selectedEntry.getCity());
+        txtTransportstate.setText(selectedEntry.getState());
+        txtTransportzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
+    }//GEN-LAST:event_btnHospitalviewActionPerformed
+
+    private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed
+        // TODO add your handling code here:
+         int selectedRowIndex = tblTransportation.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblTransportation.getModel();
+        Transportation selectedEntry = (Transportation) model.getValueAt(selectedRowIndex, 0);       
+        
+        
+        String name = txtTransportname.getText();
+        String userName = txtTransportlogin.getText();
+        String password = txtTransportpassword.getText();
+        String email = txtTransportationmail.getText();
+        String address = txtTransportaddress.getText();        
+        String city = txtTransportcity.getText();
+        String state = txtTransportstate.getText();
+        int zipcode = Integer.parseInt(txtTransportzipcode.getText());
+          
+          
+          Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
+          
+          transportation.setName(name);
+          transportation.setUserName(userName);
+          transportation.setPassword(password);
+          transportation.setEmail(email);
+          transportation.setAddress(address);
+          transportation.setCity(city);
+          transportation.setState(state);
+          transportation.setZipCode(zipcode);
+          
+          JOptionPane.showMessageDialog(this, "transportation is updated!!");
+          
+         txtTransportname.setText("");
+         txtTransportlogin.setText("");
+         txtTransportpassword.setText("");
+         txtTransportationmail.setText("");
+         txtTransportaddress.setText("");
+         txtTransportcity.setText("");
+         txtTransportstate.setText("");
+         txtTransportzipcode.setText("");
+          
+          
+          
+                 
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnHospitalupdateActionPerformed
+
+    private void btnHospitaldeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitaldeleteActionPerformed
+        // TODO add your handling code here:
+      Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
+         
+         TransportationDirectory.removeRegistry(transportation);
+        
+    }//GEN-LAST:event_btnHospitaldeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

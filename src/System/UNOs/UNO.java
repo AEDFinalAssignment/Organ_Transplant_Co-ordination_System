@@ -14,6 +14,7 @@ public class UNO {
     private String UNO_Name;
     private String UNO_Username;
     private String UNO_Password;
+    private String UNO_email;
 
     public UNO() {
         
@@ -50,4 +51,14 @@ public class UNO {
     public void setUNO_Password(String UNO_Password) {
         this.UNO_Password = UNO_Password;
     }
+
+    public String getUNO_email() {
+        return UNO_email;
+    }
+
+    public void setUNO_email(String UNO_email) {
+        this.UNO_email = UNO_email;
+    }
+    
+    
 }
