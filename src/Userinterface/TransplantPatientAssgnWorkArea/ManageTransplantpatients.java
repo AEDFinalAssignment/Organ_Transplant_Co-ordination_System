@@ -5,6 +5,9 @@
  */
 package Userinterface.TransplantPatientAssgnWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class ManageTransplantpatients extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransplantpatients
      */
-    public ManageTransplantpatients() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ManageTransplantpatients(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

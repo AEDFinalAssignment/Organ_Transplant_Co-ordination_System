@@ -5,6 +5,8 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+
+import System.EcoSystem;
 import System.Registry.Registry;
 import System.Registry.RegistryDirectory;
 import java.awt.Color;
@@ -23,15 +25,21 @@ public class ManageRegistry extends javax.swing.JPanel {
     /**
      * Creates new form ManageRegistry
      */
-    
+    private EcoSystem system;
+    private JSplitPane jSplitPane1;
+   
     Registry registry;
     RegistryDirectory registryDirectory;
-    
-    public ManageRegistry(JSplitPane jSplitPane1, RegistryDirectory registryDirectory) {
+    public ManageRegistry(JSplitPane jSplitPane1,EcoSystem system,RegistryDirectory registryDirectory) {
         initComponents();
-        this.registryDirectory = registryDirectory;
-        populateTable();
-        
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
+      this.registryDirectory = registryDirectory;
+       
+
+    
+
+     
     }
 
     /**
@@ -499,23 +507,7 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JTextField txtRegzipcode;
     // End of variables declaration//GEN-END:variables
 
- private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        model.setRowCount(0);
-        
-        for(Registry registry: registryDirectory.getRegistryDirectory()){
-            Object[] row =new Object[7];            
-            row[0] = registry;
-            row[1] = registry.getUserName();
-            row[2] = registry.getPassword();
-            row[3] = registry.getEmail();
-            row[4] = registry.getAddress();
-            row[5] = registry.getCity();
-            row[6] = registry.getZipCode();         
-            
-          
-            model.addRow(row);            
-        }        
+ 
     }
 
 

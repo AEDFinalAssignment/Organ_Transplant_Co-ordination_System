@@ -5,6 +5,9 @@
  */
 package Userinterface.RegistryWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class UpdateDonorDetails extends javax.swing.JPanel {
     /**
      * Creates new form UpdateDonorDetails
      */
-    public UpdateDonorDetails() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public UpdateDonorDetails(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

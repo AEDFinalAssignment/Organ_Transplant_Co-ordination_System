@@ -135,13 +135,13 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransportationActionPerformed
         // TODO add your handling code here:
-         ManageTransportation mt= new ManageTransportation(jSplitPane1);
+         ManageTransportation mt= new ManageTransportation(jSplitPane1, system);
         jSplitPane1.setRightComponent(mt);
     }//GEN-LAST:event_btnTransportationActionPerformed
 
     private void btnUNOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUNOsActionPerformed
         // TODO add your handling code here:
-        ManageUNOs mu= new ManageUNOs(jSplitPane1);
+        ManageUNOs mu= new ManageUNOs(jSplitPane1,system);
         jSplitPane1.setRightComponent(mu);
     }//GEN-LAST:event_btnUNOsActionPerformed
 

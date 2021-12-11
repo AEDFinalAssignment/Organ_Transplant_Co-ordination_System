@@ -40,10 +40,15 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
         btnManagestaff = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Broadway", 1, 48)); // NOI18N
-        jLabel1.setText("WELCOME TO");
+        jLabel1.setText("WELCOME TO < value>");
 
         btnManagePatient.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnManagePatient.setText("Manage Patient");
+        btnManagePatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePatientActionPerformed(evt);
+            }
+        });
 
         btnManagestaff.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnManagestaff.setText("Manage Staff");
@@ -57,43 +62,48 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(396, 396, 396)
+                        .addComponent(btnManagestaff))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(387, 387, 387)
+                        .addComponent(btnManagePatient)))
+                .addContainerGap(884, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(107, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(158, 158, 158)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnManagePatient, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnManagestaff, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addContainerGap(159, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(731, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addComponent(btnManagestaff)
+                .addGap(111, 111, 111)
+                .addComponent(btnManagePatient)
+                .addGap(404, 404, 404))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(129, 129, 129)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(130, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(73, 73, 73)
-                    .addComponent(btnManagestaff)
-                    .addGap(91, 91, 91)
-                    .addComponent(btnManagePatient)
-                    .addContainerGap(74, Short.MAX_VALUE)))
+                    .addContainerGap(710, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManagestaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagestaffActionPerformed
         // TODO add your handling code here:
-        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1);
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system);
         jSplitPane1.setRightComponent(msd);
     }//GEN-LAST:event_btnManagestaffActionPerformed
+
+    private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
+        // TODO add your handling code here:
+         ManagePatient mp = new ManagePatient(jSplitPane1,system);
+        jSplitPane1.setRightComponent(mp);
+    }//GEN-LAST:event_btnManagePatientActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

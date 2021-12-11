@@ -6,10 +6,13 @@
 package Userinterface.SysAdminWorkArea;
 
 
+import System.EcoSystem;
+
 import System.UNOs.UNO;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+
 import javax.swing.JSplitPane;
 
 /**
@@ -23,9 +26,14 @@ public class ManageUNOs extends javax.swing.JPanel {
     /**
      * Creates new form ManageUNOs
      */
-    public ManageUNOs(JSplitPane jSplitPane1, UNO uno) {
+    private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public ManageUNOs(JSplitPane jSplitPane1,EcoSystem system,UNO uno) {
         initComponents();
-        this.uno = uno;
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
+         this.uno = uno;
+
     }
 
     /**

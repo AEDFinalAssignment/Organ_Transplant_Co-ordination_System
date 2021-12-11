@@ -6,6 +6,8 @@
 package Userinterface.SysAdminWorkArea;
 
 
+import System.EcoSystem;
+
 import System.Pharmacy.Pharmacy;
 import System.Transportation.TransportDirectory;
 import System.Transportation.Transportation;
@@ -24,13 +26,16 @@ public class ManageTransportation extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransportation
      */
-    Transportation transportation;
-    TransportDirectory TransportationDirectory;
 
-    public ManageTransportation(JSplitPane jSplitPane1,TransportDirectory TransportationDirectory) {
+    private EcoSystem system;
+    private JSplitPane jSplitPane1;
+   Transportation transportation;
+    TransportDirectory TransportationDirectory;
+    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) {
         initComponents();
-        this.TransportationDirectory = TransportationDirectory;
-    }
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
+      this.TransportationDirectory = TransportationDirectory;
 
     /**
      * This method is called from within the constructor to initialize the form.

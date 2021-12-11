@@ -5,6 +5,9 @@
  */
 package Userinterface.UNOsWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class UnosHomePage extends javax.swing.JPanel {
     /**
      * Creates new form UnosHomePage
      */
-    public UnosHomePage() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public UnosHomePage(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+         this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

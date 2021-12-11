@@ -5,6 +5,9 @@
  */
 package Userinterface.PatientdetailsWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class DoctorAssignment extends javax.swing.JPanel {
     /**
      * Creates new form DoctorAssignment
      */
-    public DoctorAssignment() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public DoctorAssignment(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+          this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**

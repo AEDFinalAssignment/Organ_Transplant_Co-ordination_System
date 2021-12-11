@@ -5,6 +5,9 @@
  */
 package Userinterface.HospitalAdminWorkArea;
 
+import System.EcoSystem;
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author sanjeev
@@ -14,8 +17,12 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
     /**
      * Creates new form UpdateStaffdetails
      */
-    public UpdateStaffdetails() {
+     private EcoSystem system;
+    private JSplitPane jSplitPane1;
+    public UpdateStaffdetails(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane1 = jSplitPane1;
+        this.system = system;
     }
 
     /**
