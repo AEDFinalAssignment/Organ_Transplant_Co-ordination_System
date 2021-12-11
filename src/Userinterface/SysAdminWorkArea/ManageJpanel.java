@@ -5,7 +5,6 @@
  */
 package Userinterface.SysAdminWorkArea;
 
-import System.EcoSystem;
 import javax.swing.JSplitPane;
 
 
@@ -22,12 +21,10 @@ public class ManageJpanel extends javax.swing.JPanel {
      * Creates new form ManageJpanel
      */
     JSplitPane jSplitPane1;
-    EcoSystem system;
     
-    public ManageJpanel(JSplitPane jSplitPane1,EcoSystem system) {
+    public ManageJpanel(JSplitPane jSplitPane1) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
-        this.system = system;
     }
 
     /**
@@ -129,7 +126,7 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
         // TODO add your handling code here:
-        ManageHospital mh = new ManageHospital(jSplitPane1,system);
+        ManageHospital mh = new ManageHospital(jSplitPane1);
         jSplitPane1.setRightComponent(mh);
     }//GEN-LAST:event_btnHospitalActionPerformed
 

@@ -14,11 +14,6 @@ import java.util.ArrayList;
 public class RegistryDirectory {
     private ArrayList<Registry> RegistryDirectory;
 
-    public RegistryDirectory() {
-        this.RegistryDirectory = new ArrayList <Registry>();
-    }
-
-    
     public ArrayList<Registry> getRegistryDirectory() {
         return RegistryDirectory;
     }
