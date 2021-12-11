@@ -5,6 +5,7 @@
  */
 package Userinterface.SysAdminWorkArea;
 
+import System.EcoSystem;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import java.awt.Color;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import System.Pharmacy.Pharmacy;
 import System.Pharmacy.PharmacyDirectory;
+import java.awt.Component;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,9 +30,11 @@ public class ManagePharmacy extends javax.swing.JPanel {
     HospitalDirectory hospitalDirectory;
     Pharmacy pharmacy;
     PharmacyDirectory pharmacyDirectory;
-     
-    public ManagePharmacy(JSplitPane jSplitPane1) {
+    EcoSystem system;
+    
+    public ManagePharmacy(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -77,8 +81,9 @@ public class ManagePharmacy extends javax.swing.JPanel {
         btnHospitalupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHospitalupdateActionPerformed(evt);
-            }
+            }https://github.com/AEDFinalAssignment/Organ_Transplant_Co-ordination_System/pull/10/conflict?name=src%252FUserinterface%252FSysAdminWorkArea%252FManagePharmacy.java&ancestor_oid=530da926f8b245cf29d8d975c1ba78ecc55016a3&base_oid=cc681e59431ea7a5dbb439264a76841b34d6d725&head_oid=85830b3447a73918a4b4480e8a7d0fff38c82d1e
         });
+
 
         tblPharmacy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +115,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+
         jScrollPane1.setViewportView(tblPharmacy);
 
         btnHospitalview.setText("View ");
@@ -260,7 +266,8 @@ public class ManagePharmacy extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(zipcodeLabel)
                             .addComponent(txtPharmacyzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                        .addGap(46, 46, 46)
+
                         .addComponent(btnHospitalsave)))
                 .addContainerGap(378, Short.MAX_VALUE))
         );
@@ -344,7 +351,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
               newpharmacy.setAddress(txtPharmacyaddress.getText());
               newpharmacy.setCity(txtPharmacycity.getText());
               newpharmacy.setState(txtPharmacystate.getText());
-              newpharmacy.setZipCode(txtPharmacyzipcode.getText());
+              newpharmacy.setZipCode(Integer.parseInt(txtPharmacyzipcode.getText()));
               
               
               // Add the details to table
@@ -372,17 +379,6 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 model.setValueAt(zipcode, selectedRowIndex, 7);
               
          }
-         
-         
-        
-         
-         
-     
-
-        
-      
-        
-        
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
     private void txtPharmacyloginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPharmacyloginKeyTyped
@@ -410,7 +406,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
         txtPharmacyaddress.setText(selectedEntry.getAddress());
         txtPharmacycity.setText(String.valueOf(selectedEntry.getCity()));
         txtPharmacystate.setText(String.valueOf(selectedEntry.getState()));
-        txtPharmacyzipcode.setText(selectedEntry.getZipCode());
+        txtPharmacyzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
     }//GEN-LAST:event_btnHospitalviewActionPerformed
 
     private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed

@@ -156,7 +156,7 @@
                               <Component id="zipcodeLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPharmacyzipcode" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -193,6 +193,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblPharmacy">
               <Properties>
+
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="15">
                     <Column editable="false" title="Name " type="java.lang.Object"/>
