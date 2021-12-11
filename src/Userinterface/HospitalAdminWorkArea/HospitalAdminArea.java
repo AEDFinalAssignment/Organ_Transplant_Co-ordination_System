@@ -5,6 +5,7 @@
  */
 package Userinterface.HospitalAdminWorkArea;
 
+import System.EcoSystem;
 import javax.swing.JSplitPane;
 
 /**
@@ -16,8 +17,12 @@ public class HospitalAdminArea extends javax.swing.JFrame {
     /**
      * Creates new form HospitalWelcomePage
      */
-    public HospitalAdminArea() {
+    private static EcoSystem system;
+    private static JSplitPane jSplitPane;
+    public HospitalAdminArea(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
+        this.jSplitPane = jSplitPane1;
+        this.system = system;
     }
 
     /**
@@ -156,7 +161,7 @@ public class HospitalAdminArea extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HospitalAdminArea().setVisible(true);
+                new HospitalAdminArea(jSplitPane,system).setVisible(true);
             }
         });
     }

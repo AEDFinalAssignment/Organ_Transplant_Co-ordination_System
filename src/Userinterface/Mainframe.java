@@ -7,6 +7,9 @@ package Userinterface;
 
 import SQL_Connection.SQL_Connect;
 import System.EcoSystem;
+import Userinterface.HospitalAdminWorkArea.HospitalAdminArea;
+import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
+import Userinterface.HospitalAdminWorkArea.ManagePatient;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
 import java.sql.SQLException;
@@ -195,13 +198,12 @@ public class Mainframe extends javax.swing.JFrame {
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                this.id = Integer.parseInt(Useraccount.replace("SysAdmin_", ""));
                 ManageJpanel muajp = new ManageJpanel(jSplitPane1,system);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){
-                this.id = Integer.parseInt(Useraccount.replace("Hospital", ""));
-                
+                HospitalAdministrationArea HAA = new HospitalAdministrationArea(jSplitPane1,system);
+                jSplitPane1.setRightComponent(HAA);
             }
             else if(Useraccount.contains("Pharmacy")){
                 this.id = Integer.parseInt(Useraccount.replace("Pharmacy", ""));
