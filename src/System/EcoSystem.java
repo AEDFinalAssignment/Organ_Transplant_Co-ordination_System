@@ -118,6 +118,9 @@ public class EcoSystem{
                        "VALUES ('{"+ hos.getName() + "}',"+ String.valueOf(hos.isTransplantEquipped()) + ",'{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{"+ hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ");";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
-    }
-    
+        
+        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
+                         "VALUES ('{"+ hos.getUserName() + "}','{"+ hos.getPassword() +"}','{Hospital}');";
+        stat.execute(query1);
+    }    
 }

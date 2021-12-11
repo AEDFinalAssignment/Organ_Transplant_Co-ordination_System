@@ -293,7 +293,7 @@ public class ManageHospital extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        populateTable();
     }//GEN-LAST:event_btnSave1ActionPerformed
 
 
@@ -327,5 +327,10 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalstate1;
     private javax.swing.JTextField txtHospitalzipcode1;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+    }
 
 }
