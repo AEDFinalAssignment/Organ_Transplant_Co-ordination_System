@@ -71,7 +71,7 @@ public class Transplantdetails extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Add to Transplant List");
+        jButton1.setText("Add ");
 
         jLabel8.setText("Current Status");
 

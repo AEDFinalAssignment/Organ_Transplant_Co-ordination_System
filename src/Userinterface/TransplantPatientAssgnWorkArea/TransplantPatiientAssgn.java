@@ -32,6 +32,7 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +85,8 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
 
         jButton2.setText("Add Transplant Details ");
 
+        jButton3.setText("Check Eligibility as Donor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,7 +103,9 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
                                 .addComponent(jButton1)
                                 .addGap(126, 126, 126))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(614, 614, 614)
+                        .addGap(254, 254, 254)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
@@ -114,7 +119,9 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -123,6 +130,7 @@ public class TransplantPatiientAssgn extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblPatientdetails;

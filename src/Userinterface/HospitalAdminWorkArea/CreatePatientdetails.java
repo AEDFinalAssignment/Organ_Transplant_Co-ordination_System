@@ -56,6 +56,7 @@ public class CreatePatientdetails extends javax.swing.JPanel {
         txtPatientage = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtPatientgender = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("MANAGE PATIENTS:");
 
@@ -107,6 +108,8 @@ public class CreatePatientdetails extends javax.swing.JPanel {
 
         jLabel15.setText("Gender");
 
+        jButton1.setText("Update");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,7 +146,10 @@ public class CreatePatientdetails extends javax.swing.JPanel {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSave)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnSave)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(jButton1))
                                     .addComponent(txtECno, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -238,7 +244,9 @@ public class CreatePatientdetails extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(btnSave)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(jButton1))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +266,7 @@ public class CreatePatientdetails extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
