@@ -324,6 +324,19 @@ public class ManageHospital extends javax.swing.JPanel {
        txtHospitalstate1.setText("");
        txtHospitalzipcode1.setText("");
        txtHospitalmail.setText("");
+       
+        try{
+            
+             if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+            
+        }}catch(Exception e) {
+                JOptionPane.showMessageDialog(null, "Enter valid state name");    
+                
+                }
+        
+       
     }//GEN-LAST:event_btnSave1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
