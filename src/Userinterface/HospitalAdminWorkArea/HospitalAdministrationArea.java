@@ -6,6 +6,7 @@
 package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -20,11 +21,16 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
     private EcoSystem system;
     private JSplitPane jSplitPane1;
     private String Username;
-    public HospitalAdministrationArea(JSplitPane jSplitPane1,EcoSystem system, String Username) {
+    JPanel jPanel2;
+    JPanel Managepanel;
+    public HospitalAdministrationArea(JSplitPane jSplitPane1,EcoSystem system, String Username,JPanel jPanel2,JPanel Managepanel) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
+        this.jPanel2=jPanel2;
+        this.Managepanel=Managepanel;
+        
     }
 
     /**
@@ -36,9 +42,11 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Hospitalmain = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnManagePatient = new javax.swing.JButton();
         btnManagestaff = new javax.swing.JButton();
+        btnLogout = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Broadway", 1, 48)); // NOI18N
         jLabel1.setText("WELCOME TO < value>");
@@ -59,55 +67,87 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
             }
         });
 
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
+        btnLogout.setText("jLabel3");
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout HospitalmainLayout = new javax.swing.GroupLayout(Hospitalmain);
+        Hospitalmain.setLayout(HospitalmainLayout);
+        HospitalmainLayout.setHorizontalGroup(
+            HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HospitalmainLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HospitalmainLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(HospitalmainLayout.createSequentialGroup()
+                        .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(HospitalmainLayout.createSequentialGroup()
+                                    .addGap(532, 532, 532)
+                                    .addComponent(btnManagestaff, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(HospitalmainLayout.createSequentialGroup()
+                                    .addGap(524, 524, 524)
+                                    .addComponent(btnManagePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(472, Short.MAX_VALUE))
+        );
+        HospitalmainLayout.setVerticalGroup(
+            HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HospitalmainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLogout)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addComponent(btnManagestaff)
+                .addGap(109, 109, 109)
+                .addComponent(btnManagePatient)
+                .addGap(324, 324, 324))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(396, 396, 396)
-                        .addComponent(btnManagestaff))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addComponent(btnManagePatient)))
-                .addContainerGap(884, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(731, Short.MAX_VALUE)))
+            .addComponent(Hospitalmain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(btnManagestaff)
-                .addGap(111, 111, 111)
-                .addComponent(btnManagePatient)
-                .addGap(404, 404, 404))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(129, 129, 129)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(710, Short.MAX_VALUE)))
+            .addComponent(Hospitalmain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManagestaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagestaffActionPerformed
-        // TODO add your handling code here:
-        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,-1);
-        jSplitPane1.setRightComponent(msd);
-    }//GEN-LAST:event_btnManagestaffActionPerformed
-
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         // TODO add your handling code here:
-         ManagePatient mp = new ManagePatient(jSplitPane1,system);
+        ManagePatient mp = new ManagePatient(jSplitPane1,system,Managepanel);
         jSplitPane1.setRightComponent(mp);
     }//GEN-LAST:event_btnManagePatientActionPerformed
 
+    private void btnManagestaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagestaffActionPerformed
+        // TODO add your handling code here:
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,-1,Hospitalmain);
+        jSplitPane1.setRightComponent(msd);
+    }//GEN-LAST:event_btnManagestaffActionPerformed
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+        // TODO add your handling code here:
+
+
+        jSplitPane1.setRightComponent(jPanel2);
+    }//GEN-LAST:event_btnLogoutMouseClicked
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Hospitalmain;
+    private javax.swing.JLabel btnLogout;
     private javax.swing.JButton btnManagePatient;
     private javax.swing.JButton btnManagestaff;
     private javax.swing.JLabel jLabel1;

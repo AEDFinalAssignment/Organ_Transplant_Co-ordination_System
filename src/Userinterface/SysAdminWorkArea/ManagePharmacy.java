@@ -18,6 +18,7 @@ import java.awt.Component;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,12 +35,16 @@ public class ManagePharmacy extends javax.swing.JPanel {
     Pharmacy pharmacy;
     PharmacyDirectory pharmacyDirectory;
     EcoSystem system;
+    JPanel Managepanel;
+     private JSplitPane jSplitPane1;
     
-    public ManagePharmacy(JSplitPane jSplitPane1,EcoSystem system) throws SQLException {
+    public ManagePharmacy(JSplitPane jSplitPane1,EcoSystem system, JPanel Managepanel) throws SQLException {
         initComponents();
       
         this.system = system;
+        this.jSplitPane1=jSplitPane1;
         
+        this.Managepanel=Managepanel;
         populateTable();
     }
 
@@ -78,6 +83,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPhar = new javax.swing.JTable();
         txtPharmacypassword = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         btnHospitaldelete.setText("Delete");
         btnHospitaldelete.addActionListener(new java.awt.event.ActionListener() {
@@ -171,12 +177,21 @@ public class ManagePharmacy extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPhar);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,8 +245,13 @@ public class ManagePharmacy extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -546,6 +566,12 @@ public class ManagePharmacy extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnHospitaldeleteActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(Managepanel);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
@@ -557,6 +583,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
     private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel loginLabel;

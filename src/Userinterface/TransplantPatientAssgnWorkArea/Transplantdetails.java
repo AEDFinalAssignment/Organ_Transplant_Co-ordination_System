@@ -6,6 +6,7 @@
 package Userinterface.TransplantPatientAssgnWorkArea;
 
 import System.EcoSystem;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -19,10 +20,12 @@ public class Transplantdetails extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
+    JPanel managepatient;
     public Transplantdetails(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.managepatient=managepatient;
     }
     
 
@@ -175,7 +178,7 @@ public class Transplantdetails extends javax.swing.JPanel {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
-         ManageTransplantpatients mtp = new ManageTransplantpatients(jSplitPane1,system);
+         ManageTransplantpatients mtp = new ManageTransplantpatients(jSplitPane1,system,managepatient);
                 jSplitPane1.setRightComponent(mtp);
     }//GEN-LAST:event_btnaddActionPerformed
 

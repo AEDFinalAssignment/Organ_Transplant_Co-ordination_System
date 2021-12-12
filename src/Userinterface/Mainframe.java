@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import static java.time.Clock.system;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -40,7 +41,8 @@ public class Mainframe extends javax.swing.JFrame {
     Registry registry;
     RegistryDirectory registryDirectory;
     UNO uno;
-    
+    JPanel Managepanel;
+    //JPanel jPanel2;
     public Mainframe() throws SQLException {
         initComponents();
         try {
@@ -61,7 +63,7 @@ public class Mainframe extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
+        xyz = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -73,7 +75,7 @@ public class Mainframe extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtPassword1 = new javax.swing.JTextField();
+        txtPassword1 = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,18 +83,18 @@ public class Mainframe extends javax.swing.JFrame {
         jSplitPane1.setDividerLocation(0);
         jSplitPane1.setDividerSize(0);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout xyzLayout = new javax.swing.GroupLayout(xyz);
+        xyz.setLayout(xyzLayout);
+        xyzLayout.setHorizontalGroup(
+            xyzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        xyzLayout.setVerticalGroup(
+            xyzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setLeftComponent(jPanel1);
+        jSplitPane1.setLeftComponent(xyz);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -164,22 +166,21 @@ public class Mainframe extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addComponent(txtPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtPassword1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 360, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/AdobeStock_170237839-scaled.jpeg"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 880));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 890));
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -205,14 +206,15 @@ public class Mainframe extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             Useraccount = system.AuthenticateUser(txtUsername.getText(), txtPassword1.getText());
+                    
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {
-                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system,TransportationDirectory,registryDirectory,uno);
+                ManageJpanel muajp = new ManageJpanel(jSplitPane1,system,TransportationDirectory,registryDirectory,uno,jPanel2);
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){
-                HospitalAdministrationArea HAA = new HospitalAdministrationArea(jSplitPane1,system,txtUsername.getText());
+                HospitalAdministrationArea HAA = new HospitalAdministrationArea(jSplitPane1,system,txtUsername.getText(),jPanel2,Managepanel);
                 jSplitPane1.setRightComponent(HAA);
             }
             else if(Useraccount.contains("Pharmacy")){
@@ -231,6 +233,9 @@ public class Mainframe extends javax.swing.JFrame {
                 this.id = Integer.parseInt(Useraccount.replace("UNO", ""));
                 
             }
+            
+            txtUsername.setText("");
+            txtPassword1.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(Mainframe.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -286,14 +291,14 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextField txtPassword1;
+    private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JTextField txtUsername;
+    private javax.swing.JPanel xyz;
     // End of variables declaration//GEN-END:variables
 }
