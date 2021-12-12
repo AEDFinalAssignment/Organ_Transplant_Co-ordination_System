@@ -139,8 +139,10 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         // TODO add your handling code here:
 
+
         jSplitPane1.setRightComponent(jPanel2);
     }//GEN-LAST:event_btnLogoutMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

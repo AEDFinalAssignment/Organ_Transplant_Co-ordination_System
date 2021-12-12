@@ -6,8 +6,21 @@
 package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
+
 import javax.swing.JPanel;
+import System.Hospital.Hospital;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
+import Userinterface.SysAdminWorkArea.ManageHospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,13 +33,16 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
+
     JPanel managepatient;
     
     public UpdatePatientdetails(JSplitPane jSplitPane1, EcoSystem system,JPanel managepatient) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
-        this.managepatient=managepatient;;
+        this.managepatient=managepatient;
+       populateTable(Username);
+
     }
 
     /**
@@ -41,7 +57,6 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientdetails = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -98,10 +113,18 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPatientdetails);
 
         btnView.setText("VIEW");
-
-        btnUpdate.setText("UPDATE");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("PATIENT  DETAILS");
 
@@ -115,6 +138,11 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         });
 
         jButton3.setText("View vitals");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,15 +156,13 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(383, 383, 383)
+                .addGap(493, 493, 493)
                 .addComponent(btnView)
-                .addGap(206, 206, 206)
-                .addComponent(btnUpdate)
-                .addGap(237, 237, 237)
+                .addGap(153, 153, 153)
                 .addComponent(btnDelete)
-                .addGap(103, 103, 103)
+                .addGap(76, 76, 76)
                 .addComponent(jButton2)
-                .addGap(48, 48, 48)
+                .addGap(46, 46, 46)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -174,7 +200,6 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnView)
-                    .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -186,16 +211,70 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
 
         jSplitPane1.setRightComponent(managepatient);
     }//GEN-LAST:event_jLabel16MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+                int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to view.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
+        
+        CreatePatientdetails cpd = new CreatePatientdetails(jSplitPane1,system,Username,selectedPatient.getPatientID());
+        jSplitPane1.setRightComponent(cpd);
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+                int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a Staff to delete.");
+            return;
+        }
+        
+        DefaultTableModel modelpatient = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) tblPatientdetails.getValueAt(selectedRowIndex, 0);
+        
+        for(Hospital H : system.getHospitalDirectory().getHospitalDirectory()){
+            H.getPatientDirectory().getPatientDirectory().remove(selectedPatient);
+        }
+        
+        try {
+            system.deletePatientDB(selectedPatient);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Staff detHospitalails deleted sucessfully");
+        try {
+            populateTable(Username);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -206,4 +285,37 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblPatientdetails;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable(String Username) throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblPatientdetails.getModel();
+        model.setRowCount(0);
+        
+        PatientDirectory PatientDirectory;
+        PatientDirectory = system.getDBPatientDirectory();   
+        
+        for(Patient p: PatientDirectory.getPatientDirectory())
+        {
+            if(p.getHospitalUsername().equals(Username))
+            {
+            Object[] row = new Object[14];
+             row[0]=p;
+             row[1]=p.getPatientID();
+             row[2]=p.getEntryDate();
+             row[3]=p.getName();
+             row[4]=p.getAge();
+             row[5]=p.getGender();
+             row[6]=p.getAddress();
+             row[7]=p.getCity();
+             row[8]=p.getState();
+             row[9]=p.getZipcode();
+             row[10]=p.getConNumber();
+             row[11]=p.getEmailID();
+             row[12]=p.getEmerConName();
+             row[13]=p.getEmerConNumber();
+             
+             model.addRow(row);
+            }
+        }
+    }
 }
