@@ -7,6 +7,7 @@ package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
 import Userinterface.TransplantPatientAssgnWorkArea.TransplantPatientAssgn;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -20,10 +21,13 @@ public class ManagePatient extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system) {
+    JPanel Hospitalmain;
+    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,JPanel Hospitalmain) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+       this.Hospitalmain=Hospitalmain;
+       
     }
 
     /**
@@ -35,10 +39,12 @@ public class ManagePatient extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        managepatient = new javax.swing.JPanel();
         btnexistingpatient = new javax.swing.JButton();
         btnCreatenewpatient = new javax.swing.JButton();
         btntransplantlist = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         btnexistingpatient.setText("Existing Patient Details");
         btnexistingpatient.addActionListener(new java.awt.event.ActionListener() {
@@ -63,29 +69,39 @@ public class ManagePatient extends javax.swing.JPanel {
 
         jButton4.setText("Patient Available as DONOR ");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btntransplantlist, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(492, 492, 492)
-                            .addComponent(btnCreatenewpatient))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(343, 343, 343)
-                            .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(803, Short.MAX_VALUE))
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout managepatientLayout = new javax.swing.GroupLayout(managepatient);
+        managepatient.setLayout(managepatientLayout);
+        managepatientLayout.setHorizontalGroup(
+            managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managepatientLayout.createSequentialGroup()
+                .addGap(343, 343, 343)
+                .addGroup(managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btntransplantlist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
+                .addGap(803, 803, 803))
+            .addGroup(managepatientLayout.createSequentialGroup()
+                .addGroup(managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(managepatientLayout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addComponent(btnCreatenewpatient, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(managepatientLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreatenewpatient, btnexistingpatient});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+        managepatientLayout.setVerticalGroup(
+            managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managepatientLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(btnCreatenewpatient)
                 .addGap(73, 73, 73)
                 .addComponent(btnexistingpatient)
@@ -93,26 +109,53 @@ public class ManagePatient extends javax.swing.JPanel {
                 .addComponent(btntransplantlist)
                 .addContainerGap(573, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1450, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(managepatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 880, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(managepatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnexistingpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexistingpatientActionPerformed
         // TODO add your handling code here:
-         UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system);
+        UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system,managepatient);
         jSplitPane1.setRightComponent(usd);
     }//GEN-LAST:event_btnexistingpatientActionPerformed
 
     private void btnCreatenewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatenewpatientActionPerformed
         // TODO add your handling code here:
-        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system);
+        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system,managepatient);
         jSplitPane1.setRightComponent(cnp);
     }//GEN-LAST:event_btnCreatenewpatientActionPerformed
 
     private void btntransplantlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransplantlistActionPerformed
         // TODO add your handling code here:
-        TransplantPatientAssgn tpa = new TransplantPatientAssgn (jSplitPane1,system);
+        TransplantPatientAssgn tpa = new TransplantPatientAssgn (jSplitPane1,system,managepatient);
         jSplitPane1.setRightComponent(tpa);
     }//GEN-LAST:event_btntransplantlistActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(Hospitalmain);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
 
 
 
@@ -121,5 +164,7 @@ public class ManagePatient extends javax.swing.JPanel {
     private javax.swing.JButton btnexistingpatient;
     private javax.swing.JButton btntransplantlist;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JPanel managepatient;
     // End of variables declaration//GEN-END:variables
 }

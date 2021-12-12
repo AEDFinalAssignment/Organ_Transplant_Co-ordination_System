@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import javax.swing.JSplitPane;
 
@@ -31,11 +32,14 @@ public class ManageUNOs extends javax.swing.JPanel {
      */
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManageUNOs(JSplitPane jSplitPane1,EcoSystem system,UNO uno) {
+    JPanel Managepanel;
+    
+    public ManageUNOs(JSplitPane jSplitPane1,EcoSystem system,UNO uno,JPanel Managepanel) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
          this.uno = uno;
+         this.Managepanel=Managepanel;
 
     }
 
@@ -59,7 +63,7 @@ public class ManageUNOs extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         txtUnomail = new javax.swing.JTextField();
         txtUnopassword = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,8 +101,13 @@ public class ManageUNOs extends javax.swing.JPanel {
         jPanel1.add(txtUnomail, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 274, 261, -1));
         jPanel1.add(txtUnopassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 232, 261, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/d8.jpg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1790, 880));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,6 +190,12 @@ public class ManageUNOs extends javax.swing.JPanel {
          
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(Managepanel);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHospitalsave;
@@ -189,7 +204,7 @@ public class ManageUNOs extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtUnologin;
     private javax.swing.JTextField txtUnomail;
