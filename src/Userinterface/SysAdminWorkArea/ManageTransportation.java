@@ -425,7 +425,7 @@ public class ManageTransportation extends javax.swing.JPanel {
             validation=0;
         }
 
-        if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+        if(!txtTransportationmail.getText().contains("@")){
             JOptionPane.showMessageDialog(null, "Enter valid email id");
             validation=0;
         }
