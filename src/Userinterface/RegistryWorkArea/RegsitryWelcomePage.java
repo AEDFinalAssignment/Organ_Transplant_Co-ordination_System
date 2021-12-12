@@ -19,10 +19,12 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system) {
+    String Username;
+    public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system,String Username) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
     }
     
 
