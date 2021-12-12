@@ -187,13 +187,13 @@ public class EcoSystem{
                 hos = new Hospital();
                 hosDirectory.getHospitalDirectory().add(hos);
                 hos.setName(removeBrackets(rs.getString(1)));
-                hos.setTransplantEquipped(removeBrackets(rs.getString(2)));
-                hos.setUserName(removeBrackets(rs.getString(3)));
-                hos.setPassword(removeBrackets(rs.getString(4)));
-                hos.setAddress(removeBrackets(rs.getString(5)));
-                hos.setState(removeBrackets(rs.getString(6)));
-                hos.setCity(removeBrackets(rs.getString(7)));
-                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(8))));
+                hos.setTransplantEquipped(removeBrackets(rs.getString(8)));
+                hos.setUserName(removeBrackets(rs.getString(2)));
+                hos.setPassword(removeBrackets(rs.getString(3)));
+                hos.setAddress(removeBrackets(rs.getString(4)));
+                hos.setState(removeBrackets(rs.getString(5)));
+                hos.setCity(removeBrackets(rs.getString(6)));
+                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
                 if(rs.getString(9)!=null)
                 hos.setEmail(removeBrackets(rs.getString(9)));
             }
