@@ -11,6 +11,8 @@ import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import System.Hospital.Patient.Patient;
 import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Patient.VitalSigns.VitalSigns;
+import System.Hospital.Patient.VitalSigns.VitalSignsDirectory;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
 import System.Pharmacy.Pharmacy;
@@ -239,7 +241,16 @@ public class EcoSystem{
         stat.execute(query);
     } 
   
-     public void saveRegistryDB(Registry reg) throws SQLException {
+     public void saveVitalSignsDB(VitalSigns vs) throws SQLException {
+        String query = "INSERT INTO public.\"VitalSigns\"(\"BloodType\",\"HeartRate\",\"BloodPressure\",\"RespiratoryRate\",\"Pulse\",\n" +
+                       "\"Temperature\",\"AllergiesList\",\"OG_Medications\",\"BOSaturation\",\"Height\",\"Weight\",\"Complains\",\"Physician\",\"DateTime\",\"PatientID\")\n" +
+                       "VALUES ('{"+vs.getBloodType()+"}', "+String.valueOf(vs.getHeartRate())+", "+String.valueOf(vs.getBloodPressure())+","+String.valueOf(vs.getRespiratoryRate())+", "+String.valueOf(vs.getPulse())+","+String.valueOf(vs.getTemperature())+
+                        ",'{"+vs.getAllergiesList()+"}','{"+vs.getOG_Medications()+"}', "+String.valueOf(vs.getBOSaturation())+", "+String.valueOf(vs.getHeight())+", "+String.valueOf(vs.getWeight())+",'{"+vs.getComplains()+"}','{"+vs.getPhysician()+"}','{"+vs.getDateTime()+"}',"+ String.valueOf(vs.getPatientID()) +");";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+     
+        public void saveRegistryDB(Registry reg) throws SQLException {
         String query = "INSERT INTO public.\"Registry\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\")\n" +
                        "VALUES ('{"+ reg.getName() +"}','{"+ reg.getUserName() +"}','{"+ reg.getPassword() +"}','{"+ reg.getAddress() +"}','{"+ reg.getCity() +"}','{"+ reg.getState() +"}',"+ String.valueOf(reg.getZipCode()) +",'{"+ reg.getEmail() +"}');";
         java.sql.Statement stat = sqlConnect.retStatement();
@@ -474,5 +485,26 @@ public class EcoSystem{
                 pat.setHospitalUsername(removeBrackets(rs.getString(15)));
             }
             return patDirectory;
+    }
+  public VitalSignsDirectory getDBVitalSignsDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        VitalSignsDirectory vsDirectory = new VitalSignsDirectory();
+        VitalSigns vs;
+        String query = "SELECT * FROM public.\"VitalSigns\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                vs = new VitalSigns();
+                vsDirectory.getVitalSignsDirectory().add(vs);
+                vs.setDateTime(removeBrackets(rs.getString(12)));
+                vs.setPhysician(removeBrackets(rs.getString(11)));
+                vs.setComplains(removeBrackets(rs.getString(10)));
+                vs.setBloodType(removeBrackets(rs.getString(1)));
+                vs.setAllergiesList(removeBrackets(rs.getString(7)));
+                if(rs.getString(15)!=null)
+                vs.setPatientID(Integer.parseInt(removeBrackets(rs.getString(15))));
+            }
+            return vsDirectory;
     }
 }

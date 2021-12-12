@@ -11,6 +11,8 @@ import System.Hospital.Patient.Patient;
 import System.Hospital.Patient.PatientDirectory;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
+import Userinterface.PatientdetailsWorkArea.ManagePatientVitals;
+import Userinterface.PatientdetailsWorkArea.UpdatePatientvitals;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -190,10 +192,42 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to add vitals.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
+        
+        ManagePatientVitals mpv = new ManagePatientVitals(jSplitPane1,system,Username,selectedPatient.getPatientID());
+        jSplitPane1.setRightComponent(mpv);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to add vitals.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
+        
+        UpdatePatientvitals upv;
+         try {
+             upv = new UpdatePatientvitals(jSplitPane1,system,Username,selectedPatient.getPatientID());
+             jSplitPane1.setRightComponent(upv);
+         } catch (SQLException ex) {
+             Logger.getLogger(UpdatePatientdetails.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed

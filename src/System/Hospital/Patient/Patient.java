@@ -5,6 +5,8 @@
  */
 package System.Hospital.Patient;
 
+import System.Hospital.Patient.VitalSigns.VitalSigns;
+import System.Hospital.Patient.VitalSigns.VitalSignsDirectory;
 import java.util.Date;
 
 /**
@@ -27,7 +29,12 @@ public class Patient {
     private String EmerConName;
     private String EntryDate;
     private String HospitalUsername;
+    private VitalSignsDirectory VitalSignsDirectory;
 
+    public Patient() {
+        this.VitalSignsDirectory = new VitalSignsDirectory();
+    }
+    
     public String getHospitalUsername() {
         return HospitalUsername;
     }
@@ -149,6 +156,18 @@ public class Patient {
     public void setEntryDate(String EntryDate) {
         this.EntryDate = EntryDate;
     }
-    
+
+    public VitalSignsDirectory getVitalSignsDirectory() {
+        return VitalSignsDirectory;
+    }
+
+    public void setVitalSignsDirectory(VitalSignsDirectory VitalSignsDirectory) {
+        this.VitalSignsDirectory = VitalSignsDirectory;
+    }
+        public VitalSigns addVitalSigns(){
+        VitalSigns vs = new VitalSigns();
+        VitalSignsDirectory.getVitalSignsDirectory().add(vs);
+        return vs;
+    }
     
 }
