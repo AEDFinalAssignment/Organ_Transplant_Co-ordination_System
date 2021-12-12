@@ -25,7 +25,7 @@ public class Patient {
     private String EmailID;
     private long EmerConNumber;
     private String EmerConName;
-    private Date EntryDate;
+    private String EntryDate;
     private String HospitalUsername;
 
     public String getHospitalUsername() {
@@ -142,11 +142,11 @@ public class Patient {
         this.EmerConName = EmerConName;
     }
 
-    public Date getEntryDate() {
+    public String getEntryDate() {
         return EntryDate;
     }
 
-    public void setEntryDate(Date EntryDate) {
+    public void setEntryDate(String EntryDate) {
         this.EntryDate = EntryDate;
     }
     

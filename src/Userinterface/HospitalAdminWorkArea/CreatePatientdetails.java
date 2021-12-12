@@ -9,7 +9,9 @@ import System.EcoSystem;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
 import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +36,8 @@ public class CreatePatientdetails extends javax.swing.JPanel {
         this.system = system;
         this.Username = Username;
         this.id = id;
+        
+        populateFeild(system,Username,id);
     }
 
     /**
@@ -372,4 +376,37 @@ public class CreatePatientdetails extends javax.swing.JPanel {
     private javax.swing.JTextField txtPatientname;
     private javax.swing.JTextField txtPatientstate;
     // End of variables declaration//GEN-END:variables
+
+    private void populateFeild(EcoSystem system, String Username, int id) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(id!=-1)
+      {
+          try {
+            // TODO add your handling code here:
+            PatientDirectory patDirectory;
+            patDirectory = system.getDBPatientDirectory();
+            for(Patient p: patDirectory.getPatientDirectory())
+            {
+                if(p.getPatientID()==id)
+                {
+                    txtHealthID.setText(String.valueOf(p.getHealthID()));
+                    txtPatientID.setText(String.valueOf(p.getPatientID()));
+                    txtPatientname.setText(p.getName());
+                    txtPatientage.setText(String.valueOf(p.getAge()));
+                    txtPatientgender.setText(p.getGender());
+                    txtPatientaddress.setText(p.getAddress());
+                    txtPatientcity.setText(p.getCity());
+                    txtPatientstate.setText(p.getState());
+                    txtPatientZipcode.setText(String.valueOf(p.getZipcode()));
+                    txtPatientCno.setText(String.valueOf(p.getConNumber()));
+                    txtPatientmailID.setText(p.getEmailID());
+                    txtECname.setText(p.getEmerConName());
+                    txtECno.setText(String.valueOf(p.getEmerConNumber()));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    }
 }
