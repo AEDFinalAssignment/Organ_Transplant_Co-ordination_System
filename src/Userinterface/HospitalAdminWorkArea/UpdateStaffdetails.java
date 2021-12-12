@@ -6,7 +6,16 @@
 package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Hospital;
+import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
+import Userinterface.SysAdminWorkArea.ManageHospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +28,14 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public UpdateStaffdetails(JSplitPane jSplitPane1,EcoSystem system) {
+    private String Username;
+    public UpdateStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
+        populatetblDoctor(this.Username);
+        populatetblStaff(this.Username);
     }
 
     /**
@@ -39,14 +52,12 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnView1 = new javax.swing.JButton();
-        btnUpdate1 = new javax.swing.JButton();
         btnDelete1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblDoctor1 = new javax.swing.JTable();
+        tblStaff = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         btnView2 = new javax.swing.JButton();
-        btnUpdate2 = new javax.swing.JButton();
         btnDelete2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,12 +101,20 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         jButton1.setText("Search");
 
         btnView1.setText("View ");
-
-        btnUpdate1.setText("Update");
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
 
         btnDelete1.setText("Delete");
+        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete1ActionPerformed(evt);
+            }
+        });
 
-        tblDoctor1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStaff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -125,15 +144,23 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblDoctor1);
+        jScrollPane2.setViewportView(tblStaff);
 
         jButton2.setText("Search");
 
         btnView2.setText("View ");
-
-        btnUpdate2.setText("Update");
+        btnView2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView2ActionPerformed(evt);
+            }
+        });
 
         btnDelete2.setText("Delete");
+        btnDelete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Doctor Details :");
 
@@ -144,44 +171,39 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnView2)
-                        .addGap(230, 230, 230)
-                        .addComponent(btnUpdate2)
-                        .addGap(228, 228, 228)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDelete2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(674, 674, 674)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton2)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(674, 674, 674)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(86, 86, 86)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnView1)
-                                    .addComponent(btnUpdate1)
-                                    .addComponent(btnDelete1))))))
-                .addContainerGap(232, Short.MAX_VALUE))
+                            .addComponent(btnView1)
+                            .addComponent(btnDelete1))))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete1, btnUpdate1, btnView1});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete1, btnView1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,33 +221,122 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(btnView1)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnUpdate1)
-                        .addGap(50, 50, 50)
+                        .addGap(122, 122, 122)
                         .addComponent(btnDelete1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate2)
+                    .addComponent(jButton2)
                     .addComponent(btnView2)
                     .addComponent(btnDelete2))
-                .addGap(45, 45, 45))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblDoctor.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a doctor to view.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblDoctor.getModel();
+        Staff selectedStaff = (Staff) modeldoc.getValueAt(selectedRowIndex, 0);
+        
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID());
+        jSplitPane1.setRightComponent(msd);
+    }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void btnView2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblStaff.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a doctor to view.");
+            return;
+        }
+        
+        DefaultTableModel modelstaff = (DefaultTableModel) tblStaff.getModel();
+        Staff selectedStaff = (Staff) modelstaff.getValueAt(selectedRowIndex, 0);
+        
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID());
+        jSplitPane1.setRightComponent(msd);
+    }//GEN-LAST:event_btnView2ActionPerformed
+
+    private void btnDelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblStaff.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a Staff to delete.");
+            return;
+        }
+        
+        DefaultTableModel modelstaff = (DefaultTableModel) tblStaff.getModel();
+        Staff selectedStaff = (Staff) tblStaff.getValueAt(selectedRowIndex, 0);
+        
+        for(Hospital H : system.getHospitalDirectory().getHospitalDirectory()){
+            H.getStaffDirectory().getStaffDirectory().remove(selectedStaff);
+        }
+        
+        try {
+            system.deleteHosStaffDB(selectedStaff);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Staff details deleted sucessfully");
+        try {
+            populatetblStaff(Username);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDelete2ActionPerformed
+
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblDoctor.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a Staff to delete.");
+            return;
+        }
+        
+        DefaultTableModel modelstaff = (DefaultTableModel) tblDoctor.getModel();
+        Staff selectedStaff = (Staff) tblDoctor.getValueAt(selectedRowIndex, 0);
+        
+        for(Hospital H : system.getHospitalDirectory().getHospitalDirectory()){
+            H.getStaffDirectory().getStaffDirectory().remove(selectedStaff);
+        }
+        
+        try {
+            system.deleteHosStaffDB(selectedStaff);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Staff detHospitalails deleted sucessfully");
+        try {
+            populatetblDoctor(Username);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDelete1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnUpdate1;
-    private javax.swing.JButton btnUpdate2;
     private javax.swing.JButton btnView1;
     private javax.swing.JButton btnView2;
     private javax.swing.JButton jButton1;
@@ -237,6 +348,59 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblDoctor;
-    private javax.swing.JTable tblDoctor1;
+    private javax.swing.JTable tblStaff;
     // End of variables declaration//GEN-END:variables
+
+    private void populatetblDoctor(String Username) throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
+        model.setRowCount(0);
+        
+        StaffDirectory StaffDirectory;
+        StaffDirectory = system.getDBStaffDirectory();   
+        
+        for(Staff s: StaffDirectory.getStaffDirectory())
+        {
+            if(s.getDesignation().equals("Doctor") && s.getHospitalUsername().equals(Username))
+            {
+            Object[] row = new Object[9];
+             row[0]=s;
+             row[1]=s.getName();
+             row[2]=s.getConNumber();
+             row[3]=s.getEmailID();
+             row[4]=s.getQualification();
+             row[5]=s.getSpecialization();
+             row[6]=s.isAuthorization();
+             
+             model.addRow(row);
+            }
+        }
+    }
+
+    private void populatetblStaff(String Username) throws SQLException {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+       DefaultTableModel model = (DefaultTableModel) tblStaff.getModel();
+        model.setRowCount(0);
+        
+        StaffDirectory StaffDirectory;
+        StaffDirectory = system.getDBStaffDirectory();   
+        
+        for(Staff s: StaffDirectory.getStaffDirectory())
+        {
+            if(!s.getDesignation().equals("Doctor") && s.getHospitalUsername().equals(Username))
+            {
+            Object[] row = new Object[9];
+             row[0]=s;
+             row[1]=s.getName();
+             row[2]=s.getConNumber();
+             row[3]=s.getEmailID();
+             row[4]=s.getQualification();
+             row[5]=s.getSpecialization();
+             row[6]=s.isAuthorization();
+             
+             model.addRow(row);
+        }
+    }
+    }
 }

@@ -465,7 +465,7 @@ public class ManageTransportation extends javax.swing.JPanel {
          txtTransportzipcode.setText("");
          
          
-         
+         }
         
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
