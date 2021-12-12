@@ -64,13 +64,11 @@ public class ManageRegistry extends javax.swing.JPanel {
         txtRegaddress = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtRegstate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtHospitalsearch = new javax.swing.JTextField();
         txtRegzipcode = new javax.swing.JTextField();
         txtRegcity = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
@@ -105,8 +103,6 @@ public class ManageRegistry extends javax.swing.JPanel {
         jLabel8.setText("Zip Code");
 
         jLabel3.setText("Login Name");
-
-        btnSearch.setText("Search");
 
         jLabel4.setText("Password");
 
@@ -229,12 +225,7 @@ public class ManageRegistry extends javax.swing.JPanel {
                                 .addComponent(btnDelete))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(115, 115, 115)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtHospitalsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(btnSearch))))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel9))
                 .addContainerGap(361, Short.MAX_VALUE))
         );
@@ -284,11 +275,7 @@ public class ManageRegistry extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnSave))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtHospitalsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch))
-                        .addGap(32, 32, 32)
+                        .addGap(207, 207, 207)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -317,7 +304,7 @@ public class ManageRegistry extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:        
-        
+        try{
         
          if (txtRegname.getText().isEmpty()) {
             txtRegname.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -361,80 +348,68 @@ public class ManageRegistry extends javax.swing.JPanel {
           
          //Null Value Check
          
-         if (txtRegname.getText().isEmpty()
-                || txtReglogin.getText().isEmpty()
-                || txtRegpassword.getText().isEmpty()
-                || txtRegistrymail.getText().isEmpty()
-                || txtRegaddress.getText().isEmpty()
-                || txtRegcity.getText().isEmpty()
-                || txtRegzipcode.getText().isEmpty()
-                || txtRegstate.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
+         if (txtRegname.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing name field");
+                  }
+          if ( txtReglogin.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Login name field");
+                  }
+          
+          if ( txtRegpassword.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Password field");
+                  }
+         if (  txtRegistrymail.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing mailID field");
+                  } 
+          if (  txtRegaddress.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing address field");
+                  } 
+           if (  txtRegcity.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing City field");
+                  }  
+          if ( txtRegstate.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing State field");
+                  }  
+            if ( txtRegzipcode.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Zipcode field");
+                  }      
+                
          
           
         //Data Validation
-        int validation = 1;
+        
         
         if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
-             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
-              validation=0;
-        }
+             throw new Exception( "Enter Valid Name");            
+        } 
+       
         
         if(txtRegcity.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid city name");    
-               validation=0;            
+               throw new Exception( "Enter valid city name");                           
         }
+                
+        if(!txtRegzipcode.getText().matches("-?(0|[1-9]\\d*)")){                            
+        throw new Exception( "Enter valid zipcode");             
+        }
+              
         
          if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid state name");    
-               validation=0;            
+               throw new Exception( "Enter valid state name");    
         }   
-         
-//         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
-//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-//               validation=0;  
-//         }
-         
+        
+        if(!txtRegistrymail.getText().contains(".com")){
+        throw new Exception( "Enter valid email id");
 
-           if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
-               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
-               validation=0;            
-        }   
-         
+        }
            
-//         //Unique Check for username
-//         
-//         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
-//              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-//              validation=0; 
-//         }
-         
-         
-         
-        // Add entry to the table
-
-           String name = txtRegname.getText();
-           String login = txtReglogin.getText();
-           String password = txtRegpassword.getText();
-           String email = txtRegistrymail.getText();
-           String address = txtRegaddress.getText();
-           String city = txtRegcity.getText();
-           String state = txtRegstate.getText();
-           String zipcode = txtRegzipcode.getText();
-
-           int selectedRowIndex = tblRegistry.getSelectedRow();  
-
-
-           DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-           model.setValueAt(name, selectedRowIndex, 0);
-           model.setValueAt(login, selectedRowIndex, 1);
-           model.setValueAt(password, selectedRowIndex, 2);
-           model.setValueAt(email, selectedRowIndex, 3);
-           model.setValueAt(address, selectedRowIndex, 4);
-           model.setValueAt(city, selectedRowIndex, 5);
-           model.setValueAt(state, selectedRowIndex, 6);
-           model.setValueAt(zipcode, selectedRowIndex, 7);
 
 
          Registry newreRegistry = system.addRegistry();
@@ -452,7 +427,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showMessageDialog(this, "Registry details saved sucessfully");
+       
         try {
             populateTable();
         } catch (SQLException ex) {
@@ -469,8 +444,11 @@ public class ManageRegistry extends javax.swing.JPanel {
          txtRegstate.setText("");
          txtRegzipcode.setText("");
          
-         
-         
+           JOptionPane.showMessageDialog(this, "Registry details saved sucessfully");
+        }
+       catch (Exception e) {
+           JOptionPane.showMessageDialog(this,e.getMessage());
+        }
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -717,7 +695,6 @@ public class ManageRegistry extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;
@@ -733,7 +710,6 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRegistry;
-    private javax.swing.JTextField txtHospitalsearch;
     private javax.swing.JTextField txtRegaddress;
     private javax.swing.JTextField txtRegcity;
     private javax.swing.JTextField txtRegistrymail;
