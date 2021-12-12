@@ -10,6 +10,7 @@ import SQL_Connection.SQL_Connect;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
 import System.Pharmacy.Pharmacy;
 import System.Pharmacy.PharmacyDirectory;
 import System.Registry.Registry;
@@ -151,7 +152,6 @@ public class EcoSystem{
         System.out.println(hos.getUserName()); 
         String query = "UPDATE public.\"Hospital\" SET \"Name\"='{" + hos.getName() + "}',\"TransplantEquipped\"='{"+ hos.getTransplantEquipped() + "}',\"Username\"='{" + hos.getUserName() + "}',\"Password\"='{" + hos.getPassword() + "}',\"Address\"='{" + hos.getAddress() + "}',\"State\"='{" + hos.getState() + "}',\"City\"='{"+ hos.getCity() +"}',\"Zipcode\"="+ String.valueOf(hos.getZipCode()) +",\"EmailID\"='{"+hos.getEmail()+"}'\n" +
                        "WHERE \"Username\"='{"+ hos.getUserName() +"}';";
-        System.out.println(query);
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
         
@@ -197,6 +197,20 @@ public class EcoSystem{
     public void saveHosStaffDB(Staff stf) throws SQLException {
         String query = "INSERT INTO public.\"HospitalStaff\"(\"Staff_ID\",\"Name\",\"ConNumber\",\"EmailID\",\"Designation\",\"Qualification\",\"Specialization\",\"Authorised\",\"HospitalUsername\")\n" +
                        "VALUES ("+ String.valueOf(stf.getStaff_ID()) + " ,'{" + stf.getName() +"}'," + String.valueOf(stf.getConNumber()) + ",'{" + stf.getEmailID() +"}','{" + stf.getDesignation() +"}','{" + stf.getQualification() +"}','{" + stf.getSpecialization() +"}',"+ String.valueOf(stf.isAuthorization()) +",'{" + stf.getHospitalUsername() +"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+    public void updateHosStaffDB(Staff stf) throws SQLException {
+        System.out.println("333333333");
+        String query = "UPDATE public.\"HospitalStaff\" SET \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+",\"Name\"='{"+ stf.getName() +"}',\"ConNumber\"="+ String.valueOf(stf.getConNumber()) +",\"EmailID\"='{"+ stf.getEmailID() +"}',\"Designation\"='{"+ stf.getDesignation() +"}',\"Qualification\"='{"+ stf.getQualification() +"}',\"Specialization\"='{"+ stf.getSpecialization() +"}',\"Authorised\"="+ String.valueOf(stf.isAuthorization()) +",\"HospitalUsername\"='{"+ stf.getHospitalUsername() +"}'\n" +
+                        "WHERE \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+        public void deleteHosStaffDB(Staff stf) throws SQLException {
+        String query = "DELETE FROM public.\"HospitalStaff\" WHERE \"Staff_ID\"="+ String.valueOf(stf.getStaff_ID()) + ";";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
     }
@@ -383,5 +397,28 @@ public class EcoSystem{
                 phar.setEmail(removeBrackets(rs.getString(8)));
             }
             return pharDirectory;
+    }
+        public StaffDirectory getDBStaffDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StaffDirectory stfDirectory = new StaffDirectory();
+        Staff stf;
+        String query = "SELECT * FROM public.\"HospitalStaff\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                stf = new Staff();
+                stfDirectory.getStaffDirectory().add(stf);
+                stf.setStaff_ID(Integer.parseInt(removeBrackets(rs.getString(1))));
+                stf.setName(removeBrackets(rs.getString(2)));
+                stf.setConNumber(Long.parseLong(removeBrackets(rs.getString(3))));
+                stf.setEmailID(removeBrackets(rs.getString(4)));
+                stf.setDesignation(removeBrackets(rs.getString(5)));
+                stf.setQualification(removeBrackets(rs.getString(6)));
+                stf.setSpecialization((removeBrackets(rs.getString(7))));
+                stf.setAuthorization(Boolean.parseBoolean(removeBrackets(rs.getString(8))));
+                stf.setHospitalUsername(removeBrackets(rs.getString(9)));
+            }
+            return stfDirectory;
     }
 }
