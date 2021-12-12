@@ -97,6 +97,10 @@ public class EcoSystem{
     public void setUNO(UNO UNO) {
         this.UNO = UNO;
     }
+     public UNO addUNO(){
+        UNO uno = new UNO();
+        return uno;
+    }
 
     public PharmacyDirectory getPharmacyDirectory() {
         return PharmacyDirectory;
@@ -202,15 +206,16 @@ public class EcoSystem{
     }
     public void updateRegistryDB(Registry reg) throws SQLException {
         System.out.println(reg.getUserName()); 
-        String query = "UPDATE public.\"Registry\" SET \"Name\"='{" + reg.getName()  +",\"Username\"='{" + reg.getUserName() + "}',\"Password\"='{" + reg.getPassword() + "}',\"Address\"='{" + reg.getAddress() + "}',\"State\"='{" + reg.getState() + "}',\"City\"='{"+ reg.getCity() +"}',\"Zipcode\"="+ String.valueOf(reg.getZipCode()) +",\"EmailID\"='{"+reg.getEmail()+"}'\n" +
-                       "WHERE \"Username\"='{"+ reg.getUserName() +"}';";
+        String query = "Update public.\"Registry\" set \"Name\"='{"+reg.getName()+"}',\"Username\"='{"+reg.getUserName()+"}',\"Password\"='{"+reg.getPassword()+"}',\"Address\"='{"+reg.getAddress()+"}',\"City\"='{"+reg.getCity()+"}',\"State\"='{"+reg.getState()+"}',\"Zipcode\"="+String.valueOf(reg.getZipCode()) +",\"EmailID\"='{"+reg.getEmail()+"}'\n" +
+                       "where \"Username\"='{"+reg.getUserName()+"}';";
         System.out.println(query);
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
-        
+       
         String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + reg.getUserName() + "}',\"Password\"='{" + reg.getPassword() + "}',\"TypeID\"='{Registry}'\n" +
                         "WHERE \"Username\"='{"+ reg.getUserName() +"}';";
         stat.execute(query1);
+        System.out.println(query1);
     } 
     
     public void deleteRegistryDB(Registry reg) throws SQLException {
@@ -237,8 +242,8 @@ public class EcoSystem{
                 reg.setUserName(removeBrackets(rs.getString(2)));
                 reg.setPassword(removeBrackets(rs.getString(3)));
                 reg.setAddress(removeBrackets(rs.getString(4)));
-                reg.setState(removeBrackets(rs.getString(5)));
-                reg.setCity(removeBrackets(rs.getString(6)));
+                reg.setState(removeBrackets(rs.getString(6)));
+                reg.setCity(removeBrackets(rs.getString(5)));
                 reg.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
                 if(rs.getString(8)!=null)
                 reg.setEmail(removeBrackets(rs.getString(8)));
@@ -247,7 +252,7 @@ public class EcoSystem{
     }
          public void saveTransportationDB(Transportation trans) throws SQLException {
         String query = "INSERT INTO public.\"Transportation\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\",\"AvailableTransport\")\n"+
-                       "VALUES ('{"+ trans.getName() +"}','{"+ trans.getUserName() +"}','{"+ trans.getPassword() +"}','{"+ trans.getAddress() +"}','{"+ trans.getCity() +"}','{"+ trans.getState() +"}',"+ String.valueOf(trans.getZipCode()) +",'{"+ trans.getState() +"}','{car}');";
+                       "VALUES ('{"+ trans.getName() +"}','{"+ trans.getUserName() +"}','{"+ trans.getPassword() +"}','{"+ trans.getAddress() +"}','{"+ trans.getCity() +"}','{"+ trans.getState() +"}',"+ String.valueOf(trans.getZipCode()) +",'{"+ trans.getEmail() +"}','{"+ trans.getModesOfTransportation() +"}');";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
          System.out.println("111111111");
@@ -258,8 +263,8 @@ public class EcoSystem{
     }
     public void updateTransportationDB(Transportation trans) throws SQLException {
         System.out.println(trans.getUserName()); 
-        String query = "UPDATE public.\"Transportation\" SET \"Name\"='{" + trans.getName()  +",\"Username\"='{" + trans.getUserName() + "}',\"Password\"='{" + trans.getPassword() + "}',\"Address\"='{" + trans.getAddress() + "}',\"State\"='{" + trans.getState() + "}',\"City\"='{"+ trans.getCity() +"}',\"Zipcode\"="+ String.valueOf(trans.getZipCode()) +",\"EmailID\"='{"+trans.getEmail()+"}'\n" +
-                       "WHERE \"Username\"='{"+ trans.getUserName() +"}';";
+        String query = "Update public.\"Transportation\" set \"Name\"='{"+trans.getName()+"}',\"Username\"='{"+trans.getUserName()+"}',\"Password\"='{"+trans.getPassword()+"}',\"Address\"='{"+trans.getAddress()+"}',\"City\"='{"+trans.getCity()+"}',\"State\"='{"+trans.getState()+"}',\"Zipcode\"="+String.valueOf(trans.getZipCode()) +",\"EmailID\"='{"+trans.getEmail()+"}',\"AvailableTransport\"='{"+trans.getModesOfTransportation()+"}'\n" +
+                       "where \"Username\"='{"+trans.getUserName()+"}';";
         System.out.println(query);
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
@@ -293,17 +298,19 @@ public class EcoSystem{
                 trans.setUserName(removeBrackets(rs.getString(2)));
                 trans.setPassword(removeBrackets(rs.getString(3)));
                 trans.setAddress(removeBrackets(rs.getString(4)));
-                trans.setState(removeBrackets(rs.getString(5)));
-                trans.setCity(removeBrackets(rs.getString(6)));
+                trans.setState(removeBrackets(rs.getString(6)));
+                trans.setCity(removeBrackets(rs.getString(5)));
                 trans.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
-                if(rs.getString(8)!=null)
+                trans.setModesOfTransportation(removeBrackets(rs.getString(9)));
+                if(rs.getString(9)!=null)
                 trans.setEmail(removeBrackets(rs.getString(8)));
+                
             }
             return transDirectory;
     }
     
        public void saveUNODB(UNO uno) throws SQLException {
-        String query = "INSERT INTO public.\"UNO\"(\"Name\",\"Username\",\"Password\",\"EmailID\")\n" +
+        String query = "INSERT INTO public.\"UNOs\"(\"Name\",\"Username\",\"Password\",\"EmailID\")\n" +
                        "VALUES ('{"+ uno.getUNO_Name() + "}','{"+ uno.getUNO_Username() + "}','{"+ uno.getUNO_Password() + "}','{" + uno.getUNO_email() + "}'" +");";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
@@ -361,8 +368,8 @@ public class EcoSystem{
                 phar.setUserName(removeBrackets(rs.getString(2)));
                 phar.setPassword(removeBrackets(rs.getString(3)));
                 phar.setAddress(removeBrackets(rs.getString(4)));
-                phar.setState(removeBrackets(rs.getString(5)));
-                phar.setCity(removeBrackets(rs.getString(6)));
+                phar.setState(removeBrackets(rs.getString(6)));
+                phar.setCity(removeBrackets(rs.getString(5)));
                 phar.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
                 if(rs.getString(8)!=null)
                 phar.setEmail(removeBrackets(rs.getString(8)));

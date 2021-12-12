@@ -48,19 +48,19 @@
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" linkSize="2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                      <Component id="txtUnoname" min="-2" pref="261" max="-2" attributes="0"/>
+                                      <Component id="txtUnoname" linkSize="1" min="-2" pref="261" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtUnologin" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                                          <Component id="txtUnopassword" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtUnologin" linkSize="1" min="-2" pref="261" max="-2" attributes="0"/>
+                                          <Component id="txtUnopassword" linkSize="1" min="-2" pref="250" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -68,9 +68,9 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel19" linkSize="2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="txtUnomail" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="txtUnomail" linkSize="1" min="-2" pref="261" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -95,18 +95,18 @@
                       <Component id="txtUnologin" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtUnopassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtUnopassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtUnomail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnHospitalsave" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="551" max="32767" attributes="0"/>
+                  <EmptySpace pref="548" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,8 +143,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalsaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUnopassword">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtUnoname">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -171,6 +169,8 @@
               <Image iconType="3" name="/Image/logout.png"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtUnopassword">
         </Component>
       </SubComponents>
     </Container>

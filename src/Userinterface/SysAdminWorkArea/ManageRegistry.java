@@ -72,7 +72,6 @@ public class ManageRegistry extends javax.swing.JPanel {
         txtRegzipcode = new javax.swing.JTextField();
         txtRegcity = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
-        txtRegpassword = new javax.swing.JTextField();
         txtReglogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtRegname = new javax.swing.JTextField();
@@ -80,6 +79,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         tblRegistry = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
         txtRegistrymail = new javax.swing.JTextField();
+        txtRegpassword = new javax.swing.JPasswordField();
 
         btnView.setText("View ");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -194,11 +194,11 @@ public class ManageRegistry extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtReglogin)
-                                        .addComponent(txtRegpassword)
                                         .addComponent(txtRegaddress)
                                         .addComponent(txtRegcity)
                                         .addComponent(txtRegstate)
-                                        .addComponent(txtRegzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txtRegzipcode, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                        .addComponent(txtRegpassword))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(284, 284, 284)
                         .addComponent(btnSave))
@@ -221,8 +221,11 @@ public class ManageRegistry extends javax.swing.JPanel {
                         .addGap(44, 44, 44)
                         .addComponent(btnSearch))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel19, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -447,9 +450,10 @@ public class ManageRegistry extends javax.swing.JPanel {
                     reg.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
                     reg.setEmail(txtRegistrymail.getText());
                     
-                    
+                    System.out.println(11111);
                     try {
                         system.updateRegistryDB(reg);
+                        System.out.println(22222);
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -489,7 +493,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         DefaultTableModel modelhos = (DefaultTableModel) tblRegistry.getModel();
         Registry selectedRegistry = (Registry) modelhos.getValueAt(selectedRowIndex, 0);
         
-        system.getHospitalDirectory().getHospitalDirectory().remove(selectedRegistry);
+        system.getRegistryDirectory().getRegistryDirectory().remove(selectedRegistry);
         
         try {
             system.deleteRegistryDB(selectedRegistry);
@@ -533,7 +537,7 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JTextField txtRegistrymail;
     private javax.swing.JTextField txtReglogin;
     private javax.swing.JTextField txtRegname;
-    private javax.swing.JTextField txtRegpassword;
+    private javax.swing.JPasswordField txtRegpassword;
     private javax.swing.JTextField txtRegstate;
     private javax.swing.JTextField txtRegzipcode;
     // End of variables declaration//GEN-END:variables

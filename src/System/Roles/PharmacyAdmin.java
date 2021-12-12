@@ -9,6 +9,4 @@ package System.Roles;
  *
  * @author deepi
  */
-public class PharmacyAdmin extends Role {
-    
-}
+

@@ -47,6 +47,7 @@ public class ManageHospital extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtHospitalname1 = new javax.swing.JTextField();
@@ -101,8 +102,10 @@ public class ManageHospital extends javax.swing.JPanel {
 
         jLabel18.setText("Whether it is equipped for Transplant ");
 
+        buttonGroup1.add(jCheckBox3);
         jCheckBox3.setText("YES");
 
+        buttonGroup1.add(jCheckBox4);
         jCheckBox4.setSelected(true);
         jCheckBox4.setText("NO");
 
@@ -453,6 +456,7 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch1;
     private javax.swing.JButton btnUpdate1;
     private javax.swing.JButton btnView1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel10;
