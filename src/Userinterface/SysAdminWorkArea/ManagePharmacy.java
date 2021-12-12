@@ -344,11 +344,8 @@ public class ManagePharmacy extends javax.swing.JPanel {
          }
          
          if(validation==1){
-             JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
-         }    
-       
-              
-             // Initializing pharmacy object
+             
+               // Initializing pharmacy object
               Pharmacy newpharmacy = pharmacyDirectory.addPharmacy();
               
               newpharmacy.setName(txtPharmacyname.getText());
@@ -359,6 +356,11 @@ public class ManagePharmacy extends javax.swing.JPanel {
               newpharmacy.setCity(txtPharmacycity.getText());
               newpharmacy.setState(txtPharmacystate.getText());
               newpharmacy.setZipCode(Integer.parseInt(txtPharmacyzipcode.getText()));
+             JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
+         }    
+       
+              
+           
               
               
               // Add the details to table
@@ -384,7 +386,18 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 model.setValueAt(city, selectedRowIndex, 5);
                 model.setValueAt(state, selectedRowIndex, 6);
                 model.setValueAt(zipcode, selectedRowIndex, 7);
-              
+               
+                //Clearing the field to null
+                
+                txtPharmacyname.setText("");
+                txtPharmacylogin.setText("");
+                txtPharmacypassword.setText("");
+                txtPharmacyEmail.setText("");
+                txtPharmacyaddress.setText("");
+                txtPharmacycity.setText("");
+                txtPharmacystate.setText("");
+                txtPharmacyzipcode.setText("");
+                
          
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
@@ -418,6 +431,115 @@ public class ManagePharmacy extends javax.swing.JPanel {
 
     private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRowIndex = tblPharmacy.getSelectedRow();
+        
+        if(selectedRowIndex <0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view");
+            return;            
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblPharmacy.getModel();
+        Pharmacy selectedEntry = (Pharmacy) model.getValueAt(selectedRowIndex, 0);     
+        
+        
+          if (txtPharmacyname.getText().isEmpty()
+                || txtPharmacylogin.getText().isEmpty()
+                || txtPharmacypassword.getText().isEmpty()
+                || txtPharmacyEmail.getText().isEmpty()
+                || txtPharmacyaddress.getText().isEmpty()
+                || txtPharmacycity.getText().isEmpty()
+                || txtPharmacystate.getText().isEmpty()
+                || txtPharmacyzipcode.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtPharmacyname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtPharmacycity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtPharmacystate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtPharmacyEmail.getText().contains("@")&& (txtPharmacyEmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtPharmacyzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (hospitalDirectory.searchHospital(txtPharmacylogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         else{
+             Pharmacy pharmacy = pharmacyDirectory.searchPharmacy(txtPharmacylogin.getText());
+             
+              pharmacy.setName(txtPharmacyname.getText());
+              pharmacy.setUserName(txtPharmacylogin.getText());
+              pharmacy.setPassword(txtPharmacypassword.getText());
+              pharmacy.setEmail(txtPharmacyEmail.getText());
+              pharmacy.setAddress(txtPharmacyaddress.getText());
+              pharmacy.setCity(txtPharmacycity.getText());
+              pharmacy.setState(txtPharmacystate.getText());
+              pharmacy.setZipCode(Integer.parseInt(txtPharmacyzipcode.getText()));
+             JOptionPane.showMessageDialog(this, " Pharmacy details are updated.");            
+             
+         }
+         
+             // Add the details to table
+              
+                String name = txtPharmacyname.getText();
+                String login = txtPharmacylogin.getText();
+                String password = txtPharmacypassword.getText();
+                String email = txtPharmacyEmail.getText();
+                String address = txtPharmacyaddress.getText();
+                String city = txtPharmacycity.getText();
+                String state = txtPharmacystate.getText();
+                String zipcode = txtPharmacyzipcode.getText();
+
+               
+                model.setValueAt(name, selectedRowIndex, 0);
+                model.setValueAt(login, selectedRowIndex, 1);
+                model.setValueAt(password, selectedRowIndex, 2);
+                model.setValueAt(email, selectedRowIndex, 3);
+                model.setValueAt(address, selectedRowIndex, 4);
+                model.setValueAt(city, selectedRowIndex, 5);
+                model.setValueAt(state, selectedRowIndex, 6);
+                model.setValueAt(zipcode, selectedRowIndex, 7);
+               
+                //Clearing the field to null
+                
+                txtPharmacyname.setText("");
+                txtPharmacylogin.setText("");
+                txtPharmacypassword.setText("");
+                txtPharmacyEmail.setText("");
+                txtPharmacyaddress.setText("");
+                txtPharmacycity.setText("");
+                txtPharmacystate.setText("");
+                txtPharmacyzipcode.setText("");
+         
+        
+        
+        
     }//GEN-LAST:event_btnHospitalupdateActionPerformed
 
 

@@ -171,7 +171,6 @@ public class ManageHospital extends javax.swing.JPanel {
 
         jLabel19.setText("Mail ID ");
 
-        txtHospitalpassword1.setText("jPasswordField1");
         txtHospitalpassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHospitalpassword1ActionPerformed(evt);
@@ -351,11 +350,11 @@ public class ManageHospital extends javax.swing.JPanel {
                validation=0;            
         }   
          
-         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
-              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-               validation=0;  
-         }
-         
+//         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
+//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+//               validation=0;  
+//         }
+//         
            if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
                JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
                validation=0;            
@@ -370,6 +369,8 @@ public class ManageHospital extends javax.swing.JPanel {
          }
          
          if(validation==1){
+             
+             
              JOptionPane.showMessageDialog(this, "New Hospital details are added.");             
          }    
        
@@ -494,10 +495,10 @@ public class ManageHospital extends javax.swing.JPanel {
                validation=0;            
         }   
          
-         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
-              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-               validation=0;  
-         }
+//         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
+//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+//               validation=0;  
+//         }
          
            if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
                JOptionPane.showMessageDialog(null, "Enter valid zipcode");    

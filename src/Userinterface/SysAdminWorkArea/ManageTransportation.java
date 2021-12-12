@@ -417,11 +417,8 @@ public class ManageTransportation extends javax.swing.JPanel {
          }
          
          if(validation==1){
-             JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
-         }    
-       
-         
-         // Intitializing Registry Object
+             
+                // Intitializing Registry Object
          
          Transportation newtransporation = TransportationDirectory.addTransportation();
          newtransporation.setName(txtTransportname.getText());
@@ -433,7 +430,11 @@ public class ManageTransportation extends javax.swing.JPanel {
          newtransporation.setState(txtTransportstate.getText());
          newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
          
-         JOptionPane.showMessageDialog(this, "New Registry is added!!");
+         JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
+         }    
+       
+         
+      
          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
@@ -559,6 +560,20 @@ public class ManageTransportation extends javax.swing.JPanel {
           
           JOptionPane.showMessageDialog(this, "transportation is updated!!");
           
+        
+       // Updating the values in the table 
+         
+        txtTransportname.setText(selectedEntry.getName());
+        txtTransportlogin.setText(selectedEntry.getUserName());
+        txtTransportpassword.setText(selectedEntry.getPassword());
+        txtTransportationmail.setText(selectedEntry.getEmail());
+        txtTransportaddress.setText(selectedEntry.getAddress());
+        txtTransportcity.setText(selectedEntry.getCity());
+        txtTransportstate.setText(selectedEntry.getState());
+        txtTransportzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
+        
+        // Clearing the field to Null
+          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
          txtTransportpassword.setText("");
@@ -567,10 +582,7 @@ public class ManageTransportation extends javax.swing.JPanel {
          txtTransportcity.setText("");
          txtTransportstate.setText("");
          txtTransportzipcode.setText("");
-          
-          
-          
-                 
+                          
         
         
         
