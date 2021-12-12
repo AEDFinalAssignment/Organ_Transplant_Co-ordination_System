@@ -9,6 +9,9 @@ import System.EcoSystem;
 import System.Hospital.Patient.Patient;
 import System.Hospital.Patient.PatientDirectory;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import javax.swing.JSplitPane;
@@ -47,7 +50,7 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         {
             if(p.getHospitalUsername().equals(Username))
             {
-            Object[] row = new Object[14];
+            Object[] row = new Object[15];
              row[0]=p;
              row[1]=p.getPatientID();
              row[2]=p.getEntryDate();
@@ -62,6 +65,8 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
              row[11]=p.getEmailID();
              row[12]=p.getEmerConName();
              row[13]=p.getEmerConNumber();
+             String Status = system.getDonarStatus(p);
+             row[14]=Status;
              
              model.addRow(row);
             }
@@ -86,43 +91,43 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Health ID", "Patient ID", "EntryDate", "Name", "Age", "Gender", "Address", "City", "State", "Zip Code", "Contact No", "Mail ID", "Emergency Contact Name", "Emergency contact number"
+                "Health ID", "Patient ID", "EntryDate", "Name", "Age", "Gender", "Address", "City", "State", "Zipcode", "Contact No", "Mail ID", "Emergency Contact Name", "Emergency contact number", "Request Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -141,6 +146,11 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         });
 
         btnChechEgdonor.setText("Check Eligibility as Donor");
+        btnChechEgdonor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChechEgdonorActionPerformed(evt);
+            }
+        });
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,6 +217,38 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(managepatient);
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void btnChechEgdonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChechEgdonorActionPerformed
+        // TODO add your handling code here:
+                   int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to request.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
+        String selectedPatientStatus = (String) modeldoc.getValueAt(selectedRowIndex, 14);
+        System.out.println(selectedPatientStatus);
+        if(!selectedPatientStatus.equals("Requested") && !selectedPatientStatus.equals("Request Accepted") && !selectedPatientStatus.equals("Request Declined"))
+        {
+        try {
+             system.requestRegistry(selectedPatient);
+         } catch (SQLException ex) {
+             Logger.getLogger(TransplantPatientAssgn.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         try {
+             populateTable(Username);
+         } catch (SQLException ex) {
+             Logger.getLogger(TransplantPatientAssgn.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "The patient entered has already been registered.");
+        }
+    }//GEN-LAST:event_btnChechEgdonorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

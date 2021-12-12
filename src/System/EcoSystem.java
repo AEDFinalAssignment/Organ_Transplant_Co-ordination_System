@@ -220,6 +220,26 @@ public class EcoSystem{
         stat.execute(query);
     }
         
+        public void requestRegistry(Patient pat) throws SQLException {
+        String query = "INSERT INTO public.\"RequestIsDonar\"(\"Patient_HealthID\",\"Name\",\"DonarStatus\")\n" +
+                       "VALUES ("+String.valueOf(pat.getHealthID())+",'{"+ pat.getName() +"}','{Requested}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+        public String getDonarStatus(Patient pat) throws SQLException {
+            String query = "SELECT * FROM public.\"RequestIsDonar\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                if(Integer.parseInt(removeBrackets(rs.getString(1)))==pat.getHealthID())
+                {
+                    return removeBrackets(rs.getString(3));
+                }
+            }
+            return "No Requests";
+        }
+        
    public void savePatientDB(Patient pat) throws SQLException {
         String query = "INSERT INTO public.\"Patient\"(\"HealthID\",\"PatientID\",\"Name\",\"Age\",\"Gender\",\n" +
                        "\"Address\",\"City\",\"State\",\"Zipcode\",\"ConNumber\",\"EmailID\",\"EmerConNumber\",\"EmerConName\",\"EntryDate\",\"HospitalUsername\")\n" +

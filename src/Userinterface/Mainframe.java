@@ -15,6 +15,7 @@ import System.UNOs.UNO;
 
 import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
 import Userinterface.HospitalAdminWorkArea.ManagePatient;
+import Userinterface.RegistryWorkArea.RegsitryWelcomePage;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
 import java.sql.SQLException;
@@ -218,11 +219,11 @@ public class Mainframe extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(HAA);
             }
             else if(Useraccount.contains("Pharmacy")){
-                this.id = Integer.parseInt(Useraccount.replace("Pharmacy", ""));
                 
             }
             else if(Useraccount.contains("Registry")){
-                this.id = Integer.parseInt(Useraccount.replace("Registry", ""));
+                RegsitryWelcomePage regPage = new RegsitryWelcomePage(jSplitPane1,system,txtUsername.getText());
+                jSplitPane1.setRightComponent(regPage);
                 
             }
             else if(Useraccount.contains("Transportation")){
