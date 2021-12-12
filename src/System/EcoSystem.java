@@ -9,9 +9,12 @@ package System;
 import SQL_Connection.SQL_Connect;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
+import System.Pharmacy.Pharmacy;
 import System.Pharmacy.PharmacyDirectory;
+import System.Registry.Registry;
 import System.Registry.RegistryDirectory;
 import System.Transportation.TransportDirectory;
+import System.Transportation.Transportation;
 import System.UNOs.UNO;
 import java.beans.Statement;
 import java.sql.SQLException;
@@ -41,6 +44,9 @@ public class EcoSystem{
     public EcoSystem() throws SQLException {
             this.sqlConnect = new SQL_Connect();
             this.HospitalDirectory = new HospitalDirectory(); 
+            this.RegistryDirectory= new RegistryDirectory();
+            this.TransportDirectory= new TransportDirectory();
+            this.PharmacyDirectory= new PharmacyDirectory();
             
     }
 
@@ -65,6 +71,12 @@ public class EcoSystem{
     public void setRegistryDirectory(RegistryDirectory RegistryDirectory) {
         this.RegistryDirectory = RegistryDirectory;
     }
+    
+    public Registry addRegistry(){
+        Registry res = new Registry();
+        RegistryDirectory.getRegistryDirectory().add(res);
+        return res;
+    }
 
     public TransportDirectory getTransportDirectory() {
         return TransportDirectory;
@@ -73,7 +85,11 @@ public class EcoSystem{
     public void setTransportDirectory(TransportDirectory TransportDirectory) {
         this.TransportDirectory = TransportDirectory;
     }
-
+ public Transportation addTransportation(){
+        Transportation trans = new Transportation();
+        TransportDirectory.getTransportationDirectory().add(trans);
+        return trans;
+    }
     public UNO getUNO() {
         return UNO;
     }
@@ -89,8 +105,11 @@ public class EcoSystem{
     public void setPharmacyDirectory(PharmacyDirectory PharmacyDirectory) {
         this.PharmacyDirectory = PharmacyDirectory;
     }
-    
-    
+     public Pharmacy addPharmacy(){
+        Pharmacy phar = new Pharmacy();
+        PharmacyDirectory.getPharmacyDirectory().add(phar);
+        return phar;
+     }
     
     public String AuthenticateUser(String Username, String Password) throws SQLException
     {
@@ -157,16 +176,197 @@ public class EcoSystem{
                 hos = new Hospital();
                 hosDirectory.getHospitalDirectory().add(hos);
                 hos.setName(removeBrackets(rs.getString(1)));
-                hos.setTransplantEquipped(Boolean.parseBoolean(removeBrackets(rs.getString(2))));
-                hos.setUserName(removeBrackets(rs.getString(3)));
-                hos.setPassword(removeBrackets(rs.getString(4)));
-                hos.setAddress(removeBrackets(rs.getString(5)));
-                hos.setState(removeBrackets(rs.getString(6)));
-                hos.setCity(removeBrackets(rs.getString(7)));
-                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(8))));
+                hos.setTransplantEquipped(Boolean.parseBoolean(removeBrackets(rs.getString(8))));
+                hos.setUserName(removeBrackets(rs.getString(2)));
+                hos.setPassword(removeBrackets(rs.getString(3)));
+                hos.setAddress(removeBrackets(rs.getString(4)));
+                hos.setState(removeBrackets(rs.getString(5)));
+                hos.setCity(removeBrackets(rs.getString(6)));
+                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
                 if(rs.getString(9)!=null)
                 hos.setEmail(removeBrackets(rs.getString(9)));
             }
             return hosDirectory;
+    }
+    
+     public void saveRegistryDB(Registry reg) throws SQLException {
+        String query = "INSERT INTO public.\"Registry\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\")\n" +
+                       "VALUES ('{"+ reg.getName() +"}','{"+ reg.getUserName() +"}','{"+ reg.getPassword() +"}','{"+ reg.getAddress() +"}','{"+ reg.getCity() +"}','{"+ reg.getState() +"}',"+ String.valueOf(reg.getZipCode()) +",'{"+ reg.getEmail() +"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+         
+        
+        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
+                         "VALUES ('{"+ reg.getUserName() + "}','{"+ reg.getPassword() +"}','{Registry}');";
+        stat.execute(query1);
+    }
+    public void updateRegistryDB(Registry reg) throws SQLException {
+        System.out.println(reg.getUserName()); 
+        String query = "UPDATE public.\"Registry\" SET \"Name\"='{" + reg.getName()  +",\"Username\"='{" + reg.getUserName() + "}',\"Password\"='{" + reg.getPassword() + "}',\"Address\"='{" + reg.getAddress() + "}',\"State\"='{" + reg.getState() + "}',\"City\"='{"+ reg.getCity() +"}',\"Zipcode\"="+ String.valueOf(reg.getZipCode()) +",\"EmailID\"='{"+reg.getEmail()+"}'\n" +
+                       "WHERE \"Username\"='{"+ reg.getUserName() +"}';";
+        System.out.println(query);
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + reg.getUserName() + "}',\"Password\"='{" + reg.getPassword() + "}',\"TypeID\"='{Registry}'\n" +
+                        "WHERE \"Username\"='{"+ reg.getUserName() +"}';";
+        stat.execute(query1);
+    } 
+    
+    public void deleteRegistryDB(Registry reg) throws SQLException {
+        String query = "DELETE FROM public.\"Registry\" WHERE \"Username\"='{"+ reg.getUserName() + "}';";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ reg.getUserName() +"}';";
+        stat.execute(query1);
+    }
+
+    public RegistryDirectory getDBRegistryDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RegistryDirectory regDirectory = new RegistryDirectory();
+        Registry reg;
+        String query = "SELECT * FROM public.\"Registry\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                reg = new Registry();
+                regDirectory.getRegistryDirectory().add(reg);
+                reg.setName(removeBrackets(rs.getString(1)));
+                reg.setUserName(removeBrackets(rs.getString(2)));
+                reg.setPassword(removeBrackets(rs.getString(3)));
+                reg.setAddress(removeBrackets(rs.getString(4)));
+                reg.setState(removeBrackets(rs.getString(5)));
+                reg.setCity(removeBrackets(rs.getString(6)));
+                reg.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
+                if(rs.getString(8)!=null)
+                reg.setEmail(removeBrackets(rs.getString(8)));
+            }
+            return regDirectory;
+    }
+         public void saveTransportationDB(Transportation trans) throws SQLException {
+        String query = "INSERT INTO public.\"Transportation\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\",\"AvailableTransport\")\n"+
+                       "VALUES ('{"+ trans.getName() +"}','{"+ trans.getUserName() +"}','{"+ trans.getPassword() +"}','{"+ trans.getAddress() +"}','{"+ trans.getCity() +"}','{"+ trans.getState() +"}',"+ String.valueOf(trans.getZipCode()) +",'{"+ trans.getState() +"}','{car}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+         System.out.println("111111111");
+        
+        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
+                         "VALUES ('{"+ trans.getUserName() + "}','{"+ trans.getPassword() +"}','{Transportation}');";
+        stat.execute(query1);
+    }
+    public void updateTransportationDB(Transportation trans) throws SQLException {
+        System.out.println(trans.getUserName()); 
+        String query = "UPDATE public.\"Transportation\" SET \"Name\"='{" + trans.getName()  +",\"Username\"='{" + trans.getUserName() + "}',\"Password\"='{" + trans.getPassword() + "}',\"Address\"='{" + trans.getAddress() + "}',\"State\"='{" + trans.getState() + "}',\"City\"='{"+ trans.getCity() +"}',\"Zipcode\"="+ String.valueOf(trans.getZipCode()) +",\"EmailID\"='{"+trans.getEmail()+"}'\n" +
+                       "WHERE \"Username\"='{"+ trans.getUserName() +"}';";
+        System.out.println(query);
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + trans.getUserName() + "}',\"Password\"='{" + trans.getPassword() + "}',\"TypeID\"='{Transportation}'\n" +
+                        "WHERE \"Username\"='{"+ trans.getUserName() +"}';";
+        stat.execute(query1);
+    } 
+    
+    public void deleteTransportationDB(Transportation trans) throws SQLException {
+        String query = "DELETE FROM public.\"Transportation\" WHERE \"Username\"='{"+ trans.getUserName() + "}';";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ trans.getUserName() +"}';";
+        stat.execute(query1);
+    }
+
+    public TransportDirectory getDBTransportationDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TransportDirectory transDirectory = new TransportDirectory();
+        Transportation trans;
+        String query = "SELECT * FROM public.\"Transportation\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                trans = new Transportation();
+                transDirectory.getTransportationDirectory().add(trans);
+                trans.setName(removeBrackets(rs.getString(1)));
+                trans.setUserName(removeBrackets(rs.getString(2)));
+                trans.setPassword(removeBrackets(rs.getString(3)));
+                trans.setAddress(removeBrackets(rs.getString(4)));
+                trans.setState(removeBrackets(rs.getString(5)));
+                trans.setCity(removeBrackets(rs.getString(6)));
+                trans.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
+                if(rs.getString(8)!=null)
+                trans.setEmail(removeBrackets(rs.getString(8)));
+            }
+            return transDirectory;
+    }
+    
+       public void saveUNODB(UNO uno) throws SQLException {
+        String query = "INSERT INTO public.\"UNO\"(\"Name\",\"Username\",\"Password\",\"EmailID\")\n" +
+                       "VALUES ('{"+ uno.getUNO_Name() + "}','{"+ uno.getUNO_Username() + "}','{"+ uno.getUNO_Password() + "}','{" + uno.getUNO_email() + "}'" +");";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
+                         "VALUES ('{"+ uno.getUNO_Name() + "}','{"+ uno.getUNO_Password() +"}','{UNO}');";
+        stat.execute(query1);
+    }
+       
+       public void savePharmacyDB(Pharmacy phar) throws SQLException {
+        String query = "INSERT INTO public.\"Pharmacy\"(\"Name\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\",\"EmailID\")\n" +
+                       "VALUES ('{"+ phar.getName() + "}','{"+ phar.getUserName() + "}','{"+ phar.getPassword() + "}','{"+ phar.getAddress() + "}','{" + phar.getState() + "}','{"+ phar.getCity() + "}'," + String.valueOf(phar.getZipCode()) + ",'{" + phar.getEmail() + "}'" +");";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
+                         "VALUES ('{"+ phar.getUserName() + "}','{"+ phar.getPassword() +"}','{Pharmacy}');";
+        stat.execute(query1);
+    }
+    public void updatePharmacyDB(Pharmacy phar) throws SQLException {
+        System.out.println(phar.getUserName()); 
+        String query = "UPDATE public.\"Pharmacy\" SET \"Name\"='{" + phar.getName() + "}',\"Username\"='{" + phar.getUserName() + "}',\"Password\"='{" + phar.getPassword() + "}',\"Address\"='{" + phar.getAddress() + "}',\"State\"='{" + phar.getState() + "}',\"City\"='{"+ phar.getCity() +"}',\"Zipcode\"="+ String.valueOf(phar.getZipCode()) +",\"EmailID\"='{"+phar.getEmail()+"}'\n" +
+                       "WHERE \"Username\"='{"+ phar.getUserName() +"}';";
+        System.out.println(query);
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + phar.getUserName() + "}',\"Password\"='{" + phar.getPassword() + "}',\"TypeID\"='{Pharmacy}'\n" +
+                        "WHERE \"Username\"='{"+ phar.getUserName() +"}';";
+        stat.execute(query1);
+    } 
+    
+    public void deletePharmacyDB(Pharmacy phar) throws SQLException {
+        String query = "DELETE FROM public.\"Pharmacy\" WHERE \"Username\"='{"+ phar.getUserName() + "}';";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+        
+        String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ phar.getUserName() +"}';";
+        stat.execute(query1);
+    }
+
+    public PharmacyDirectory getDBPharmacyDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PharmacyDirectory pharDirectory = new PharmacyDirectory();
+        Pharmacy phar;
+        String query = "SELECT * FROM public.\"Pharmacy\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                phar = new Pharmacy();
+                pharDirectory.getPharmacyDirectory().add(phar);
+                phar.setName(removeBrackets(rs.getString(1)));
+                
+                phar.setUserName(removeBrackets(rs.getString(2)));
+                phar.setPassword(removeBrackets(rs.getString(3)));
+                phar.setAddress(removeBrackets(rs.getString(4)));
+                phar.setState(removeBrackets(rs.getString(5)));
+                phar.setCity(removeBrackets(rs.getString(6)));
+                phar.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
+                if(rs.getString(8)!=null)
+                phar.setEmail(removeBrackets(rs.getString(8)));
+            }
+            return pharDirectory;
     }
 }

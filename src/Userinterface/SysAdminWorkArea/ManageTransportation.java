@@ -12,6 +12,9 @@ import System.EcoSystem;
 import System.Transportation.TransportDirectory;
 import System.Transportation.Transportation;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
@@ -31,11 +34,12 @@ public class ManageTransportation extends javax.swing.JPanel {
     private JSplitPane jSplitPane1;
     Transportation transportation;
     TransportDirectory TransportationDirectory;
-    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) {
+    public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
       this.TransportationDirectory = TransportationDirectory;
+      populateTable();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,9 +371,12 @@ public class ManageTransportation extends javax.swing.JPanel {
             txtTransportzipcode.setForeground(Color.red);
         }
           
-           //Null Check
-       
-          if (txtTransportname.getText().isEmpty()
+
+          
+         //Null Value Check
+          
+         if (txtTransportname.getText().isEmpty()
+
                 || txtTransportlogin.getText().isEmpty()
                 || txtTransportpassword.getText().isEmpty()
                 || txtTransportationmail.getText().isEmpty()
@@ -420,7 +427,7 @@ public class ManageTransportation extends javax.swing.JPanel {
              
                 // Intitializing Registry Object
          
-         Transportation newtransporation = TransportationDirectory.addTransportation();
+         Transportation newtransporation = system.addTransportation();
          newtransporation.setName(txtTransportname.getText());
          newtransporation.setUserName(txtTransportlogin.getText());
          newtransporation.setPassword(txtTransportpassword.getText());
@@ -430,11 +437,23 @@ public class ManageTransportation extends javax.swing.JPanel {
          newtransporation.setState(txtTransportstate.getText());
          newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
          
-         JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
-         }    
+
        
          
       
+
+          try {
+            system.saveTransportationDB(newtransporation);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Transportation details saved sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
@@ -558,7 +577,17 @@ public class ManageTransportation extends javax.swing.JPanel {
           transportation.setState(state);
           transportation.setZipCode(zipcode);
           
-          JOptionPane.showMessageDialog(this, "transportation is updated!!");
+          try {
+                        system.updateTransportationDB(transportation);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Hospital details updated sucessfully");
+                    try {
+                        populateTable();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+                    }
           
         
        // Updating the values in the table 
@@ -634,4 +663,29 @@ public class ManageTransportation extends javax.swing.JPanel {
     private javax.swing.JTextField txtTransportstate;
     private javax.swing.JTextField txtTransportzipcode;
     // End of variables declaration//GEN-END:variables
+    private void populateTable() throws SQLException {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       DefaultTableModel model = (DefaultTableModel) tblTransportation.getModel();
+       model.setRowCount(0);
+         
+       TransportDirectory transDirectory = system.getDBTransportationDirectory();
+         for(Transportation h: transDirectory.getTransportationDirectory())
+         {
+             Object[] row = new Object[9];
+             row[0]=h;
+             row[1]=h.getUserName();
+             row[2]=h.getPassword();
+             row[3]=h.getAddress();
+             row[4]=h.getCity();
+             row[5]=h.getState();
+             row[6]=h.getZipCode();
+             row[7]=h.getModesOfTransportation();
+             row[8]=h.getEmail();
+             
+             model.addRow(row);
+         }
+    }
+
+
 }
+
