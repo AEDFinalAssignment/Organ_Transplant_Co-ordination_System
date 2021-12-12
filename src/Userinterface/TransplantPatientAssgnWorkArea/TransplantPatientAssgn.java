@@ -6,9 +6,13 @@
 package Userinterface.TransplantPatientAssgnWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,13 +26,47 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
      private EcoSystem system;
     private JSplitPane jSplitPane1;
     JPanel managepatient;
-    public TransplantPatientAssgn(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient) {
+    String Username;
+    public TransplantPatientAssgn(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient,String Username) throws SQLException {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.managepatient=managepatient;
+        this.Username = Username;
+        populateTable(Username);
     }
-
+    private void populateTable(String Username) throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblPatientdetails.getModel();
+        model.setRowCount(0);
+        
+        PatientDirectory PatientDirectory;
+        PatientDirectory = system.getDBPatientDirectory();   
+        
+        for(Patient p: PatientDirectory.getPatientDirectory())
+        {
+            if(p.getHospitalUsername().equals(Username))
+            {
+            Object[] row = new Object[14];
+             row[0]=p;
+             row[1]=p.getPatientID();
+             row[2]=p.getEntryDate();
+             row[3]=p.getName();
+             row[4]=p.getAge();
+             row[5]=p.getGender();
+             row[6]=p.getAddress();
+             row[7]=p.getCity();
+             row[8]=p.getState();
+             row[9]=p.getZipcode();
+             row[10]=p.getConNumber();
+             row[11]=p.getEmailID();
+             row[12]=p.getEmerConName();
+             row[13]=p.getEmerConNumber();
+             
+             model.addRow(row);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

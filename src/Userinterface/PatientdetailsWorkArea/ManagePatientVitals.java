@@ -407,7 +407,7 @@ public class ManagePatientVitals extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-        
+      //  DoctorAssignment da = new DoctorAssignment(jSplitPane1,system,);
     }//GEN-LAST:event_btnAssignActionPerformed
 
 
