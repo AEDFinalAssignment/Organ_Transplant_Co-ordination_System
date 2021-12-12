@@ -32,7 +32,7 @@ public class ManageTransportation extends javax.swing.JPanel {
 
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-   Transportation transportation;
+    Transportation transportation;
     TransportDirectory TransportationDirectory;
     public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) throws SQLException {
         initComponents();
@@ -371,21 +371,61 @@ public class ManageTransportation extends javax.swing.JPanel {
             txtTransportzipcode.setForeground(Color.red);
         }
           
+
           
          //Null Value Check
           
          if (txtTransportname.getText().isEmpty()
+
                 || txtTransportlogin.getText().isEmpty()
                 || txtTransportpassword.getText().isEmpty()
                 || txtTransportationmail.getText().isEmpty()
                 || txtTransportaddress.getText().isEmpty()
                 || txtTransportcity.getText().isEmpty()
-                || txtTransportzipcode.getText().isEmpty()
-                || txtTransportstate.getText().isEmpty()) {
+                || txtTransportstate.getText().isEmpty()
+                || txtTransportzipcode.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
          
-         // Intitializing Registry Object
+         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             
+                // Intitializing Registry Object
          
          Transportation newtransporation = system.addTransportation();
          newtransporation.setName(txtTransportname.getText());
@@ -397,6 +437,11 @@ public class ManageTransportation extends javax.swing.JPanel {
          newtransporation.setState(txtTransportstate.getText());
          newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
          
+
+       
+         
+      
+
           try {
             system.saveTransportationDB(newtransporation);
         } catch (SQLException ex) {
@@ -408,6 +453,7 @@ public class ManageTransportation extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
         }
+
          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
@@ -471,6 +517,57 @@ public class ManageTransportation extends javax.swing.JPanel {
           
           Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
           
+             //Null Check
+       
+          if (txtTransportname.getText().isEmpty()
+                || txtTransportlogin.getText().isEmpty()
+                || txtTransportpassword.getText().isEmpty()
+                || txtTransportationmail.getText().isEmpty()
+                || txtTransportaddress.getText().isEmpty()
+                || txtTransportcity.getText().isEmpty()
+                || txtTransportstate.getText().isEmpty()
+                || txtTransportzipcode.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+       
+          
           transportation.setName(name);
           transportation.setUserName(userName);
           transportation.setPassword(password);
@@ -492,6 +589,20 @@ public class ManageTransportation extends javax.swing.JPanel {
                         Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
                     }
           
+        
+       // Updating the values in the table 
+         
+        txtTransportname.setText(selectedEntry.getName());
+        txtTransportlogin.setText(selectedEntry.getUserName());
+        txtTransportpassword.setText(selectedEntry.getPassword());
+        txtTransportationmail.setText(selectedEntry.getEmail());
+        txtTransportaddress.setText(selectedEntry.getAddress());
+        txtTransportcity.setText(selectedEntry.getCity());
+        txtTransportstate.setText(selectedEntry.getState());
+        txtTransportzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
+        
+        // Clearing the field to Null
+          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
          txtTransportpassword.setText("");
@@ -500,10 +611,7 @@ public class ManageTransportation extends javax.swing.JPanel {
          txtTransportcity.setText("");
          txtTransportstate.setText("");
          txtTransportzipcode.setText("");
-          
-          
-          
-                 
+                          
         
         
         
