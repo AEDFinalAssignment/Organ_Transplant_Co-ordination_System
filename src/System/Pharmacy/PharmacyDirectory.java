@@ -38,9 +38,9 @@ public class PharmacyDirectory {
         PharmacyDirectory.remove(p);
     }
 
-    public Pharmacy searchPharmacy(int id) {
+    public Pharmacy searchPharmacy(String login) {
         for (Pharmacy pharmacy : PharmacyDirectory) {
-            if (pharmacy.getPharmacyID()== id) {
+            if (pharmacy.getUserName()== login) {
                 return pharmacy;
             }
         }
