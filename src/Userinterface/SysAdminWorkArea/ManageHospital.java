@@ -291,23 +291,41 @@ public class ManageHospital extends javax.swing.JPanel {
                validation=0;            
         }   
          
-//         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
-//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-//               validation=0;  
-//         }
-//         
+        
            if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
                JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
                validation=0;            
         }   
          
            
-         //Unique Check for username
-         
-         /*if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
-              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-              validation=0; 
-         }*/
+        try {
+
+            if(!txtHospitalmail.getText().contains(".com")){
+            JOptionPane.showMessageDialog(null, "Enter valid email id");
+            validation =0;
+            }
+            } catch (Exception e) {
+
+            }
+
+
+        
+
+            //Unique Check for username
+
+            try {
+            if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
+            JOptionPane.showMessageDialog(null, "Enter a unique Username");
+            validation=0;
+            }
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Username Exception");
+
+
+            }
+
+           
          
          if(validation==1){
              
