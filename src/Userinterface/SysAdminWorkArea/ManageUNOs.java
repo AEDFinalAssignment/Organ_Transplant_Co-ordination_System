@@ -10,6 +10,9 @@ import System.EcoSystem;
 
 import System.UNOs.UNO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -51,12 +54,12 @@ public class ManageUNOs extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnHospitalsave = new javax.swing.JButton();
-        txtUnopassword = new javax.swing.JTextField();
         txtUnoname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtUnomail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        txtUnopassword = new javax.swing.JPasswordField();
 
         txtUnologin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,9 +116,9 @@ public class ManageUNOs extends javax.swing.JPanel {
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel4))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtUnologin, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtUnopassword, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txtUnopassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel19)
@@ -123,6 +126,11 @@ public class ManageUNOs extends javax.swing.JPanel {
                         .addComponent(txtUnomail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtUnologin, txtUnomail, txtUnoname, txtUnopassword});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel19, jLabel2, jLabel3, jLabel4});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -139,16 +147,16 @@ public class ManageUNOs extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(txtUnologin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtUnopassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtUnomail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnHospitalsave)
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addContainerGap(548, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -205,16 +213,23 @@ public class ManageUNOs extends javax.swing.JPanel {
         } 
          
          // Intitializing UNO Object
-         
-        UNO uno = new UNO();
+         else {
+             UNO uno =system.addUNO();
          uno.setUNO_Name(txtUnoname.getText());
          uno.setUNO_Username(txtUnologin.getText());
          uno.setUNO_Password(txtUnopassword.getText());
          uno.setUNO_email(txtUnomail.getText());
       
          
-         JOptionPane.showMessageDialog(this, "New UNO credential is added!!");
          
+          try {
+            system.saveUNODB(uno);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "UNOs details saved sucessfully");
+         }
+       
          txtUnoname.setText("");
          txtUnologin.setText("");
          txtUnopassword.setText("");
@@ -238,6 +253,6 @@ public class ManageUNOs extends javax.swing.JPanel {
     private javax.swing.JTextField txtUnologin;
     private javax.swing.JTextField txtUnomail;
     private javax.swing.JTextField txtUnoname;
-    private javax.swing.JTextField txtUnopassword;
+    private javax.swing.JPasswordField txtUnopassword;
     // End of variables declaration//GEN-END:variables
 }

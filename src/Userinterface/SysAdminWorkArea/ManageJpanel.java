@@ -184,8 +184,14 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyActionPerformed
         // TODO add your handling code here:
-          ManagePharmacy mp= new ManagePharmacy(jSplitPane1,system);
-        jSplitPane1.setRightComponent(mp);
+          ManagePharmacy mp;
+        try {
+            mp = new ManagePharmacy(jSplitPane1,system);
+            jSplitPane1.setRightComponent(mp);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageJpanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
      
         
     }//GEN-LAST:event_btnPharmacyActionPerformed

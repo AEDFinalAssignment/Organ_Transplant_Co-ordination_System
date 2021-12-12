@@ -57,30 +57,27 @@ public class ManageTransportation extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        btnHospitalupdate = new javax.swing.JButton();
+        btntransupdate = new javax.swing.JButton();
         txtTransportlogin = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransportation = new javax.swing.JTable();
         txtTransportcity = new javax.swing.JTextField();
         txtTransportaddress = new javax.swing.JTextField();
-        rbtntrucks = new javax.swing.JRadioButton();
         txtHospitalsearch = new javax.swing.JTextField();
-        rbtnjets = new javax.swing.JRadioButton();
-        btnHospitaldelete = new javax.swing.JButton();
-        rbtnambulance = new javax.swing.JRadioButton();
+        btnTransdelete = new javax.swing.JButton();
         btnHospitalsave = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtTransportpassword = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        rbtncars = new javax.swing.JRadioButton();
-        btnHospitalview = new javax.swing.JButton();
+        btnTransview = new javax.swing.JButton();
         txtTransportname = new javax.swing.JTextField();
         txtTransportstate = new javax.swing.JTextField();
         txtTransportzipcode = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtTransportationmail = new javax.swing.JTextField();
+        txtTransportpassword = new javax.swing.JPasswordField();
+        txtAvailtrans = new javax.swing.JTextField();
 
         jLabel7.setText("State");
 
@@ -95,10 +92,10 @@ public class ManageTransportation extends javax.swing.JPanel {
 
         btnSearch.setText("Search");
 
-        btnHospitalupdate.setText("Update");
-        btnHospitalupdate.addActionListener(new java.awt.event.ActionListener() {
+        btntransupdate.setText("Update");
+        btntransupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHospitalupdateActionPerformed(evt);
+                btntransupdateActionPerformed(evt);
             }
         });
 
@@ -129,11 +126,11 @@ public class ManageTransportation extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name ", "Login Name ", "Password", "Address Line", "City", "State", "Zip Code", "mode of Transport", "Mail ID "
+                "Name ", "Login Name ", "Password", "Address Line", "City", "State", "Zip Code", "Mail ID ", "mode of Transport"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -142,18 +139,12 @@ public class ManageTransportation extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblTransportation);
 
-        rbtntrucks.setText("Fire truck");
-
-        rbtnjets.setText("Private Jet");
-
-        btnHospitaldelete.setText("Delete");
-        btnHospitaldelete.addActionListener(new java.awt.event.ActionListener() {
+        btnTransdelete.setText("Delete");
+        btnTransdelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHospitaldeleteActionPerformed(evt);
+                btnTransdeleteActionPerformed(evt);
             }
         });
-
-        rbtnambulance.setText("Ambulance");
 
         btnHospitalsave.setText("SAVE");
         btnHospitalsave.addActionListener(new java.awt.event.ActionListener() {
@@ -166,12 +157,10 @@ public class ManageTransportation extends javax.swing.JPanel {
 
         jLabel6.setText("City");
 
-        rbtncars.setText("Cars");
-
-        btnHospitalview.setText("View ");
-        btnHospitalview.addActionListener(new java.awt.event.ActionListener() {
+        btnTransview.setText("View ");
+        btnTransview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHospitalviewActionPerformed(evt);
+                btnTransviewActionPerformed(evt);
             }
         });
 
@@ -206,26 +195,14 @@ public class ManageTransportation extends javax.swing.JPanel {
                                     .addComponent(jLabel9))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbtnambulance)
-                                            .addComponent(rbtnjets))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbtntrucks)
-                                            .addComponent(rbtncars))
-                                        .addGap(32, 32, 32))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTransportname, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtTransportlogin)
-                                                .addComponent(txtTransportpassword)
-                                                .addComponent(txtTransportaddress)
-                                                .addComponent(txtTransportcity)
-                                                .addComponent(txtTransportstate)
-                                                .addComponent(txtTransportzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtTransportname, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportlogin, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportaddress, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportcity, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportstate, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportzipcode, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(txtTransportpassword)
+                                    .addComponent(txtAvailtrans)))
                             .addComponent(jLabel2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
@@ -234,11 +211,11 @@ public class ManageTransportation extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnHospitalview)
+                                .addComponent(btnTransview)
                                 .addGap(261, 261, 261)
-                                .addComponent(btnHospitalupdate)
+                                .addComponent(btntransupdate)
                                 .addGap(241, 241, 241)
-                                .addComponent(btnHospitaldelete)
+                                .addComponent(btnTransdelete)
                                 .addGap(52, 52, 52))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,9 +240,9 @@ public class ManageTransportation extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnHospitalupdate)
-                            .addComponent(btnHospitalview)
-                            .addComponent(btnHospitaldelete)))
+                            .addComponent(btntransupdate)
+                            .addComponent(btnTransview)
+                            .addComponent(btnTransdelete)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -294,16 +271,11 @@ public class ManageTransportation extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(txtTransportzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(rbtnambulance)
-                            .addComponent(rbtncars))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtnjets)
-                            .addComponent(rbtntrucks))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtAvailtrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(68, 68, 68)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
                             .addComponent(txtTransportationmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -370,7 +342,11 @@ public class ManageTransportation extends javax.swing.JPanel {
             txtTransportzipcode.setBorder(BorderFactory.createLineBorder(Color.RED));
             txtTransportzipcode.setForeground(Color.red);
         }
-          
+
+           if (txtAvailtrans.getText().isEmpty()) {
+            txtAvailtrans.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtAvailtrans.setForeground(Color.red);
+        }
 
           
          //Null Value Check
@@ -382,8 +358,11 @@ public class ManageTransportation extends javax.swing.JPanel {
                 || txtTransportationmail.getText().isEmpty()
                 || txtTransportaddress.getText().isEmpty()
                 || txtTransportcity.getText().isEmpty()
+
+                || txtTransportzipcode.getText().isEmpty()
                 || txtTransportstate.getText().isEmpty()
-                || txtTransportzipcode.getText().isEmpty()) {
+                 ||txtAvailtrans.getText().isEmpty()) {
+
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
           
@@ -436,6 +415,7 @@ public class ManageTransportation extends javax.swing.JPanel {
          newtransporation.setCity(txtTransportcity.getText());
          newtransporation.setState(txtTransportstate.getText());
          newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
+          newtransporation.setState(txtAvailtrans.getText());
          
 
        
@@ -463,13 +443,13 @@ public class ManageTransportation extends javax.swing.JPanel {
          txtTransportcity.setText("");
          txtTransportstate.setText("");
          txtTransportzipcode.setText("");
-         
+          txtAvailtrans.setText("");
          
          
         
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
-    private void btnHospitalviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalviewActionPerformed
+    private void btnTransviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransviewActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblTransportation.getSelectedRow();
         
@@ -490,152 +470,108 @@ public class ManageTransportation extends javax.swing.JPanel {
         txtTransportcity.setText(selectedEntry.getCity());
         txtTransportstate.setText(selectedEntry.getState());
         txtTransportzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
-    }//GEN-LAST:event_btnHospitalviewActionPerformed
+        txtAvailtrans.setText(selectedEntry.getModesOfTransportation());
+    }//GEN-LAST:event_btnTransviewActionPerformed
 
-    private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed
+    private void btntransupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransupdateActionPerformed
         // TODO add your handling code here:
-         int selectedRowIndex = tblTransportation.getSelectedRow();
-        
-        if(selectedRowIndex <0){
-            JOptionPane.showMessageDialog(this, "Please select a row to view");
-            return;            
-        }
-        
-        DefaultTableModel model = (DefaultTableModel) tblTransportation.getModel();
-        Transportation selectedEntry = (Transportation) model.getValueAt(selectedRowIndex, 0);       
-        
-        
-        String name = txtTransportname.getText();
-        String userName = txtTransportlogin.getText();
-        String password = txtTransportpassword.getText();
-        String email = txtTransportationmail.getText();
-        String address = txtTransportaddress.getText();        
-        String city = txtTransportcity.getText();
-        String state = txtTransportstate.getText();
-        int zipcode = Integer.parseInt(txtTransportzipcode.getText());
-          
-          
-          Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
-          
-             //Null Check
-       
-          if (txtTransportname.getText().isEmpty()
-                || txtTransportlogin.getText().isEmpty()
-                || txtTransportpassword.getText().isEmpty()
-                || txtTransportationmail.getText().isEmpty()
-                || txtTransportaddress.getText().isEmpty()
-                || txtTransportcity.getText().isEmpty()
-                || txtTransportstate.getText().isEmpty()
-                || txtTransportzipcode.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
-          
-        //Data Validation
-        int validation = 1;
-        
-        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
-             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
-              validation=0;
-        }
-        
-        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid city name");    
-               validation=0;            
-        }
-        
-         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid state name");    
-               validation=0;            
-        }   
-         
-         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
-              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-               validation=0;  
-         }
-         
-           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
-               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
-               validation=0;            
-        }   
-         
-           
-         //Unique Check for username
-         
-         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
-              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-              validation=0; 
-         }
-         
-       
-          
-          transportation.setName(name);
-          transportation.setUserName(userName);
-          transportation.setPassword(password);
-          transportation.setEmail(email);
-          transportation.setAddress(address);
-          transportation.setCity(city);
-          transportation.setState(state);
-          transportation.setZipCode(zipcode);
-          
+
           try {
-                        system.updateTransportationDB(transportation);
+            // TODO add your handling code here:
+            int selectedRowIndex = tblTransportation.getSelectedRow();
+            
+            if(selectedRowIndex<0)
+            {
+                JOptionPane.showMessageDialog(this, "Select a Transportation to update.");
+                return;
+            }
+            
+            DefaultTableModel modeltrans = (DefaultTableModel) tblTransportation.getModel();
+            Transportation selectedTransportation = (Transportation) modeltrans.getValueAt(selectedRowIndex, 0);
+            String TransportationUsername = selectedTransportation.getUserName();
+            TransportDirectory transDirectory = system.getDBTransportationDirectory();
+            
+            for(Transportation trans: transDirectory.getTransportationDirectory())
+            {   
+                if(trans.getUserName().equals(TransportationUsername))
+                {
+                    trans.setName(txtTransportname.getText());
+                    trans.setUserName(txtTransportlogin.getText());
+                    trans.setPassword(txtTransportpassword.getText());
+                    trans.setAddress(txtTransportaddress.getText());
+                    trans.setCity(txtTransportcity.getText());
+                    trans.setState(txtTransportstate.getText());
+                    trans.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
+                    trans.setEmail(txtTransportationmail.getText());
+                    trans.setModesOfTransportation(txtAvailtrans.getText());
+                    
+                    
+                    try {
+                        system.updateTransportationDB(trans);
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    JOptionPane.showMessageDialog(this, "Hospital details updated sucessfully");
+                    JOptionPane.showMessageDialog(this, "Transportation details updated sucessfully");
                     try {
                         populateTable();
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
                     }
-          
-        
-       // Updating the values in the table 
-         
-        txtTransportname.setText(selectedEntry.getName());
-        txtTransportlogin.setText(selectedEntry.getUserName());
-        txtTransportpassword.setText(selectedEntry.getPassword());
-        txtTransportationmail.setText(selectedEntry.getEmail());
-        txtTransportaddress.setText(selectedEntry.getAddress());
-        txtTransportcity.setText(selectedEntry.getCity());
-        txtTransportstate.setText(selectedEntry.getState());
-        txtTransportzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
-        
-        // Clearing the field to Null
-          
-         txtTransportname.setText("");
-         txtTransportlogin.setText("");
-         txtTransportpassword.setText("");
-         txtTransportationmail.setText("");
-         txtTransportaddress.setText("");
-         txtTransportcity.setText("");
-         txtTransportstate.setText("");
-         txtTransportzipcode.setText("");
-                          
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_btnHospitalupdateActionPerformed
 
-    private void btnHospitaldeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitaldeleteActionPerformed
+                    txtTransportname.setText("");
+                    txtTransportlogin.setText("");
+                    txtTransportpassword.setText("");
+                    txtTransportaddress.setText("");
+                    txtTransportcity.setText("");
+                    txtTransportstate.setText("");
+                    txtTransportzipcode.setText("");
+                    txtTransportationmail.setText("");
+                    txtAvailtrans.setText("");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btntransupdateActionPerformed
+
+    private void btnTransdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransdeleteActionPerformed
         // TODO add your handling code here:
-      Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
-         
-         TransportationDirectory.removeRegistry(transportation);
+           int selectedRowIndex = tblTransportation.getSelectedRow();
+
         
-    }//GEN-LAST:event_btnHospitaldeleteActionPerformed
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a Transportation to delete.");
+            return;
+        }
+        
+        DefaultTableModel modeltrans = (DefaultTableModel) tblTransportation.getModel();
+        Transportation selectedTransportation = (Transportation) modeltrans.getValueAt(selectedRowIndex, 0);
+        
+        system.getTransportDirectory().getTransportationDirectory().remove(selectedTransportation);
+        
+        try {
+            system.deleteTransportationDB(selectedTransportation);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Transportation details deleted sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnTransdeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHospitaldelete;
     private javax.swing.JButton btnHospitalsave;
-    private javax.swing.JButton btnHospitalupdate;
-    private javax.swing.JButton btnHospitalview;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnTransdelete;
+    private javax.swing.JButton btnTransview;
+    private javax.swing.JButton btntransupdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -648,18 +584,15 @@ public class ManageTransportation extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rbtnambulance;
-    private javax.swing.JRadioButton rbtncars;
-    private javax.swing.JRadioButton rbtnjets;
-    private javax.swing.JRadioButton rbtntrucks;
     private javax.swing.JTable tblTransportation;
+    private javax.swing.JTextField txtAvailtrans;
     private javax.swing.JTextField txtHospitalsearch;
     private javax.swing.JTextField txtTransportaddress;
     private javax.swing.JTextField txtTransportationmail;
     private javax.swing.JTextField txtTransportcity;
     private javax.swing.JTextField txtTransportlogin;
     private javax.swing.JTextField txtTransportname;
-    private javax.swing.JTextField txtTransportpassword;
+    private javax.swing.JPasswordField txtTransportpassword;
     private javax.swing.JTextField txtTransportstate;
     private javax.swing.JTextField txtTransportzipcode;
     // End of variables declaration//GEN-END:variables
@@ -679,8 +612,10 @@ public class ManageTransportation extends javax.swing.JPanel {
              row[4]=h.getCity();
              row[5]=h.getState();
              row[6]=h.getZipCode();
-             row[7]=h.getModesOfTransportation();
-             row[8]=h.getEmail();
+              row[7]=h.getEmail();
+             row[8]=h.getModesOfTransportation();
+            
+             
              
              model.addRow(row);
          }
