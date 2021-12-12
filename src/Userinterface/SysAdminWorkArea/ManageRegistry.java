@@ -542,7 +542,6 @@ public class ManageRegistry extends javax.swing.JPanel {
             Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
         }
         
- int selectedRowIndex = tblRegistry.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
         Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
         
