@@ -381,10 +381,10 @@ public class ManagePharmacy extends javax.swing.JPanel {
            
          //Unique Check for username
          
-         if (hospitalDirectory.searchHospital(txtPharmacylogin.getText())!=null){
+       /*  if (hospitalDirectory.searchHospital(txtPharmacylogin.getText())!=null){
               JOptionPane.showMessageDialog(null, "Enter a unique Username");    
               validation=0; 
-         }
+         }*/
          
          if(validation==1){
             

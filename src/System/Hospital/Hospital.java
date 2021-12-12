@@ -15,7 +15,7 @@ import System.Organization;
  */
 public class Hospital extends Organization {
     private int HospitalID;
-    private boolean TransplantEquipped;
+    private String TransplantEquipped;
     private StaffDirectory StaffDirectory;
 
     public Hospital() {
@@ -39,13 +39,15 @@ public class Hospital extends Organization {
         this.StaffDirectory = StaffDirectory;
     }    
 
-    public boolean isTransplantEquipped() {
+    public String getTransplantEquipped() {
         return TransplantEquipped;
     }
 
-    public void setTransplantEquipped(boolean TransplantEquipped) {
+    public void setTransplantEquipped(String TransplantEquipped) {
         this.TransplantEquipped = TransplantEquipped;
     }
+
+   
      public Staff addStaff(){
         Staff stf = new Staff();
         StaffDirectory.getStaffDirectory().add(stf);

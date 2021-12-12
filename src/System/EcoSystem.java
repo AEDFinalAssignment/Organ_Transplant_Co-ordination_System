@@ -139,7 +139,7 @@ public class EcoSystem{
     }
     public void saveHospitalDB(Hospital hos) throws SQLException {
         String query = "INSERT INTO public.\"Hospital\"(\"Name\",\"TransplantEquipped\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\",\"EmailID\")\n" +
-                       "VALUES ('{"+ hos.getName() + "}',"+ String.valueOf(hos.isTransplantEquipped()) + ",'{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{" + hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ",'{" + hos.getEmail() + "}'" +");";
+                       "VALUES ('{"+ hos.getName() + "}','{"+ hos.getTransplantEquipped() + "}','{"+ hos.getUserName() + "}','{"+ hos.getPassword() + "}','{"+ hos.getAddress() + "}','{" + hos.getState() + "}','{"+ hos.getCity() + "}'," + String.valueOf(hos.getZipCode()) + ",'{" + hos.getEmail() + "}'" +");";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
         
@@ -149,7 +149,7 @@ public class EcoSystem{
     }
     public void updateHospitalDB(Hospital hos) throws SQLException {
         System.out.println(hos.getUserName()); 
-        String query = "UPDATE public.\"Hospital\" SET \"Name\"='{" + hos.getName() + "}',\"TransplantEquipped\"=" + String.valueOf(hos.isTransplantEquipped()) + ",\"Username\"='{" + hos.getUserName() + "}',\"Password\"='{" + hos.getPassword() + "}',\"Address\"='{" + hos.getAddress() + "}',\"State\"='{" + hos.getState() + "}',\"City\"='{"+ hos.getCity() +"}',\"Zipcode\"="+ String.valueOf(hos.getZipCode()) +",\"EmailID\"='{"+hos.getEmail()+"}'\n" +
+        String query = "UPDATE public.\"Hospital\" SET \"Name\"='{" + hos.getName() + "}',\"TransplantEquipped\"='{"+ hos.getTransplantEquipped() + "}',\"Username\"='{" + hos.getUserName() + "}',\"Password\"='{" + hos.getPassword() + "}',\"Address\"='{" + hos.getAddress() + "}',\"State\"='{" + hos.getState() + "}',\"City\"='{"+ hos.getCity() +"}',\"Zipcode\"="+ String.valueOf(hos.getZipCode()) +",\"EmailID\"='{"+hos.getEmail()+"}'\n" +
                        "WHERE \"Username\"='{"+ hos.getUserName() +"}';";
         System.out.println(query);
         java.sql.Statement stat = sqlConnect.retStatement();
@@ -181,7 +181,7 @@ public class EcoSystem{
                 hos = new Hospital();
                 hosDirectory.getHospitalDirectory().add(hos);
                 hos.setName(removeBrackets(rs.getString(1)));
-                hos.setTransplantEquipped(Boolean.parseBoolean(removeBrackets(rs.getString(8))));
+                hos.setTransplantEquipped(removeBrackets(rs.getString(8)));
                 hos.setUserName(removeBrackets(rs.getString(2)));
                 hos.setPassword(removeBrackets(rs.getString(3)));
                 hos.setAddress(removeBrackets(rs.getString(4)));

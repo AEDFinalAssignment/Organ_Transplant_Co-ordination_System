@@ -317,10 +317,12 @@ public class ManageHospital extends javax.swing.JPanel {
        hos.setState(txtHospitalstate1.getText());
        hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
        hos.setEmail(txtHospitalmail.getText());
-       if(jCheckBox3.isSelected())
-       hos.setTransplantEquipped(true);
-       else
-       hos.setTransplantEquipped(false);
+       hos.setTransplantEquipped("No");
+    if(jCheckBox3.isSelected())
+     hos.setTransplantEquipped("Yes");
+
+
+      
        
        //Null Check
        
@@ -366,10 +368,10 @@ public class ManageHospital extends javax.swing.JPanel {
            
          //Unique Check for username
          
-         if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
+         /*if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
               JOptionPane.showMessageDialog(null, "Enter a unique Username");    
               validation=0; 
-         }
+         }*/
          
          if(validation==1){
              
@@ -422,6 +424,7 @@ public class ManageHospital extends javax.swing.JPanel {
         txtHospitalstate1.setText(selectedHospital.getState());
         txtHospitalzipcode1.setText(String.valueOf(selectedHospital.getZipCode()));
         txtHospitalmail.setText(selectedHospital.getEmail());
+        
     }//GEN-LAST:event_btnView1ActionPerformed
 
     private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
@@ -454,11 +457,9 @@ public class ManageHospital extends javax.swing.JPanel {
                     hos.setState(txtHospitalstate1.getText());
                     hos.setZipCode(Integer.parseInt(txtHospitalzipcode1.getText()));
                     hos.setEmail(txtHospitalmail.getText());
+                    hos.setTransplantEquipped("No");
                     if(jCheckBox3.isSelected())
-                        hos.setTransplantEquipped(true);
-                    else
-                        hos.setTransplantEquipped(false);
-                    
+                    hos.setTransplantEquipped("Yes");
                     try {
                         system.updateHospitalDB(hos);
                     } catch (SQLException ex) {
@@ -469,56 +470,10 @@ public class ManageHospital extends javax.swing.JPanel {
                     
                        //Null Check
        
-          if (txtHospitalname1.getText().isEmpty()
-                || txtHospitallogin1.getText().isEmpty()
-                || txtHospitalpassword1.getText().isEmpty()
-                || txtHospitalmail.getText().isEmpty()
-                || txtHospitaladdress1.getText().isEmpty()
-                || txtHospitalcity1.getText().isEmpty()
-                || txtHospitalstate1.getText().isEmpty()
-                || txtHospitalzipcode1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
           
-        //Data Validation
-        int validation = 1;
-        
-        if(txtHospitalname1.getText().matches("-?(0|[1-9]\\d*)")){
-             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
-              validation=0;
-        }
-        
-        if(txtHospitalcity1.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid city name");    
-               validation=0;            
-        }
-        
-         if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid state name");    
-               validation=0;            
-        }   
-         
-//         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
-//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-//               validation=0;  
-//         }
-         
-           if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
-               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
-               validation=0;            
-        }   
-         
-           
-         //Unique Check for username
-         
-         if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
-              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-              validation=0; 
-         }
-         
-         if(validation==1){
+
              JOptionPane.showMessageDialog(this,"Hospital details updated sucessfully");             
-         }    
+            
                   
                     
                     
@@ -625,7 +580,7 @@ public class ManageHospital extends javax.swing.JPanel {
              row[4]=h.getCity();
              row[5]=h.getState();
              row[6]=h.getZipCode();
-             row[7]=h.isTransplantEquipped();
+             row[7]=h.getTransplantEquipped();
              row[8]=h.getEmail();
              
              model.addRow(row);
