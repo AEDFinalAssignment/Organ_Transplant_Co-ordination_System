@@ -349,11 +349,11 @@ public class ManageHospital extends javax.swing.JPanel {
         try{
             
              if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
                validation=0;            
             
         }}catch(Exception e) {
-                JOptionPane.showMessageDialog(null, "Enter valid state name");    
+                JOptionPane.showMessageDialog(null, "Enter valid city name");    
                 
                 }
         
