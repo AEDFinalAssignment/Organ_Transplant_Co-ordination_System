@@ -79,8 +79,6 @@ public class ManageHospital extends javax.swing.JPanel {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         btnSave1 = new javax.swing.JButton();
-        txtHospitalsearch1 = new javax.swing.JTextField();
-        btnSearch1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHospital1 = new javax.swing.JTable();
         btnView1 = new javax.swing.JButton();
@@ -149,10 +147,6 @@ public class ManageHospital extends javax.swing.JPanel {
             }
         });
         add(btnSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 536, -1, -1));
-        add(txtHospitalsearch1, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 125, 236, -1));
-
-        btnSearch1.setText("Search");
-        add(btnSearch1, new org.netbeans.lib.awtextra.AbsoluteConstraints(822, 124, -1, -1));
 
         tblHospital1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -243,8 +237,80 @@ public class ManageHospital extends javax.swing.JPanel {
     }//GEN-LAST:event_txtHospitallogin1ActionPerformed
 
     private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
-        // TODO add your handling code here:
-       Hospital hos = system.addHospital();
+        // TODO add your handling code h
+       //Null Check
+       try{
+           
+          if (txtHospitalname1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing name field");
+                  }
+          if ( txtHospitallogin1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Login name field");
+                  }
+          
+          if ( txtHospitalpassword1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Password field");
+                  }
+         if (  txtHospitalmail.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing mailID field");
+                  } 
+          if (  txtHospitaladdress1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing address field");
+                  } 
+           if (  txtHospitalcity1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing City field");
+                  }  
+          if ( txtHospitalstate1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing State field");
+                  }  
+            if ( txtHospitalzipcode1.getText().isEmpty())
+                  {
+                      throw new Exception( "Missing Zipcode field");
+                  }      
+                
+         
+          
+        //Data Validation
+        
+        
+        if(txtHospitalname1.getText().matches("-?(0|[1-9]\\d*)")){
+             throw new Exception( "Enter Valid Name");    
+            
+        }
+        
+       
+        
+        if(txtHospitalcity1.getText().matches("-?(0|[1-9]\\d*)")){
+               throw new Exception( "Enter valid city name");    
+                           
+        }
+        
+        
+             if(!txtHospitalzipcode1.getText().matches("-?(0|[1-9]\\d*)")){               
+                            
+        throw new Exception( "Enter valid zipcode"); 
+            
+        }
+        
+        
+        
+         if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
+               throw new Exception( "Enter valid state name");    
+                          
+        }   
+        
+            if(!txtHospitalmail.getText().contains(".com")){
+            throw new Exception( "Enter valid email id");
+          
+            }
+             Hospital hos = system.addHospital();
        hos.setName(txtHospitalname1.getText());
        hos.setUserName(txtHospitallogin1.getText());
        hos.setPassword(txtHospitalpassword1.getText());
@@ -256,68 +322,8 @@ public class ManageHospital extends javax.swing.JPanel {
        hos.setTransplantEquipped("No");
     if(jCheckBox3.isSelected())
      hos.setTransplantEquipped("Yes");
-
-
-      
-       
-       //Null Check
-       
-          if (txtHospitalname1.getText().isEmpty()
-                || txtHospitallogin1.getText().isEmpty()
-                || txtHospitalpassword1.getText().isEmpty()
-                || txtHospitalmail.getText().isEmpty()
-                || txtHospitaladdress1.getText().isEmpty()
-                || txtHospitalcity1.getText().isEmpty()
-                || txtHospitalstate1.getText().isEmpty()
-                || txtHospitalzipcode1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
-          
-        //Data Validation
-        int validation = 1;
-        
-        if(txtHospitalname1.getText().matches("-?(0|[1-9]\\d*)")){
-             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
-              validation=0;
-        }
-        
-        if(txtHospitalcity1.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid city name");    
-               validation=0;            
-        }
-        
-         if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
-               JOptionPane.showMessageDialog(null, "Enter valid state name");    
-               validation=0;            
-        }   
-         
-//         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
-//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-//               validation=0;  
-//         }
-//         
-           if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
-               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
-               validation=0;            
-        }   
-         
-           
-         //Unique Check for username
-         
-         /*if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
-              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-              validation=0; 
-         }*/
-         
-         if(validation==1){
-             
-             
-             JOptionPane.showMessageDialog(this, "New Hospital details are added.");             
-         }    
-       
-         
-         
-        try {
+            
+               try {
             system.saveHospitalDB(hos);
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
@@ -336,6 +342,26 @@ public class ManageHospital extends javax.swing.JPanel {
        txtHospitalstate1.setText("");
        txtHospitalzipcode1.setText("");
        txtHospitalmail.setText("");
+             JOptionPane.showMessageDialog(this, "New Hospital details are added.");             
+            } 
+       
+       
+       catch (Exception e) {
+           JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+
+
+        
+
+        
+          
+         
+                    
+             
+       
+         
+         
+    
     }//GEN-LAST:event_btnSave1ActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
@@ -481,7 +507,6 @@ public class ManageHospital extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnSave1;
-    private javax.swing.JButton btnSearch1;
     private javax.swing.JButton btnUpdate1;
     private javax.swing.JButton btnView1;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -506,7 +531,6 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalmail;
     private javax.swing.JTextField txtHospitalname1;
     private javax.swing.JPasswordField txtHospitalpassword1;
-    private javax.swing.JTextField txtHospitalsearch1;
     private javax.swing.JTextField txtHospitalstate1;
     private javax.swing.JTextField txtHospitalzipcode1;
     // End of variables declaration//GEN-END:variables

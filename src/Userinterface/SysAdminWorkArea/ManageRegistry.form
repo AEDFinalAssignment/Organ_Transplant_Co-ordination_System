@@ -89,14 +89,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane1" min="-2" pref="761" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtHospitalsearch" min="-2" pref="236" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jScrollPane1" min="-2" pref="761" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -159,12 +152,7 @@
                           <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtHospitalsearch" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -219,11 +207,6 @@
             <Property name="text" type="java.lang.String" value="Login Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSearch">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Search"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Password"/>
@@ -251,8 +234,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="State"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtHospitalsearch">
         </Component>
         <Component class="javax.swing.JTextField" name="txtRegzipcode">
         </Component>
