@@ -6,6 +6,15 @@
 package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Hospital;
+import System.Hospital.HospitalDirectory;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -19,10 +28,16 @@ public class CreatePatientdetails extends javax.swing.JPanel {
      */
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public CreatePatientdetails(JSplitPane jSplitPane1,EcoSystem system) {
+    String Username;
+    int id;
+    public CreatePatientdetails(JSplitPane jSplitPane1,EcoSystem system,String Username,int id) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
+        this.id = id;
+        
+        populateFeild(system,Username,id);
     }
 
     /**
@@ -110,6 +125,11 @@ public class CreatePatientdetails extends javax.swing.JPanel {
         jLabel13.setText("Entry Date ");
 
         btnSave.setText("SAVE");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Age ");
 
@@ -270,6 +290,59 @@ public class CreatePatientdetails extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPatientstateActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            HospitalDirectory hosDirectory;
+            hosDirectory = system.getDBHospitalDirectory();
+            for(Hospital h: hosDirectory.getHospitalDirectory())
+            {
+                if(h.getUserName().equals(Username))
+                {
+                    Patient pat = new Patient();
+                    pat = h.addPatient();
+                    pat.setHealthID(Integer.parseInt(txtHealthID.getText()));
+                    pat.setPatientID(Integer.parseInt(txtPatientID.getText()));
+                    pat.setName(txtPatientname.getText());
+                    pat.setAge(Integer.parseInt(txtPatientage.getText()));
+                    pat.setGender(txtPatientgender.getText());
+                    pat.setAddress(txtPatientaddress.getText());
+                    pat.setCity(txtPatientcity.getText());
+                    pat.setState(txtPatientstate.getText());
+                    pat.setZipcode(Integer.parseInt(txtPatientZipcode.getText()));
+                    pat.setConNumber(Long.parseLong(txtPatientCno.getText()));
+                    pat.setEmailID(txtPatientmailID.getText());
+                    pat.setEmerConName(txtECname.getText());
+                    pat.setEmerConNumber(Long.parseLong(txtECno.getText()));
+                    pat.setHospitalUsername(Username);
+                    
+                    try {
+                        system.savePatientDB(pat);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    txtHealthID.setText("");
+                    txtPatientID.setText("");
+                    txtPatientname.setText("");
+                    txtPatientage.setText("");
+                    txtPatientgender.setText("");
+                    txtPatientaddress.setText("");
+                    txtPatientcity.setText("");
+                    txtPatientstate.setText("");
+                    txtPatientZipcode.setText("");
+                    txtPatientCno.setText("");
+                    txtPatientmailID.setText("");
+                    txtECname.setText("");
+                    txtECno.setText("");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
@@ -303,4 +376,37 @@ public class CreatePatientdetails extends javax.swing.JPanel {
     private javax.swing.JTextField txtPatientname;
     private javax.swing.JTextField txtPatientstate;
     // End of variables declaration//GEN-END:variables
+
+    private void populateFeild(EcoSystem system, String Username, int id) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(id!=-1)
+      {
+          try {
+            // TODO add your handling code here:
+            PatientDirectory patDirectory;
+            patDirectory = system.getDBPatientDirectory();
+            for(Patient p: patDirectory.getPatientDirectory())
+            {
+                if(p.getPatientID()==id)
+                {
+                    txtHealthID.setText(String.valueOf(p.getHealthID()));
+                    txtPatientID.setText(String.valueOf(p.getPatientID()));
+                    txtPatientname.setText(p.getName());
+                    txtPatientage.setText(String.valueOf(p.getAge()));
+                    txtPatientgender.setText(p.getGender());
+                    txtPatientaddress.setText(p.getAddress());
+                    txtPatientcity.setText(p.getCity());
+                    txtPatientstate.setText(p.getState());
+                    txtPatientZipcode.setText(String.valueOf(p.getZipcode()));
+                    txtPatientCno.setText(String.valueOf(p.getConNumber()));
+                    txtPatientmailID.setText(p.getEmailID());
+                    txtECname.setText(p.getEmerConName());
+                    txtECno.setText(String.valueOf(p.getEmerConNumber()));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    }
 }

@@ -7,6 +7,9 @@ package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
 import Userinterface.TransplantPatientAssgnWorkArea.TransplantPatientAssgn;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -20,10 +23,12 @@ public class ManagePatient extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system) {
+    private String Username;
+    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,String Username) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
     }
 
     /**
@@ -98,13 +103,19 @@ public class ManagePatient extends javax.swing.JPanel {
 
     private void btnexistingpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexistingpatientActionPerformed
         // TODO add your handling code here:
-         UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system);
-        jSplitPane1.setRightComponent(usd);
+         UpdatePatientdetails usd;
+         try {
+             usd = new UpdatePatientdetails(jSplitPane1,system,Username);
+             jSplitPane1.setRightComponent(usd);
+         } catch (SQLException ex) {
+             Logger.getLogger(ManagePatient.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
     }//GEN-LAST:event_btnexistingpatientActionPerformed
 
     private void btnCreatenewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatenewpatientActionPerformed
         // TODO add your handling code here:
-        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system);
+        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system,Username,-1);
         jSplitPane1.setRightComponent(cnp);
     }//GEN-LAST:event_btnCreatenewpatientActionPerformed
 

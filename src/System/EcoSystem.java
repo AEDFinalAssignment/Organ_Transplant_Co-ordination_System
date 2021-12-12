@@ -9,6 +9,8 @@ package System;
 import SQL_Connection.SQL_Connect;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
 import System.Pharmacy.Pharmacy;
@@ -20,7 +22,9 @@ import System.Transportation.Transportation;
 import System.UNOs.UNO;
 import java.beans.Statement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  *
@@ -181,13 +185,13 @@ public class EcoSystem{
                 hos = new Hospital();
                 hosDirectory.getHospitalDirectory().add(hos);
                 hos.setName(removeBrackets(rs.getString(1)));
-                hos.setTransplantEquipped(removeBrackets(rs.getString(8)));
-                hos.setUserName(removeBrackets(rs.getString(2)));
-                hos.setPassword(removeBrackets(rs.getString(3)));
-                hos.setAddress(removeBrackets(rs.getString(4)));
-                hos.setState(removeBrackets(rs.getString(5)));
-                hos.setCity(removeBrackets(rs.getString(6)));
-                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
+                hos.setTransplantEquipped(removeBrackets(rs.getString(2)));
+                hos.setUserName(removeBrackets(rs.getString(3)));
+                hos.setPassword(removeBrackets(rs.getString(4)));
+                hos.setAddress(removeBrackets(rs.getString(5)));
+                hos.setState(removeBrackets(rs.getString(6)));
+                hos.setCity(removeBrackets(rs.getString(7)));
+                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(8))));
                 if(rs.getString(9)!=null)
                 hos.setEmail(removeBrackets(rs.getString(9)));
             }
@@ -202,7 +206,6 @@ public class EcoSystem{
     }
     
     public void updateHosStaffDB(Staff stf) throws SQLException {
-        System.out.println("333333333");
         String query = "UPDATE public.\"HospitalStaff\" SET \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+",\"Name\"='{"+ stf.getName() +"}',\"ConNumber\"="+ String.valueOf(stf.getConNumber()) +",\"EmailID\"='{"+ stf.getEmailID() +"}',\"Designation\"='{"+ stf.getDesignation() +"}',\"Qualification\"='{"+ stf.getQualification() +"}',\"Specialization\"='{"+ stf.getSpecialization() +"}',\"Authorised\"="+ String.valueOf(stf.isAuthorization()) +",\"HospitalUsername\"='{"+ stf.getHospitalUsername() +"}'\n" +
                         "WHERE \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+";";
         java.sql.Statement stat = sqlConnect.retStatement();
@@ -214,6 +217,27 @@ public class EcoSystem{
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
     }
+        
+   public void savePatientDB(Patient pat) throws SQLException {
+        String query = "INSERT INTO public.\"Patient\"(\"HealthID\",\"PatientID\",\"Name\",\"Age\",\"Gender\",\n" +
+                       "\"Address\",\"City\",\"State\",\"Zipcode\",\"ConNumber\",\"EmailID\",\"EmerConNumber\",\"EmerConName\",\"EntryDate\",\"HospitalUsername\")\n" +
+                       "VALUES ("+String.valueOf(pat.getHealthID())+","+String.valueOf(pat.getPatientID())+",'{"+ pat.getName() +"}',"+String.valueOf(pat.getAge())+",'{"+ pat.getGender() +"}','{"+ pat.getAddress() +"}','{"+ pat.getCity() +"}','{"+ pat.getState() +"}',"+String.valueOf(pat.getZipcode())+","+String.valueOf(pat.getConNumber())+",'{"+ pat.getEmailID() +"}',"+String.valueOf(pat.getEmerConNumber())+",'{"+ pat.getEmerConName() +"}','{"+ String.valueOf(pat.getEntryDate()) +"}','{"+ pat.getHospitalUsername() +"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+    public void updatePatientDB(Patient pat) throws SQLException {
+        String query = "UPDATE public.\"Patient\" SET \"HealthID\"="+String.valueOf(pat.getHealthID())+",\"PatientID\"="+String.valueOf(pat.getPatientID())+",\"Name\"='{"+pat.getName()+"}',\"Age\"="+String.valueOf(pat.getAge())+",\"Gender\"='{"+pat.getGender()+"}',\"Address\"='{"+pat.getAddress()+"}',\"City\"='{"+pat.getCity()+"}',\"State\"='{"+pat.getState()+"}',\"Zipcode\"="+String.valueOf(pat.getZipcode())+",\"ConNumber\"="+String.valueOf(pat.getConNumber())+",\"EmailID\"='{"+pat.getEmailID()+"}',\"EmerConNumber\"="+String.valueOf(pat.getEmerConNumber())+",\"EmerConName\"='{"+pat.getEmerConName()+"}',\"EntryDate\"='{"+pat.getEntryDate()+"}',\"HospitalUsername\"='{"+pat.getHospitalUsername()+"}'\n" +
+                       "WHERE \"PatientID\"="+String.valueOf(pat.getPatientID())+";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+        public void deletePatientDB(Patient pat) throws SQLException {
+        String query = "DELETE FROM public.\"Patient\" WHERE \"PatientID\"="+ String.valueOf(pat.getPatientID()) + ";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    } 
   
      public void saveRegistryDB(Registry reg) throws SQLException {
         String query = "INSERT INTO public.\"Registry\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\")\n" +
@@ -420,5 +444,35 @@ public class EcoSystem{
                 stf.setHospitalUsername(removeBrackets(rs.getString(9)));
             }
             return stfDirectory;
+    }
+    public PatientDirectory getDBPatientDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PatientDirectory patDirectory = new PatientDirectory();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+        Patient pat;
+        String query = "SELECT * FROM public.\"Patient\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                pat = new Patient();
+                patDirectory.getPatientDirectory().add(pat);
+                pat.setHealthID(Integer.parseInt(removeBrackets(rs.getString(1))));
+                pat.setPatientID(Integer.parseInt(removeBrackets(rs.getString(2))));
+                pat.setName(removeBrackets(rs.getString(3)));
+                pat.setAge(Integer.parseInt(removeBrackets(rs.getString(4))));
+                pat.setGender(removeBrackets(rs.getString(5)));
+                pat.setAddress(removeBrackets(rs.getString(6)));
+                pat.setCity(removeBrackets(rs.getString(7)));
+                pat.setState(removeBrackets(rs.getString(8)));
+                pat.setZipcode(Integer.parseInt(removeBrackets(rs.getString(9))));
+                pat.setConNumber(Long.parseLong(removeBrackets(rs.getString(10))));
+                pat.setEmailID(removeBrackets(rs.getString(11)));
+                pat.setEmerConNumber(Long.parseLong(removeBrackets(rs.getString(12))));
+                pat.setEmerConName(removeBrackets(rs.getString(13)));
+                pat.setEntryDate(removeBrackets(rs.getString(13)));
+                pat.setHospitalUsername(removeBrackets(rs.getString(15)));
+            }
+            return patDirectory;
     }
 }
