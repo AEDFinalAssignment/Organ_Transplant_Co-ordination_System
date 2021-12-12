@@ -9,6 +9,7 @@ package System;
 import SQL_Connection.SQL_Connect;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
+import System.Hospital.Staff.Staff;
 import System.Pharmacy.PharmacyDirectory;
 import System.Registry.RegistryDirectory;
 import System.Transportation.TransportDirectory;
@@ -168,5 +169,12 @@ public class EcoSystem{
                 hos.setEmail(removeBrackets(rs.getString(9)));
             }
             return hosDirectory;
+    }
+    
+    public void saveHosStaffDB(Staff stf) throws SQLException {
+        String query = "INSERT INTO public.\"HospitalStaff\"(\"Staff_ID\",\"Name\",\"ConNumber\",\"EmailID\",\"Designation\",\"Qualification\",\"Specialization\",\"Authorised\",\"HospitalUsername\")\n" +
+                       "VALUES ("+ String.valueOf(stf.getStaff_ID()) + " ,'{" + stf.getName() +"}'," + String.valueOf(stf.getConNumber()) + ",'{" + stf.getEmailID() +"}','{" + stf.getDesignation() +"}','{" + stf.getQualification() +"}','{" + stf.getSpecialization() +"}',"+ String.valueOf(stf.isAuthorization()) +",'{" + stf.getHospitalUsername() +"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
     }
 }

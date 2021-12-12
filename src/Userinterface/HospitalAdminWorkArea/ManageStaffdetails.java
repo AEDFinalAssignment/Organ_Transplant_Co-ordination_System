@@ -6,6 +6,12 @@
 package Userinterface.HospitalAdminWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Hospital;
+import System.Hospital.HospitalDirectory;
+import System.Hospital.Staff.Staff;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -19,10 +25,12 @@ public class ManageStaffdetails extends javax.swing.JPanel {
      */
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManageStaffdetails(JSplitPane jSplitPane1,EcoSystem system) {
+    private String Username;
+    public ManageStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
     }
 
     /**
@@ -40,11 +48,11 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtStaffID1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtStaffID2 = new javax.swing.JTextField();
+        txtEmailID = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Designation = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        txtStaffID3 = new javax.swing.JTextField();
+        txtConNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtqualification = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -66,8 +74,8 @@ public class ManageStaffdetails extends javax.swing.JPanel {
 
         jLabel5.setText("Mail ID ");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Nurse ", "Maintenance Staff", "Technical Staff" }));
+        Designation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Designation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Nurse ", "Maintenance Staff", "Technical Staff" }));
 
         jLabel6.setText("Contact Number ");
 
@@ -87,8 +95,18 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         });
 
         btnSave.setText("SAVE");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("UPDATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -110,12 +128,12 @@ public class ManageStaffdetails extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(Designation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(32, 32, 32)
-                                    .addComponent(txtStaffID2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(55, 55, 55)
@@ -123,31 +141,30 @@ public class ManageStaffdetails extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(37, 37, 37)
-                                    .addComponent(txtStaffID3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(55, 55, 55)
-                                    .addComponent(txtspecialisation, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(55, 55, 55)
-                                    .addComponent(txtqualification, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(66, 66, 66)
-                                    .addComponent(jCheckBox1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCheckBox2))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(132, 132, 132)
-                                    .addComponent(btnSave)
-                                    .addGap(62, 62, 62)
-                                    .addComponent(jButton1))))))
-                .addContainerGap(857, Short.MAX_VALUE))
+                                    .addComponent(txtConNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(txtspecialisation, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(txtqualification, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(66, 66, 66)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(253, 253, 253)
+                                .addComponent(jButton1)))))
+                .addGap(18, 18, 18)
+                .addComponent(btnSave)
+                .addContainerGap(780, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtStaffID, txtStaffID1, txtStaffID2, txtStaffID3, txtqualification, txtspecialisation});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtConNumber, txtEmailID, txtStaffID, txtStaffID1, txtqualification, txtspecialisation});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,21 +182,23 @@ public class ManageStaffdetails extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStaffID3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtConNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStaffID2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Designation, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtqualification, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtqualification, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave)))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,13 +209,11 @@ public class ManageStaffdetails extends javax.swing.JPanel {
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2))
                 .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(jButton1))
+                .addComponent(jButton1)
                 .addContainerGap(338, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtStaffID, txtStaffID1, txtStaffID2, txtStaffID3});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtConNumber, txtEmailID, txtStaffID, txtStaffID1});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,13 +221,61 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        try {
+            // TODO add your handling code here:
+            System.out.println("33333333");
+            HospitalDirectory hosDirectory;
+            hosDirectory = system.getDBHospitalDirectory();
+            for(Hospital h: hosDirectory.getHospitalDirectory())
+            {
+                System.out.println("22222222");
+                System.out.println(h.getUserName());
+                if(h.getUserName().equals(Username))
+                {
+                    System.out.println("111111");
+                    Staff stf = new Staff();
+                    stf = h.addStaff();
+                    stf.setName(txtStaffID1.getText());
+                    stf.setStaff_ID(Integer.parseInt(txtStaffID.getText()));
+                    stf.setConNumber(Long.parseLong(txtConNumber.getText()));
+                    stf.setEmailID(txtEmailID.getText());
+                    stf.setDesignation(Designation.getSelectedItem().toString());
+                    stf.setQualification(txtqualification.getText());
+                    stf.setSpecialization(txtspecialisation.getText());
+                    stf.setHospitalUsername(Username);
+                    
+                    try {
+                        System.out.println(stf.getName());
+                        system.saveHosStaffDB(stf);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    txtStaffID1.setText("");
+                    txtStaffID.setText("");
+                    txtConNumber.setText("");
+                    txtEmailID.setText("");
+                    txtqualification.setText("");
+                    txtspecialisation.setText("");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Designation;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -220,10 +285,10 @@ public class ManageStaffdetails extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtConNumber;
+    private javax.swing.JTextField txtEmailID;
     private javax.swing.JTextField txtStaffID;
     private javax.swing.JTextField txtStaffID1;
-    private javax.swing.JTextField txtStaffID2;
-    private javax.swing.JTextField txtStaffID3;
     private javax.swing.JTextField txtqualification;
     private javax.swing.JTextField txtspecialisation;
     // End of variables declaration//GEN-END:variables
