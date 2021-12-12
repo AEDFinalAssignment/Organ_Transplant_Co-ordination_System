@@ -223,8 +223,11 @@ public class ManageRegistry extends javax.swing.JPanel {
                         .addGap(44, 44, 44)
                         .addComponent(btnSearch))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel19, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -512,9 +515,10 @@ public class ManageRegistry extends javax.swing.JPanel {
                     reg.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
                     reg.setEmail(txtRegistrymail.getText());
                     
-                    
+                    System.out.println(11111);
                     try {
                         system.updateRegistryDB(reg);
+                        System.out.println(22222);
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -538,7 +542,7 @@ public class ManageRegistry extends javax.swing.JPanel {
             Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-
+ int selectedRowIndex = tblRegistry.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
         Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
         
@@ -672,7 +676,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         DefaultTableModel modelhos = (DefaultTableModel) tblRegistry.getModel();
         Registry selectedRegistry = (Registry) modelhos.getValueAt(selectedRowIndex, 0);
         
-        system.getHospitalDirectory().getHospitalDirectory().remove(selectedRegistry);
+        system.getRegistryDirectory().getRegistryDirectory().remove(selectedRegistry);
         
         try {
             system.deleteRegistryDB(selectedRegistry);
