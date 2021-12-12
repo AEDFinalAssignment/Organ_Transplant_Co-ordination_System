@@ -13,6 +13,7 @@ import System.Hospital.Staff.StaffDirectory;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -28,12 +29,14 @@ public class ManageStaffdetails extends javax.swing.JPanel {
     private JSplitPane jSplitPane1;
     private String Username;
     private int id;
-    public ManageStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username,int id) {
+    JPanel Hospitalmain;
+    public ManageStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username,int id, JPanel Hospitalmain) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
         this.id = id;
+        this.Hospitalmain=Hospitalmain;
         populateFeild(system,Username,id);
     }
 
@@ -67,7 +70,7 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("MANAGE STAFF DETAILS:");
@@ -121,7 +124,12 @@ public class ManageStaffdetails extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,8 +188,8 @@ public class ManageStaffdetails extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnView))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel10)))
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(628, Short.MAX_VALUE))
         );
 
@@ -190,9 +198,9 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,12 +370,18 @@ public class ManageStaffdetails extends javax.swing.JPanel {
         // TODO add your handling code here:
         UpdateStaffdetails usd;
         try {
-            usd = new UpdateStaffdetails(this.jSplitPane1,this.system,Username);
+            usd = new UpdateStaffdetails(this.jSplitPane1,this.system,Username,Hospitalmain);
             jSplitPane1.setRightComponent(usd);
         } catch (SQLException ex) {
             Logger.getLogger(ManageStaffdetails.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(Hospitalmain);
+    }//GEN-LAST:event_jLabel11MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -378,7 +392,7 @@ public class ManageStaffdetails extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,11 +30,13 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
      private EcoSystem system;
     private JSplitPane jSplitPane1;
     private String Username;
-    public UpdateStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username) throws SQLException {
+    JPanel Hospitalmain;
+    public UpdateStaffdetails(JSplitPane jSplitPane1,EcoSystem system,String Username,JPanel Hospitalmain) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
+        this.Hospitalmain=Hospitalmain;
         populatetblDoctor(this.Username);
         populatetblStaff(this.Username);
     }
@@ -61,6 +64,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         btnDelete2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,12 +170,21 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
 
         jLabel2.setText("Other Staff Details :");
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -208,8 +221,13 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +268,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         DefaultTableModel modeldoc = (DefaultTableModel) tblDoctor.getModel();
         Staff selectedStaff = (Staff) modeldoc.getValueAt(selectedRowIndex, 0);
         
-        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID());
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID(),Hospitalmain);
         jSplitPane1.setRightComponent(msd);
     }//GEN-LAST:event_btnView1ActionPerformed
 
@@ -267,7 +285,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         DefaultTableModel modelstaff = (DefaultTableModel) tblStaff.getModel();
         Staff selectedStaff = (Staff) modelstaff.getValueAt(selectedRowIndex, 0);
         
-        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID());
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,selectedStaff.getStaff_ID(),Hospitalmain);
         jSplitPane1.setRightComponent(msd);
     }//GEN-LAST:event_btnView2ActionPerformed
 
@@ -333,6 +351,12 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(Hospitalmain);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
@@ -342,6 +366,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
