@@ -11,9 +11,12 @@ import System.Registry.RegistryDirectory;
 import System.Transportation.TransportDirectory;
 import System.Transportation.Transportation;
 import System.UNOs.UNO;
+import Userinterface.Mainframe;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 
@@ -36,6 +39,7 @@ public class ManageJpanel extends javax.swing.JPanel {
     Registry registry;
     RegistryDirectory registryDirectory;
     UNO uno;
+    JPanel jPanel2;
     public ManageJpanel(JSplitPane jSplitPane1,EcoSystem system, TransportDirectory TransportationDirectory,RegistryDirectory registryDirectory,UNO uno) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
@@ -43,6 +47,7 @@ public class ManageJpanel extends javax.swing.JPanel {
         this.TransportationDirectory = TransportationDirectory;
         this.registryDirectory = registryDirectory;
         this.uno = uno;
+        this.jPanel2 = jPanel2;
     }
 
     /**
@@ -198,8 +203,11 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         // TODO add your handling code here:
-         
-         
+        System.out.println("123");
+        Jpanel1.setVisible(false);
+        JFrame mf= new JFrame();
+        mf.setVisible(true);
+        
     }//GEN-LAST:event_btnLogoutMouseClicked
 
 
