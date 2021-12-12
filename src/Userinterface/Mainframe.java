@@ -205,6 +205,7 @@ public class Mainframe extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             Useraccount = system.AuthenticateUser(txtUsername.getText(), txtPassword1.getText());
+                    
             System.out.println(Useraccount);
             if(Useraccount.contains("SysAdmin"))
             {

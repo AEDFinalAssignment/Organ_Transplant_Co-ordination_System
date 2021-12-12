@@ -361,6 +361,7 @@ public class ManageRegistry extends javax.swing.JPanel {
          
           
         //Data Validation
+        
         int validation = 1;
         
         if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
@@ -376,13 +377,34 @@ public class ManageRegistry extends javax.swing.JPanel {
          if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
                JOptionPane.showMessageDialog(null, "Enter valid state name");    
                validation=0;            
-        }   
+        } 
          
-//         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
-//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
-//               validation=0;  
-//         }
          
+          try {
+            
+            if(!txtRegistrymail.getText().contains(".com")){ 
+                 JOptionPane.showMessageDialog(null, "Enter valid email id"); 
+                 validation =0;
+            }
+        } catch (Exception e) {
+                        
+        }        
+        
+         
+         //Unique Check for username
+         
+         try {
+             if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Username Exception"); 
+            
+           
+        }        
+              
 
            if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
                JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
@@ -390,14 +412,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         }   
          
            
-//         //Unique Check for username
-//         
-//         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
-//              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
-//              validation=0; 
-//         }
-         
-         
+
          
         // Add entry to the table
 
