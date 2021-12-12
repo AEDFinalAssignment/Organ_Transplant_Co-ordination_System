@@ -29,19 +29,16 @@ public class ManagePatient extends javax.swing.JPanel {
     private JSplitPane jSplitPane1;
 
     JPanel Hospitalmain;
-    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,JPanel Hospitalmain) {
-        initComponents();
-         this.jSplitPane1 = jSplitPane1;
-        this.system = system;
-       this.Hospitalmain=Hospitalmain;
 
     private String Username;
-    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,String Username) {
+    int id;
+    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,JPanel Hospitalmain,String Username,int id) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
-
+        this.id = id;
+        this.Hospitalmain = Hospitalmain;
     }
 
     /**
@@ -147,25 +144,34 @@ public class ManagePatient extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnexistingpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexistingpatientActionPerformed
-        // TODO add your handling code here:
-
-        UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system,managepatient);
-        jSplitPane1.setRightComponent(usd);
+         try {
+             // TODO add your handling code here:
+             
+             UpdatePatientdetails usd = new UpdatePatientdetails(jSplitPane1,system,managepatient,Username,-1);
+             jSplitPane1.setRightComponent(usd);
+         } catch (SQLException ex) {
+             Logger.getLogger(ManagePatient.class.getName()).log(Level.SEVERE, null, ex);
+         }
 
     }//GEN-LAST:event_btnexistingpatientActionPerformed
 
     private void btnCreatenewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatenewpatientActionPerformed
         // TODO add your handling code here:
 
-        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system,managepatient);
-
+        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system,managepatient,Username,-1);
         jSplitPane1.setRightComponent(cnp);
     }//GEN-LAST:event_btnCreatenewpatientActionPerformed
 
     private void btntransplantlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransplantlistActionPerformed
         // TODO add your handling code here:
-        TransplantPatientAssgn tpa = new TransplantPatientAssgn (jSplitPane1,system,managepatient);
-        jSplitPane1.setRightComponent(tpa);
+        TransplantPatientAssgn tpa;
+         try {
+             tpa = new TransplantPatientAssgn (jSplitPane1,system,managepatient,Username);
+             jSplitPane1.setRightComponent(tpa);
+         } catch (SQLException ex) {
+             Logger.getLogger(ManagePatient.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
     }//GEN-LAST:event_btntransplantlistActionPerformed
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked

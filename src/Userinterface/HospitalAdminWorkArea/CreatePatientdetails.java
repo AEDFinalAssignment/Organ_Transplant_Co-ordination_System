@@ -33,14 +33,9 @@ public class CreatePatientdetails extends javax.swing.JPanel {
     private JSplitPane jSplitPane1;
 
     JPanel managepatient;
-    public CreatePatientdetails(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient) {
-        initComponents();
-         this.jSplitPane1 = jSplitPane1;
-        this.system = system;
-        this.managepatient=managepatient;
     String Username;
     int id;
-    public CreatePatientdetails(JSplitPane jSplitPane1,EcoSystem system,String Username,int id) {
+    public CreatePatientdetails(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient,String Username,int id) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;

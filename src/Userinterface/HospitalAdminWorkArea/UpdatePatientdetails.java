@@ -37,12 +37,16 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
     private JSplitPane jSplitPane1;
 
     JPanel managepatient;
+    String Username;
+    int id;
     
-    public UpdatePatientdetails(JSplitPane jSplitPane1, EcoSystem system,JPanel managepatient) {
+    public UpdatePatientdetails(JSplitPane jSplitPane1, EcoSystem system,JPanel managepatient,String Username,int id) throws SQLException {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.managepatient=managepatient;
+        this.Username = Username;
+        this.id = id;
        populateTable(Username);
 
     }
@@ -269,7 +273,7 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
         DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
         Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
         
-        CreatePatientdetails cpd = new CreatePatientdetails(jSplitPane1,system,Username,selectedPatient.getPatientID());
+        CreatePatientdetails cpd = new CreatePatientdetails(jSplitPane1,system,managepatient,Username,selectedPatient.getPatientID());
         jSplitPane1.setRightComponent(cpd);
     }//GEN-LAST:event_btnViewActionPerformed
 
