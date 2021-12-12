@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import static java.time.Clock.system;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -233,6 +234,9 @@ public class Mainframe extends javax.swing.JFrame {
             else if(Useraccount.contains("UNO")){
                 this.id = Integer.parseInt(Useraccount.replace("UNO", ""));
                 
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Invalid User name or Password");            
             }
             
             txtUsername.setText("");
