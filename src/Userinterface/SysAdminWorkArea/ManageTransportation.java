@@ -425,7 +425,7 @@ public class ManageTransportation extends javax.swing.JPanel {
          
          if(validation==1){
              
-                // Intitializing Registry Object
+                
          
          Transportation newtransporation = system.addTransportation();
          newtransporation.setName(txtTransportname.getText());
@@ -453,6 +453,7 @@ public class ManageTransportation extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
         }
+         }
 
          
          txtTransportname.setText("");
