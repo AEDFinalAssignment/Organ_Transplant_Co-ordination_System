@@ -11,6 +11,9 @@ import System.Registry.RegistryDirectory;
 import System.Transportation.TransportDirectory;
 import System.Transportation.Transportation;
 import System.UNOs.UNO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 
@@ -145,8 +148,14 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnRegistrySys1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrySys1ActionPerformed
         // TODO add your handling code here:
-                ManageRegistry mr = new ManageRegistry(jSplitPane1,system,registryDirectory);
-                jSplitPane1.setRightComponent(mr);
+                ManageRegistry mr;
+        try {
+            mr = new ManageRegistry(jSplitPane1,system,registryDirectory);
+            jSplitPane1.setRightComponent(mr);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageJpanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
     }//GEN-LAST:event_btnRegistrySys1ActionPerformed
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
@@ -157,8 +166,14 @@ public class ManageJpanel extends javax.swing.JPanel {
 
     private void btnTransportationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransportationActionPerformed
         // TODO add your handling code here:
-         ManageTransportation mt= new ManageTransportation(jSplitPane1, system,TransportationDirectory);
-        jSplitPane1.setRightComponent(mt);
+         ManageTransportation mt;
+        try {
+            mt = new ManageTransportation(jSplitPane1, system,TransportationDirectory);
+            jSplitPane1.setRightComponent(mt);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageJpanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnTransportationActionPerformed
 
     private void btnUNOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUNOsActionPerformed

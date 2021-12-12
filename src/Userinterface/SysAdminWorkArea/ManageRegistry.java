@@ -10,6 +10,9 @@ import System.EcoSystem;
 import System.Registry.Registry;
 import System.Registry.RegistryDirectory;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
@@ -30,13 +33,13 @@ public class ManageRegistry extends javax.swing.JPanel {
    
     Registry registry;
     RegistryDirectory registryDirectory;
-    public ManageRegistry(JSplitPane jSplitPane1,EcoSystem system,RegistryDirectory registryDirectory) {
+    public ManageRegistry(JSplitPane jSplitPane1,EcoSystem system,RegistryDirectory registryDirectory) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
       this.registryDirectory = registryDirectory;
        
-
+        populateTable();
     
 
      
@@ -354,7 +357,7 @@ public class ManageRegistry extends javax.swing.JPanel {
          
          // Intitializing Registry Object
          
-         Registry newreRegistry = registryDirectory.addRegistry();
+         Registry newreRegistry = system.addRegistry();
          newreRegistry.setName(txtRegname.getText());
          newreRegistry.setUserName(txtReglogin.getText());
          newreRegistry.setPassword(txtRegpassword.getText());
@@ -364,7 +367,17 @@ public class ManageRegistry extends javax.swing.JPanel {
          newreRegistry.setState(txtRegstate.getText());
          newreRegistry.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
          
-         JOptionPane.showMessageDialog(this, "New Registry is added!!");
+         try {
+            system.saveRegistryDB(newreRegistry);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Registry details saved sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
          txtRegname.setText("");
          txtReglogin.setText("");
@@ -397,81 +410,99 @@ public class ManageRegistry extends javax.swing.JPanel {
         txtRegname.setText(selectedEntry.getName());
         txtReglogin.setText(selectedEntry.getUserName());
         txtRegpassword.setText(selectedEntry.getPassword());
-        txtRegistrymail.setText(selectedEntry.getEmail());
         txtRegaddress.setText(selectedEntry.getAddress());
         txtRegcity.setText(selectedEntry.getCity());
         txtRegstate.setText(selectedEntry.getState());
         txtRegzipcode.setText(String.valueOf(selectedEntry.getZipCode()));
+      txtRegistrymail.setText(selectedEntry.getEmail());
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        
-        
-        int selectedRowIndex = tblRegistry.getSelectedRow();
-        
-        if(selectedRowIndex <0){
-            JOptionPane.showMessageDialog(this, "Please select a row to view");
-            return;            
+        try {
+            // TODO add your handling code here:
+            int selectedRowIndex = tblRegistry.getSelectedRow();
+            
+            if(selectedRowIndex<0)
+            {
+                JOptionPane.showMessageDialog(this, "Select a Registry to update.");
+                return;
+            }
+            
+            DefaultTableModel modelreg = (DefaultTableModel) tblRegistry.getModel();
+            Registry selectedRegistry = (Registry) modelreg.getValueAt(selectedRowIndex, 0);
+            String registryUsername = selectedRegistry.getUserName();
+            RegistryDirectory regDirectory = system.getDBRegistryDirectory();
+            
+            for(Registry reg: regDirectory.getRegistryDirectory())
+            {   
+                if(reg.getUserName().equals(registryUsername))
+                {
+                    reg.setName(txtRegname.getText());
+                    reg.setUserName(txtReglogin.getText());
+                    reg.setPassword(txtRegpassword.getText());
+                    reg.setAddress(txtRegaddress.getText());
+                    reg.setCity(txtRegcity.getText());
+                    reg.setState(txtRegstate.getText());
+                    reg.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
+                    reg.setEmail(txtRegistrymail.getText());
+                    
+                    
+                    try {
+                        system.updateRegistryDB(reg);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Registry details updated sucessfully");
+                    try {
+                        populateTable();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txtRegname.setText("");
+                    txtReglogin.setText("");
+                    txtRegpassword.setText("");
+                    txtRegaddress.setText("");
+                    txtRegcity.setText("");
+                    txtRegstate.setText("");
+                    txtRegzipcode.setText("");
+                    txtRegistrymail.setText("");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
-        
-        
-        String name = txtRegname.getText();
-        String userName = txtReglogin.getText();
-        String password = txtRegpassword.getText();
-        String email = txtRegistrymail.getText();
-        String address = txtRegaddress.getText();        
-        String city = txtRegcity.getText();
-        String state = txtRegstate.getText();
-        int zipcode = Integer.parseInt(txtRegzipcode.getText());
-          
-          
-          Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
-          
-          registry.setName(name);
-          registry.setUserName(userName);
-          registry.setPassword(password);
-          registry.setEmail(email);
-          registry.setAddress(address);
-          registry.setCity(city);
-          registry.setState(state);
-          registry.setZipCode(zipcode);
-          
-          JOptionPane.showMessageDialog(this, "Registry is updated!!");
-          
-         txtRegname.setText("");
-         txtReglogin.setText("");
-         txtRegpassword.setText("");
-         txtRegistrymail.setText("");
-         txtRegaddress.setText("");
-         txtRegcity.setText("");
-         txtRegstate.setText("");
-         txtRegzipcode.setText("");
-          
-          
-          
-                 
-        
-        
-        
-        
-        
-        
-        
-        
+       
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblRegistry.getSelectedRow();
         
-         Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
-         
-         registryDirectory.removeRegistry(registry);
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a hospital to delete.");
+            return;
+        }
         
+        DefaultTableModel modelhos = (DefaultTableModel) tblRegistry.getModel();
+        Registry selectedRegistry = (Registry) modelhos.getValueAt(selectedRowIndex, 0);
         
+        system.getHospitalDirectory().getHospitalDirectory().remove(selectedRegistry);
+        
+        try {
+            system.deleteRegistryDB(selectedRegistry);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        JOptionPane.showMessageDialog(this, "Registry details deleted sucessfully");
+        try {
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     
@@ -506,7 +537,29 @@ public class ManageRegistry extends javax.swing.JPanel {
     private javax.swing.JTextField txtRegstate;
     private javax.swing.JTextField txtRegzipcode;
     // End of variables declaration//GEN-END:variables
-
+ 
+    private void populateTable() throws SQLException {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       DefaultTableModel model = (DefaultTableModel)tblRegistry.getModel();
+       model.setRowCount(0);
+         
+       RegistryDirectory regDirectory = system.getDBRegistryDirectory();
+         for(Registry h: regDirectory.getRegistryDirectory())
+         {
+             Object[] row = new Object[8];
+             row[0]=h;
+             row[1]=h.getUserName();
+             row[2]=h.getPassword();
+             row[3]=h.getAddress();
+             row[4]=h.getCity();
+             row[5]=h.getState();
+             row[6]=h.getZipCode();
+           
+             row[7]=h.getEmail();
+             
+             model.addRow(row);
+         }
+    }
  
     }
 
