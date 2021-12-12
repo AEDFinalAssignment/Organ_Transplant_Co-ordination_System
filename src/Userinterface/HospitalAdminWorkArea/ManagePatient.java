@@ -20,10 +20,12 @@ public class ManagePatient extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system) {
+    private String Username;
+    public ManagePatient(JSplitPane jSplitPane1,EcoSystem system,String Username) {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        this.Username = Username;
     }
 
     /**
@@ -104,7 +106,7 @@ public class ManagePatient extends javax.swing.JPanel {
 
     private void btnCreatenewpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatenewpatientActionPerformed
         // TODO add your handling code here:
-        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system);
+        CreatePatientdetails cnp = new CreatePatientdetails (jSplitPane1,system,Username,-1);
         jSplitPane1.setRightComponent(cnp);
     }//GEN-LAST:event_btnCreatenewpatientActionPerformed
 

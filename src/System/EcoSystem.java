@@ -9,6 +9,7 @@ package System;
 import SQL_Connection.SQL_Connect;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
+import System.Hospital.Patient.Patient;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
 import System.Pharmacy.Pharmacy;
@@ -181,13 +182,13 @@ public class EcoSystem{
                 hos = new Hospital();
                 hosDirectory.getHospitalDirectory().add(hos);
                 hos.setName(removeBrackets(rs.getString(1)));
-                hos.setTransplantEquipped(removeBrackets(rs.getString(8)));
-                hos.setUserName(removeBrackets(rs.getString(2)));
-                hos.setPassword(removeBrackets(rs.getString(3)));
-                hos.setAddress(removeBrackets(rs.getString(4)));
-                hos.setState(removeBrackets(rs.getString(5)));
-                hos.setCity(removeBrackets(rs.getString(6)));
-                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
+                hos.setTransplantEquipped(removeBrackets(rs.getString(2)));
+                hos.setUserName(removeBrackets(rs.getString(3)));
+                hos.setPassword(removeBrackets(rs.getString(4)));
+                hos.setAddress(removeBrackets(rs.getString(5)));
+                hos.setState(removeBrackets(rs.getString(6)));
+                hos.setCity(removeBrackets(rs.getString(7)));
+                hos.setZipCode(Integer.parseInt(removeBrackets(rs.getString(8))));
                 if(rs.getString(9)!=null)
                 hos.setEmail(removeBrackets(rs.getString(9)));
             }
@@ -202,7 +203,6 @@ public class EcoSystem{
     }
     
     public void updateHosStaffDB(Staff stf) throws SQLException {
-        System.out.println("333333333");
         String query = "UPDATE public.\"HospitalStaff\" SET \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+",\"Name\"='{"+ stf.getName() +"}',\"ConNumber\"="+ String.valueOf(stf.getConNumber()) +",\"EmailID\"='{"+ stf.getEmailID() +"}',\"Designation\"='{"+ stf.getDesignation() +"}',\"Qualification\"='{"+ stf.getQualification() +"}',\"Specialization\"='{"+ stf.getSpecialization() +"}',\"Authorised\"="+ String.valueOf(stf.isAuthorization()) +",\"HospitalUsername\"='{"+ stf.getHospitalUsername() +"}'\n" +
                         "WHERE \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+";";
         java.sql.Statement stat = sqlConnect.retStatement();
@@ -214,6 +214,27 @@ public class EcoSystem{
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
     }
+        
+   public void savePatientDB(Patient pat) throws SQLException {
+        String query = "INSERT INTO public.\"Patient\"(\"HealthID\",\"PatientID\",\"Name\",\"Age\",\"Gender\",\n" +
+                       "\"Address\",\"City\",\"State\",\"Zipcode\",\"ConNumber\",\"EmailID\",\"EmerConNumber\",\"EmerConName\",\"EntryDate\",\"HospitalUsername\")\n" +
+                       "VALUES ("+String.valueOf(pat.getHealthID())+","+String.valueOf(pat.getPatientID())+",'{"+ pat.getName() +"}',"+String.valueOf(pat.getAge())+",'{"+ pat.getGender() +"}','{"+ pat.getAddress() +"}','{"+ pat.getCity() +"}','{"+ pat.getState() +"}',"+String.valueOf(pat.getZipcode())+","+String.valueOf(pat.getConNumber())+",'{"+ pat.getEmailID() +"}',"+String.valueOf(pat.getEmerConNumber())+",'{"+ pat.getEmerConName() +"}','{"+ String.valueOf(pat.getEntryDate()) +"}','{"+ pat.getHospitalUsername() +"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+ /*   public void updatePatientDB(Patient pat) throws SQLException {
+        String query = "UPDATE public.\"HospitalStaff\" SET \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+",\"Name\"='{"+ stf.getName() +"}',\"ConNumber\"="+ String.valueOf(stf.getConNumber()) +",\"EmailID\"='{"+ stf.getEmailID() +"}',\"Designation\"='{"+ stf.getDesignation() +"}',\"Qualification\"='{"+ stf.getQualification() +"}',\"Specialization\"='{"+ stf.getSpecialization() +"}',\"Authorised\"="+ String.valueOf(stf.isAuthorization()) +",\"HospitalUsername\"='{"+ stf.getHospitalUsername() +"}'\n" +
+                        "WHERE \"Staff_ID\"="+String.valueOf(stf.getStaff_ID())+";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    
+        public void deletePatientDB(Patient pat) throws SQLException {
+        String query = "DELETE FROM public.\"HospitalStaff\" WHERE \"Staff_ID\"="+ String.valueOf(stf.getStaff_ID()) + ";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    } */
   
      public void saveRegistryDB(Registry reg) throws SQLException {
         String query = "INSERT INTO public.\"Registry\"(\"Name\",\"Username\",\"Password\",\"Address\",\"City\",\"State\",\"Zipcode\",\"EmailID\")\n" +

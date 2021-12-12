@@ -102,7 +102,7 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
 
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         // TODO add your handling code here:
-         ManagePatient mp = new ManagePatient(jSplitPane1,system);
+         ManagePatient mp = new ManagePatient(jSplitPane1,system,Username);
         jSplitPane1.setRightComponent(mp);
     }//GEN-LAST:event_btnManagePatientActionPerformed
 
