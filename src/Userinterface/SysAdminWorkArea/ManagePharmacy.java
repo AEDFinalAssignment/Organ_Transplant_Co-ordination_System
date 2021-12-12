@@ -294,20 +294,60 @@ public class ManagePharmacy extends javax.swing.JPanel {
             txtPharmacyzipcode.setForeground(Color.red);
         }
           
-         //Null Value Check
-         
-         if (txtPharmacyname.getText().isEmpty()
+         //Null Check
+       
+          if (txtPharmacyname.getText().isEmpty()
                 || txtPharmacylogin.getText().isEmpty()
                 || txtPharmacypassword.getText().isEmpty()
+                || txtPharmacyEmail.getText().isEmpty()
                 || txtPharmacyaddress.getText().isEmpty()
-                || txtPharmacycity == null
+                || txtPharmacycity.getText().isEmpty()
                 || txtPharmacystate.getText().isEmpty()
-                || txtPharmacyzipcode == null) {
+                || txtPharmacyzipcode.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtPharmacyname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtPharmacycity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtPharmacystate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
          
-         else{
-             
+         if(txtPharmacyEmail.getText().contains("@")&& (txtPharmacyEmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtPharmacyzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (hospitalDirectory.searchHospital(txtPharmacylogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
+         }    
+       
+              
              // Initializing pharmacy object
               Pharmacy newpharmacy = pharmacyDirectory.addPharmacy();
               
@@ -345,7 +385,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
                 model.setValueAt(state, selectedRowIndex, 6);
                 model.setValueAt(zipcode, selectedRowIndex, 7);
               
-         }
+         
     }//GEN-LAST:event_btnHospitalsaveActionPerformed
 
     private void txtPharmacyloginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPharmacyloginKeyTyped

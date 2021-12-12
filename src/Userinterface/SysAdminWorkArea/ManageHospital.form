@@ -25,6 +25,11 @@
                               <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
                               <Component id="btnSave1" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <Component id="txtHospitalmail" min="-2" pref="261" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -43,11 +48,11 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtHospitallogin1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtHospitalpassword1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtHospitaladdress1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtHospitalcity1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtHospitalstate1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtHospitalzipcode1" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
+                                      <Component id="txtHospitalzipcode1" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtHospitalpassword1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -57,11 +62,6 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Component id="txtHospitalmail" min="-2" pref="261" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
@@ -108,11 +108,11 @@
                           <Component id="txtHospitallogin1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtHospitalpassword1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHospitalpassword1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtHospitaladdress1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="326" max="32767" attributes="0"/>
+              <EmptySpace pref="323" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -196,8 +196,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtHospitalpassword1">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
@@ -366,6 +364,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtHospitalmail">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtHospitalpassword1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHospitalpassword1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

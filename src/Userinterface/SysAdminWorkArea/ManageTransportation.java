@@ -29,7 +29,7 @@ public class ManageTransportation extends javax.swing.JPanel {
 
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-   Transportation transportation;
+    Transportation transportation;
     TransportDirectory TransportationDirectory;
     public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) {
         initComponents();
@@ -367,18 +367,59 @@ public class ManageTransportation extends javax.swing.JPanel {
             txtTransportzipcode.setForeground(Color.red);
         }
           
-         //Null Value Check
-         
-         if (txtTransportname.getText().isEmpty()
+           //Null Check
+       
+          if (txtTransportname.getText().isEmpty()
                 || txtTransportlogin.getText().isEmpty()
                 || txtTransportpassword.getText().isEmpty()
                 || txtTransportationmail.getText().isEmpty()
                 || txtTransportaddress.getText().isEmpty()
                 || txtTransportcity.getText().isEmpty()
-                || txtTransportzipcode.getText().isEmpty()
-                || txtTransportstate.getText().isEmpty()) {
+                || txtTransportstate.getText().isEmpty()
+                || txtTransportzipcode.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this, "New Transportation details are added.");             
+         }    
+       
          
          // Intitializing Registry Object
          
@@ -455,6 +496,57 @@ public class ManageTransportation extends javax.swing.JPanel {
           
           
           Transportation transportation = TransportationDirectory.searchRegistry(txtTransportlogin.getText());
+          
+             //Null Check
+       
+          if (txtTransportname.getText().isEmpty()
+                || txtTransportlogin.getText().isEmpty()
+                || txtTransportpassword.getText().isEmpty()
+                || txtTransportationmail.getText().isEmpty()
+                || txtTransportaddress.getText().isEmpty()
+                || txtTransportcity.getText().isEmpty()
+                || txtTransportstate.getText().isEmpty()
+                || txtTransportzipcode.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+       
           
           transportation.setName(name);
           transportation.setUserName(userName);

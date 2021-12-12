@@ -295,8 +295,7 @@ public class ManageRegistry extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRegloginActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:        
         
         
          if (txtRegname.getText().isEmpty()) {
@@ -352,6 +351,50 @@ public class ManageRegistry extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
          
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtRegcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this, "New Registry details are added.");             
+         }    
+       
+         
+         
+         
          // Intitializing Registry Object
          
          Registry newreRegistry = registryDirectory.addRegistry();
@@ -364,7 +407,7 @@ public class ManageRegistry extends javax.swing.JPanel {
          newreRegistry.setState(txtRegstate.getText());
          newreRegistry.setZipCode(Integer.parseInt(txtRegzipcode.getText()));
          
-         JOptionPane.showMessageDialog(this, "New Registry is added!!");
+        
          
          txtRegname.setText("");
          txtReglogin.setText("");
@@ -391,8 +434,8 @@ public class ManageRegistry extends javax.swing.JPanel {
         }
         
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
-        
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);   
+       
          
         txtRegname.setText(selectedEntry.getName());
         txtReglogin.setText(selectedEntry.getUserName());
@@ -427,6 +470,62 @@ public class ManageRegistry extends javax.swing.JPanel {
         String city = txtRegcity.getText();
         String state = txtRegstate.getText();
         int zipcode = Integer.parseInt(txtRegzipcode.getText());
+        
+           //Null Value Check
+         
+         if (txtRegname.getText().isEmpty()
+                || txtReglogin.getText().isEmpty()
+                || txtRegpassword.getText().isEmpty()
+                || txtRegistrymail.getText().isEmpty()
+                || txtRegaddress.getText().isEmpty()
+                || txtRegcity.getText().isEmpty()
+                || txtRegzipcode.getText().isEmpty()
+                || txtRegstate.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtRegcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this, "New Registry details are added.");             
+         }    
+        
+        
           
           
           Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
@@ -440,8 +539,7 @@ public class ManageRegistry extends javax.swing.JPanel {
           registry.setState(state);
           registry.setZipCode(zipcode);
           
-          JOptionPane.showMessageDialog(this, "Registry is updated!!");
-          
+         
          txtRegname.setText("");
          txtReglogin.setText("");
          txtRegpassword.setText("");

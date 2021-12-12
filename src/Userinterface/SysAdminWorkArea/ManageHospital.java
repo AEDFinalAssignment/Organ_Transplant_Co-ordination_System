@@ -27,6 +27,7 @@ public class ManageHospital extends javax.swing.JPanel {
      */
     EcoSystem system;
     JSplitPane jSplitPane1;
+    HospitalDirectory hospitalDirectory;
     public ManageHospital(JSplitPane jSplitPane1,EcoSystem system) {
         initComponents();
         this.system = system;
@@ -53,7 +54,6 @@ public class ManageHospital extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtHospitallogin1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtHospitalpassword1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtHospitaladdress1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -75,6 +75,7 @@ public class ManageHospital extends javax.swing.JPanel {
         btnDelete1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         txtHospitalmail = new javax.swing.JTextField();
+        txtHospitalpassword1 = new javax.swing.JPasswordField();
 
         jLabel10.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         jLabel10.setText("MANAGE HOSPITAL");
@@ -170,6 +171,13 @@ public class ManageHospital extends javax.swing.JPanel {
 
         jLabel19.setText("Mail ID ");
 
+        txtHospitalpassword1.setText("jPasswordField1");
+        txtHospitalpassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHospitalpassword1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,6 +190,10 @@ public class ManageHospital extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(164, 164, 164)
                                 .addComponent(btnSave1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(67, 67, 67)
+                                .addComponent(txtHospitalmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel11)
@@ -198,21 +210,17 @@ public class ManageHospital extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtHospitallogin1)
-                                        .addComponent(txtHospitalpassword1)
                                         .addComponent(txtHospitaladdress1)
                                         .addComponent(txtHospitalcity1)
                                         .addComponent(txtHospitalstate1)
-                                        .addComponent(txtHospitalzipcode1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtHospitalzipcode1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                        .addComponent(txtHospitalpassword1)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel18)
                                     .addGap(39, 39, 39)
                                     .addComponent(jCheckBox3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCheckBox4)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(67, 67, 67)
-                                .addComponent(txtHospitalmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jCheckBox4))))
                         .addGap(138, 138, 138)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -247,10 +255,10 @@ public class ManageHospital extends javax.swing.JPanel {
                             .addComponent(jLabel12)
                             .addComponent(txtHospitallogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(txtHospitalpassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(txtHospitaladdress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,7 +296,7 @@ public class ManageHospital extends javax.swing.JPanel {
                             .addComponent(btnUpdate1)
                             .addComponent(btnView1)
                             .addComponent(btnDelete1))))
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -312,12 +320,67 @@ public class ManageHospital extends javax.swing.JPanel {
        else
        hos.setTransplantEquipped(false);
        
+       //Null Check
+       
+          if (txtHospitalname1.getText().isEmpty()
+                || txtHospitallogin1.getText().isEmpty()
+                || txtHospitalpassword1.getText().isEmpty()
+                || txtHospitalmail.getText().isEmpty()
+                || txtHospitaladdress1.getText().isEmpty()
+                || txtHospitalcity1.getText().isEmpty()
+                || txtHospitalstate1.getText().isEmpty()
+                || txtHospitalzipcode1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtHospitalname1.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtHospitalcity1.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this, "New Hospital details are added.");             
+         }    
+       
+         
+         
         try {
             system.saveHospitalDB(hos);
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showMessageDialog(this, "Hospital details saved sucessfully");
+       
         try {
             populateTable();
         } catch (SQLException ex) {
@@ -368,6 +431,8 @@ public class ManageHospital extends javax.swing.JPanel {
                 return;
             }
             
+            
+            
             DefaultTableModel modelhos = (DefaultTableModel) tblHospital1.getModel();
             Hospital selectedHospital = (Hospital) modelhos.getValueAt(selectedRowIndex, 0);
             String hospitalUsername = selectedHospital.getUserName();
@@ -395,7 +460,64 @@ public class ManageHospital extends javax.swing.JPanel {
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    JOptionPane.showMessageDialog(this, "Hospital details updated sucessfully");
+                    
+                    //
+                    
+                       //Null Check
+       
+          if (txtHospitalname1.getText().isEmpty()
+                || txtHospitallogin1.getText().isEmpty()
+                || txtHospitalpassword1.getText().isEmpty()
+                || txtHospitalmail.getText().isEmpty()
+                || txtHospitaladdress1.getText().isEmpty()
+                || txtHospitalcity1.getText().isEmpty()
+                || txtHospitalstate1.getText().isEmpty()
+                || txtHospitalzipcode1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtHospitalname1.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtHospitalcity1.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtHospitalstate1.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtHospitalmail.getText().contains("@")&& (txtHospitalmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtHospitalzipcode1.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (hospitalDirectory.searchHospital(txtHospitallogin1.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             JOptionPane.showMessageDialog(this,"Hospital details updated sucessfully");             
+         }    
+                  
+                    
+                    
                     try {
                         populateTable();
                     } catch (SQLException ex) {
@@ -446,6 +568,10 @@ public class ManageHospital extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
+    private void txtHospitalpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitalpassword1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHospitalpassword1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
@@ -472,7 +598,7 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitallogin1;
     private javax.swing.JTextField txtHospitalmail;
     private javax.swing.JTextField txtHospitalname1;
-    private javax.swing.JTextField txtHospitalpassword1;
+    private javax.swing.JPasswordField txtHospitalpassword1;
     private javax.swing.JTextField txtHospitalsearch1;
     private javax.swing.JTextField txtHospitalstate1;
     private javax.swing.JTextField txtHospitalzipcode1;
