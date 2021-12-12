@@ -19,11 +19,12 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
      */
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public HospitalAdministrationArea(JSplitPane jSplitPane1,EcoSystem system) {
+    private String Username;
+    public HospitalAdministrationArea(JSplitPane jSplitPane1,EcoSystem system, String Username) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
-        
+        this.Username = Username;
     }
 
     /**
@@ -95,7 +96,7 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
 
     private void btnManagestaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagestaffActionPerformed
         // TODO add your handling code here:
-        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system);
+        ManageStaffdetails msd = new ManageStaffdetails(jSplitPane1,system,Username,-1);
         jSplitPane1.setRightComponent(msd);
     }//GEN-LAST:event_btnManagestaffActionPerformed
 

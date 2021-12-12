@@ -5,6 +5,8 @@
  */
 package System.Hospital;
 
+import System.Hospital.Staff.Staff;
+import System.Hospital.Staff.StaffDirectory;
 import System.Organization;
 
 /**
@@ -13,8 +15,14 @@ import System.Organization;
  */
 public class Hospital extends Organization {
     private int HospitalID;
-    private boolean TransplantEquipped;
+    private String TransplantEquipped;
+    private StaffDirectory StaffDirectory;
 
+    public Hospital() {
+        this.StaffDirectory = new StaffDirectory();
+    }
+
+    
     public int getHospitalID() {
         return HospitalID;
     }
@@ -23,12 +31,26 @@ public class Hospital extends Organization {
         this.HospitalID = HospitalID;
     }
 
+    public StaffDirectory getStaffDirectory() {
+        return StaffDirectory;
+    }
 
-    public boolean isTransplantEquipped() {
+    public void setStaffDirectory(StaffDirectory StaffDirectory) {
+        this.StaffDirectory = StaffDirectory;
+    }    
+
+    public String getTransplantEquipped() {
         return TransplantEquipped;
     }
 
-    public void setTransplantEquipped(boolean TransplantEquipped) {
+    public void setTransplantEquipped(String TransplantEquipped) {
         this.TransplantEquipped = TransplantEquipped;
+    }
+
+   
+     public Staff addStaff(){
+        Staff stf = new Staff();
+        StaffDirectory.getStaffDirectory().add(stf);
+        return stf;
     }
 }

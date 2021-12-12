@@ -55,34 +55,16 @@
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="rbtnambulance" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="rbtnjets" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="51" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="rbtntrucks" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="rbtncars" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtTransportname" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtTransportlogin" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTransportpassword" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTransportaddress" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTransportcity" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTransportstate" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtTransportzipcode" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
+                                      <Component id="txtTransportname" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportlogin" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportaddress" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportcity" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportstate" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportzipcode" alignment="0" pref="261" max="32767" attributes="0"/>
+                                      <Component id="txtTransportpassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAvailtrans" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -95,11 +77,11 @@
                           <EmptySpace pref="96" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnHospitalview" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTransview" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                  <Component id="btnHospitalupdate" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btntransupdate" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                                  <Component id="btnHospitaldelete" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTransdelete" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -133,9 +115,9 @@
                           <Component id="jScrollPane1" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnHospitalupdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHospitalview" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHospitaldelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btntransupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTransview" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTransdelete" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -150,8 +132,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTransportpassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTransportpassword" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -173,18 +155,12 @@
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTransportzipcode" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtnambulance" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtncars" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtAvailtrans" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rbtnjets" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtntrucks" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTransportationmail" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -232,12 +208,12 @@
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnHospitalupdate">
+        <Component class="javax.swing.JButton" name="btntransupdate">
           <Properties>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalupdateActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntransupdateActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTransportlogin">
@@ -268,8 +244,8 @@
                     <Column editable="false" title="City" type="java.lang.Object"/>
                     <Column editable="false" title="State" type="java.lang.Object"/>
                     <Column editable="false" title="Zip Code" type="java.lang.Object"/>
+                    <Column editable="false" title="Mail ID " type="java.lang.Object"/>
                     <Column editable="false" title="mode of Transport" type="java.lang.Object"/>
-                    <Column editable="true" title="Mail ID " type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -332,30 +308,15 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtTransportaddress">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtntrucks">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Fire truck"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtHospitalsearch">
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnjets">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Private Jet"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnHospitaldelete">
+        <Component class="javax.swing.JButton" name="btnTransdelete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitaldeleteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransdeleteActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnambulance">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ambulance"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnHospitalsave">
           <Properties>
@@ -370,24 +331,17 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTransportpassword">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="City"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtncars">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cars"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnHospitalview">
+        <Component class="javax.swing.JButton" name="btnTransview">
           <Properties>
             <Property name="text" type="java.lang.String" value="View "/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalviewActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransviewActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTransportname">
@@ -407,6 +361,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTransportationmail">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtTransportpassword">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtAvailtrans">
         </Component>
       </SubComponents>
     </Container>

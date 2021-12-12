@@ -212,7 +212,7 @@ public class Mainframe extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(muajp);
             }
             else if(Useraccount.contains("Hospital")){
-                HospitalAdministrationArea HAA = new HospitalAdministrationArea(jSplitPane1,system);
+                HospitalAdministrationArea HAA = new HospitalAdministrationArea(jSplitPane1,system,txtUsername.getText());
                 jSplitPane1.setRightComponent(HAA);
             }
             else if(Useraccount.contains("Pharmacy")){
