@@ -32,7 +32,7 @@ public class ManageTransportation extends javax.swing.JPanel {
 
     private EcoSystem system;
     private JSplitPane jSplitPane1;
-   Transportation transportation;
+    Transportation transportation;
     TransportDirectory TransportationDirectory;
     public ManageTransportation(JSplitPane jSplitPane1,EcoSystem system,TransportDirectory TransportationDirectory) throws SQLException {
         initComponents();
@@ -342,26 +342,69 @@ public class ManageTransportation extends javax.swing.JPanel {
             txtTransportzipcode.setBorder(BorderFactory.createLineBorder(Color.RED));
             txtTransportzipcode.setForeground(Color.red);
         }
+
            if (txtAvailtrans.getText().isEmpty()) {
             txtAvailtrans.setBorder(BorderFactory.createLineBorder(Color.RED));
             txtAvailtrans.setForeground(Color.red);
         }
+
           
          //Null Value Check
           
          if (txtTransportname.getText().isEmpty()
+
                 || txtTransportlogin.getText().isEmpty()
                 || txtTransportpassword.getText().isEmpty()
                 || txtTransportationmail.getText().isEmpty()
                 || txtTransportaddress.getText().isEmpty()
                 || txtTransportcity.getText().isEmpty()
+
                 || txtTransportzipcode.getText().isEmpty()
                 || txtTransportstate.getText().isEmpty()
                  ||txtAvailtrans.getText().isEmpty()) {
+
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtTransportname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtTransportcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtTransportstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
          
-         // Intitializing Registry Object
+         if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtTransportzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             
+                // Intitializing Registry Object
          
          Transportation newtransporation = system.addTransportation();
          newtransporation.setName(txtTransportname.getText());
@@ -374,6 +417,11 @@ public class ManageTransportation extends javax.swing.JPanel {
          newtransporation.setZipCode(Integer.parseInt(txtTransportzipcode.getText()));
           newtransporation.setState(txtAvailtrans.getText());
          
+
+       
+         
+      
+
           try {
             system.saveTransportationDB(newtransporation);
         } catch (SQLException ex) {
@@ -385,6 +433,7 @@ public class ManageTransportation extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
         }
+
          
          txtTransportname.setText("");
          txtTransportlogin.setText("");
@@ -426,6 +475,7 @@ public class ManageTransportation extends javax.swing.JPanel {
 
     private void btntransupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransupdateActionPerformed
         // TODO add your handling code here:
+
           try {
             // TODO add your handling code here:
             int selectedRowIndex = tblTransportation.getSelectedRow();
@@ -467,6 +517,7 @@ public class ManageTransportation extends javax.swing.JPanel {
                     } catch (SQLException ex) {
                         Logger.getLogger(ManageTransportation.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
                     txtTransportname.setText("");
                     txtTransportlogin.setText("");
                     txtTransportpassword.setText("");
@@ -486,6 +537,7 @@ public class ManageTransportation extends javax.swing.JPanel {
     private void btnTransdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransdeleteActionPerformed
         // TODO add your handling code here:
            int selectedRowIndex = tblTransportation.getSelectedRow();
+
         
         if(selectedRowIndex<0)
         {

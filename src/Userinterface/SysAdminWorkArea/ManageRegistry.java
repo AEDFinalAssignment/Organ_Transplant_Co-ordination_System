@@ -168,6 +168,8 @@ public class ManageRegistry extends javax.swing.JPanel {
 
         jLabel19.setText("Mail ID ");
 
+        txtRegpassword.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -256,10 +258,10 @@ public class ManageRegistry extends javax.swing.JPanel {
                                     .addComponent(jLabel3)
                                     .addComponent(txtReglogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
                                     .addComponent(txtRegpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(23, 23, 23)
+                                .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel5)
                                     .addComponent(txtRegaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -281,7 +283,7 @@ public class ManageRegistry extends javax.swing.JPanel {
                                     .addComponent(txtRegistrymail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSave)))))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -301,8 +303,7 @@ public class ManageRegistry extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRegloginActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:        
         
         
          if (txtRegname.getText().isEmpty()) {
@@ -358,8 +359,71 @@ public class ManageRegistry extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
          
-         // Intitializing Registry Object
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtRegcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
          
+//         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
+//              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+//               validation=0;  
+//         }
+         
+
+           if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+//         //Unique Check for username
+//         
+//         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
+//              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+//              validation=0; 
+//         }
+         
+         
+         
+        // Add entry to the table
+
+           String name = txtRegname.getText();
+           String login = txtReglogin.getText();
+           String password = txtRegpassword.getText();
+           String email = txtRegistrymail.getText();
+           String address = txtRegaddress.getText();
+           String city = txtRegcity.getText();
+           String state = txtRegstate.getText();
+           String zipcode = txtRegzipcode.getText();
+
+           int selectedRowIndex = tblRegistry.getSelectedRow();  
+
+
+           DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
+           model.setValueAt(name, selectedRowIndex, 0);
+           model.setValueAt(login, selectedRowIndex, 1);
+           model.setValueAt(password, selectedRowIndex, 2);
+           model.setValueAt(email, selectedRowIndex, 3);
+           model.setValueAt(address, selectedRowIndex, 4);
+           model.setValueAt(city, selectedRowIndex, 5);
+           model.setValueAt(state, selectedRowIndex, 6);
+           model.setValueAt(zipcode, selectedRowIndex, 7);
+
+
          Registry newreRegistry = system.addRegistry();
          newreRegistry.setName(txtRegname.getText());
          newreRegistry.setUserName(txtReglogin.getText());
@@ -381,6 +445,7 @@ public class ManageRegistry extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(ManageHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
+
          
          txtRegname.setText("");
          txtReglogin.setText("");
@@ -407,8 +472,8 @@ public class ManageRegistry extends javax.swing.JPanel {
         }
         
         DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
-        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
-        
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);   
+       
          
         txtRegname.setText(selectedEntry.getName());
         txtReglogin.setText(selectedEntry.getUserName());
@@ -477,7 +542,125 @@ public class ManageRegistry extends javax.swing.JPanel {
             Logger.getLogger(ManageRegistry.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-       
+
+        DefaultTableModel model = (DefaultTableModel) tblRegistry.getModel();
+        Registry selectedEntry = (Registry) model.getValueAt(selectedRowIndex, 0);       
+        
+        
+        String name = txtRegname.getText();
+        String userName = txtReglogin.getText();
+        String password = txtRegpassword.getText();
+        String email = txtRegistrymail.getText();
+        String address = txtRegaddress.getText();        
+        String city = txtRegcity.getText();
+        String state = txtRegstate.getText();
+        int zipcode = Integer.parseInt(txtRegzipcode.getText());
+        
+           //Null Value Check
+         
+         if (txtRegname.getText().isEmpty()
+                || txtReglogin.getText().isEmpty()
+                || txtRegpassword.getText().isEmpty()
+                || txtRegistrymail.getText().isEmpty()
+                || txtRegaddress.getText().isEmpty()
+                || txtRegcity.getText().isEmpty()
+                || txtRegzipcode.getText().isEmpty()
+                || txtRegstate.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        } 
+         
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtRegname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtRegcity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtRegstate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
+         
+         if(txtRegistrymail.getText().contains("@")&& (txtRegistrymail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtRegzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (registryDirectory.searchRegistry(txtReglogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+             
+          Registry registry = registryDirectory.searchRegistry(txtReglogin.getText());
+          
+          registry.setName(name);
+          registry.setUserName(userName);
+          registry.setPassword(password);
+          registry.setEmail(email);
+          registry.setAddress(address);
+          registry.setCity(city);
+          registry.setState(state);
+          registry.setZipCode(zipcode);
+          
+             JOptionPane.showMessageDialog(this, "New Registry details are added.");             
+         }    
+        
+        
+          
+        // Updating the value in the table      
+          
+          
+          
+        model.setValueAt(name, selectedRowIndex, 0);
+        model.setValueAt(userName, selectedRowIndex, 1);
+        model.setValueAt(password, selectedRowIndex, 2);
+        model.setValueAt(email, selectedRowIndex, 3);
+        model.setValueAt(address, selectedRowIndex, 4);
+        model.setValueAt(city, selectedRowIndex, 5);
+        model.setValueAt(state, selectedRowIndex, 6);
+        model.setValueAt(zipcode, selectedRowIndex, 7);
+               
+       // Setting the field to null   
+          
+         
+         txtRegname.setText("");
+         txtReglogin.setText("");
+         txtRegpassword.setText("");
+         txtRegistrymail.setText("");
+         txtRegaddress.setText("");
+         txtRegcity.setText("");
+         txtRegstate.setText("");
+         txtRegzipcode.setText("");
+          
+          
+          
+                 
+        
+        
+        
+        
+        
+        
+        
+        
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

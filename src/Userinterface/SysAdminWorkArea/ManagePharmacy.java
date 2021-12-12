@@ -337,22 +337,60 @@ public class ManagePharmacy extends javax.swing.JPanel {
             txtPharmacyzipcode.setForeground(Color.red);
         }
           
-         //Null Value Check
-         
-         if (txtPharmacyname.getText().isEmpty()
+         //Null Check
+       
+          if (txtPharmacyname.getText().isEmpty()
                 || txtPharmacylogin.getText().isEmpty()
                 || txtPharmacypassword.getText().isEmpty()
+                || txtPharmacyEmail.getText().isEmpty()
                 || txtPharmacyaddress.getText().isEmpty()
-                || txtPharmacycity == null
+                || txtPharmacycity.getText().isEmpty()
                 || txtPharmacystate.getText().isEmpty()
-                || txtPharmacyzipcode == null) {
+                || txtPharmacyzipcode.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
         } 
+          
+        //Data Validation
+        int validation = 1;
+        
+        if(txtPharmacyname.getText().matches("-?(0|[1-9]\\d*)")){
+             JOptionPane.showMessageDialog(null, "Enter Valid Name");    
+              validation=0;
+        }
+        
+        if(txtPharmacycity.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid city name");    
+               validation=0;            
+        }
+        
+         if(txtPharmacystate.getText().matches("-?(0|[1-9]\\d*)")){
+               JOptionPane.showMessageDialog(null, "Enter valid state name");    
+               validation=0;            
+        }   
          
-         else{
-             
+         if(txtPharmacyEmail.getText().contains("@")&& (txtPharmacyEmail.getText().contains(".com"))){
+              JOptionPane.showMessageDialog(null, "Enter valid email id");    
+               validation=0;  
+         }
+         
+           if(txtPharmacyzipcode.getText().matches("^[a-zA-Z]*$ ")){
+               JOptionPane.showMessageDialog(null, "Enter valid zipcode");    
+               validation=0;            
+        }   
+         
+           
+         //Unique Check for username
+         
+         if (hospitalDirectory.searchHospital(txtPharmacylogin.getText())!=null){
+              JOptionPane.showMessageDialog(null, "Enter a unique Username");    
+              validation=0; 
+         }
+         
+         if(validation==1){
+            
              // Initializing pharmacy object
               Pharmacy newpharmacy = system.addPharmacy();
+
               
               newpharmacy.setName(txtPharmacyname.getText());
               newpharmacy.setUserName(txtPharmacylogin.getText());
@@ -362,6 +400,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
               newpharmacy.setCity(txtPharmacycity.getText());
               newpharmacy.setState(txtPharmacystate.getText());
               newpharmacy.setZipCode(Integer.parseInt(txtPharmacyzipcode.getText()));
+
               try {
             system.savePharmacyDB(newpharmacy);
         } catch (SQLException ex) {
@@ -417,6 +456,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
 
     private void btnHospitalupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalupdateActionPerformed
         // TODO add your handling code here:
+
          try {
             // TODO add your handling code here:
             int selectedRowIndex = tblPhar.getSelectedRow();
@@ -473,6 +513,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
         }
         
        
+
     }//GEN-LAST:event_btnHospitalupdateActionPerformed
 
     private void btnHospitaldeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitaldeleteActionPerformed
