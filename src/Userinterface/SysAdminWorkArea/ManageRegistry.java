@@ -487,9 +487,9 @@ public class ManageRegistry extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblRegistry.getSelectedRow();
         try {
             // TODO add your handling code here:
-            int selectedRowIndex = tblRegistry.getSelectedRow();
             
             if(selectedRowIndex<0)
             {
