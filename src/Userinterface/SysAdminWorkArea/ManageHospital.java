@@ -8,6 +8,11 @@ package Userinterface.SysAdminWorkArea;
 import System.EcoSystem;
 import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
+import System.Registry.Registry;
+import System.Registry.RegistryDirectory;
+import System.Transportation.TransportDirectory;
+import System.Transportation.Transportation;
+import System.UNOs.UNO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,10 +33,17 @@ public class ManageHospital extends javax.swing.JPanel {
     EcoSystem system;
     JSplitPane jSplitPane1;
     HospitalDirectory hospitalDirectory;
-    public ManageHospital(JSplitPane jSplitPane1,EcoSystem system) {
+     Transportation transportation;
+    TransportDirectory TransportationDirectory;
+    Registry registry;
+    RegistryDirectory registryDirectory;
+    UNO uno;
+     JPanel Managepanel;
+    public ManageHospital(JSplitPane jSplitPane1,EcoSystem system, JPanel Managepanel) {
         initComponents();
         this.system = system;
         this.jSplitPane1 = jSplitPane1;
+        this.Managepanel=Managepanel;
         try {
             populateTable();
         } catch (SQLException ex) {
@@ -77,6 +89,7 @@ public class ManageHospital extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         txtHospitalmail = new javax.swing.JTextField();
         txtHospitalpassword1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -215,6 +228,14 @@ public class ManageHospital extends javax.swing.JPanel {
             }
         });
         add(txtHospitalpassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 220, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtHospitallogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitallogin1ActionPerformed
@@ -450,6 +471,12 @@ public class ManageHospital extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHospitalmailActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        
+                jSplitPane1.setRightComponent(Managepanel);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete1;
@@ -460,6 +487,7 @@ public class ManageHospital extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

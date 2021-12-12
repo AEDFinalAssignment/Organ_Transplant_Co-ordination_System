@@ -16,8 +16,8 @@ import javax.swing.JSplitPane;
  */
 
 public class PharmacyAdmin extends Role {
-    public JPanel createWorkArea(JSplitPane jSplitPane1,EcoSystem system,String Username) {
-        return new HospitalAdministrationArea(jSplitPane1,system,Username); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JSplitPane jSplitPane1,EcoSystem system,String Username,JPanel Hospitalmain,JPanel Managepanel) {
+        return new HospitalAdministrationArea(jSplitPane1,system,Username,Hospitalmain,Managepanel); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
