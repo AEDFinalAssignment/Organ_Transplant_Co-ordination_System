@@ -223,7 +223,7 @@ public class Mainframe extends javax.swing.JFrame {
                 
             }
             else if(Useraccount.contains("Registry")){
-                RegsitryWelcomePage regPage = new RegsitryWelcomePage(jSplitPane1,system,txtUsername.getText());
+                RegsitryWelcomePage regPage = new RegsitryWelcomePage(jSplitPane1,system,txtUsername.getText(),jPanel2);
                 jSplitPane1.setRightComponent(regPage);
                 
             }
