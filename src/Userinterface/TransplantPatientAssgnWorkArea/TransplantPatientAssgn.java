@@ -83,11 +83,12 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientdetails = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnAddTransplantdetails = new javax.swing.JButton();
         btnChechEgdonor = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,21 +137,25 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPatientdetails);
 
-        jButton1.setText("SEARCH");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 112, 1368, 418));
 
+        btnAddTransplantdetails.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAddTransplantdetails.setText("Add Transplant Details ");
         btnAddTransplantdetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTransplantdetailsActionPerformed(evt);
             }
         });
+        add(btnAddTransplantdetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 592, 282, 30));
 
+        btnChechEgdonor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChechEgdonor.setText("Check Eligibility as Donor");
         btnChechEgdonor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChechEgdonorActionPerformed(evt);
             }
         });
+        add(btnChechEgdonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 597, 250, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,52 +163,7 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
                 jLabel16MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(29, 29, 29)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1368, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(254, 254, 254)
-                            .addComponent(btnChechEgdonor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(186, 186, 186)
-                            .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(126, 126, 126)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChechEgdonor))
-                .addContainerGap(258, Short.MAX_VALUE))
-        );
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 36, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransplantdetailsActionPerformed
@@ -254,10 +214,8 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTransplantdetails;
     private javax.swing.JButton btnChechEgdonor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblPatientdetails;
     // End of variables declaration//GEN-END:variables
 }

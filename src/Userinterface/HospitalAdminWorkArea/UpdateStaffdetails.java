@@ -52,19 +52,18 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDoctor = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnView1 = new javax.swing.JButton();
         btnDelete1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblStaff = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         btnView2 = new javax.swing.JButton();
         btnDelete2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,7 +101,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
             tblDoctor.getColumnModel().getColumn(6).setHeaderValue("Transplant Authorisation ");
         }
 
-        jButton1.setText("Search");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 136, 951, 210));
 
         btnView1.setText("View ");
         btnView1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +109,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 btnView1ActionPerformed(evt);
             }
         });
+        add(btnView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1153, 167, 61, -1));
 
         btnDelete1.setText("Delete");
         btnDelete1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +117,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 btnDelete1ActionPerformed(evt);
             }
         });
+        add(btnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1153, 264, -1, -1));
 
         tblStaff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,7 +151,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblStaff);
 
-        jButton2.setText("Search");
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 568, 951, 210));
 
         btnView2.setText("View ");
         btnView2.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +159,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 btnView2ActionPerformed(evt);
             }
         });
+        add(btnView2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1133, 618, -1, -1));
 
         btnDelete2.setText("Delete");
         btnDelete2.addActionListener(new java.awt.event.ActionListener() {
@@ -165,10 +167,15 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 btnDelete2ActionPerformed(evt);
             }
         });
+        add(btnDelete2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1133, 701, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Doctor Details :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 36, 225, 23));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Other Staff Details :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 470, 225, 23));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,83 +183,7 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
                 jLabel11MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnView2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDelete2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(674, 674, 674)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnView1)
-                            .addComponent(btnDelete1))))
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete1, btnView1});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(btnView1)
-                        .addGap(122, 122, 122)
-                        .addComponent(btnDelete1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(btnView2)
-                    .addComponent(btnDelete2))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
-        );
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 11, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
@@ -363,15 +294,11 @@ public class UpdateStaffdetails extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete2;
     private javax.swing.JButton btnView1;
     private javax.swing.JButton btnView2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblDoctor;
     private javax.swing.JTable tblStaff;
     // End of variables declaration//GEN-END:variables

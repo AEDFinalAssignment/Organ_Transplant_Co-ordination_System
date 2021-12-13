@@ -68,8 +68,6 @@ public class ManageJpanel extends javax.swing.JPanel {
         btnHospital = new javax.swing.JButton();
         btnUNOs = new javax.swing.JButton();
         btnTransportation = new javax.swing.JButton();
-        btnPharmacy = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,7 +83,7 @@ public class ManageJpanel extends javax.swing.JPanel {
         Managepanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 104, -1, 213));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tr1.png"))); // NOI18N
-        Managepanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 237, 205));
+        Managepanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 237, 205));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/t2.png"))); // NOI18N
         Managepanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, 118));
@@ -124,19 +122,7 @@ public class ManageJpanel extends javax.swing.JPanel {
                 btnTransportationActionPerformed(evt);
             }
         });
-        Managepanel.add(btnTransportation, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 670, -1, -1));
-
-        btnPharmacy.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
-        btnPharmacy.setText("Manage Pharmacy");
-        btnPharmacy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPharmacyActionPerformed(evt);
-            }
-        });
-        Managepanel.add(btnPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 660, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pr1.png"))); // NOI18N
-        Managepanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, 225, 144));
+        Managepanel.add(btnTransportation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 670, -1, -1));
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
         btnLogout.setText("jLabel3");
@@ -187,20 +173,6 @@ public class ManageJpanel extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(mu);
     }//GEN-LAST:event_btnUNOsActionPerformed
 
-    private void btnPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyActionPerformed
-        // TODO add your handling code here:
-          ManagePharmacy mp;
-        try {
-            mp = new ManagePharmacy(jSplitPane1,system,Managepanel);
-            jSplitPane1.setRightComponent(mp);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManageJpanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-     
-        
-    }//GEN-LAST:event_btnPharmacyActionPerformed
-
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         // TODO add your handling code here:
       
@@ -215,13 +187,11 @@ public class ManageJpanel extends javax.swing.JPanel {
     private javax.swing.JPanel Managepanel;
     private javax.swing.JButton btnHospital;
     private javax.swing.JLabel btnLogout;
-    private javax.swing.JButton btnPharmacy;
     private javax.swing.JButton btnRegistrySys1;
     private javax.swing.JButton btnTransportation;
     private javax.swing.JButton btnUNOs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables

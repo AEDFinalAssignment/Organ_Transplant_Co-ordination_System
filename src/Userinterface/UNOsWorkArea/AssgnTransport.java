@@ -40,7 +40,12 @@ public class AssgnTransport extends javax.swing.JPanel {
         tblTransportation = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Available Transportation: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 84, 346, 34));
 
         tblTransportation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,36 +79,10 @@ public class AssgnTransport extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblTransportation);
 
-        jButton1.setText("Assign");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 136, 777, 262));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(410, 410, 410)
-                        .addComponent(jButton1)))
-                .addContainerGap(615, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jButton1)
-                .addContainerGap(404, Short.MAX_VALUE))
-        );
+        jButton1.setText("Assign");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 455, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

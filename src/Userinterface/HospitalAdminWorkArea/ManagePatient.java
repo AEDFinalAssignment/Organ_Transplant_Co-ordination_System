@@ -57,28 +57,38 @@ public class ManagePatient extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
+        managepatient.setBackground(new java.awt.Color(255, 255, 255));
+        managepatient.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnexistingpatient.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnexistingpatient.setText("Existing Patient Details");
         btnexistingpatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnexistingpatientActionPerformed(evt);
             }
         });
+        managepatient.add(btnexistingpatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 304, -1));
 
+        btnCreatenewpatient.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCreatenewpatient.setText("Create New Patient Details");
         btnCreatenewpatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreatenewpatientActionPerformed(evt);
             }
         });
+        managepatient.add(btnCreatenewpatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 312, -1));
 
+        btntransplantlist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btntransplantlist.setText("Transplant List");
         btntransplantlist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btntransplantlistActionPerformed(evt);
             }
         });
+        managepatient.add(btntransplantlist, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 304, -1));
 
         jButton4.setText("Patient Available as DONOR ");
+        managepatient.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,60 +96,17 @@ public class ManagePatient extends javax.swing.JPanel {
                 jLabel11MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout managepatientLayout = new javax.swing.GroupLayout(managepatient);
-        managepatient.setLayout(managepatientLayout);
-        managepatientLayout.setHorizontalGroup(
-            managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(managepatientLayout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addGroup(managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btntransplantlist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnexistingpatient, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
-                .addGap(803, 803, 803))
-            .addGroup(managepatientLayout.createSequentialGroup()
-                .addGroup(managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(managepatientLayout.createSequentialGroup()
-                        .addGap(335, 335, 335)
-                        .addComponent(btnCreatenewpatient, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(managepatientLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        managepatientLayout.setVerticalGroup(
-            managepatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(managepatientLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(btnCreatenewpatient)
-                .addGap(73, 73, 73)
-                .addComponent(btnexistingpatient)
-                .addGap(80, 80, 80)
-                .addComponent(btntransplantlist)
-                .addContainerGap(573, Short.MAX_VALUE))
-        );
+        managepatient.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 28, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1450, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(managepatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(managepatient, javax.swing.GroupLayout.DEFAULT_SIZE, 1450, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(managepatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(managepatient, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
