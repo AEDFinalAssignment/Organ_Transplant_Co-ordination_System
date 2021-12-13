@@ -47,9 +47,14 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
         btnManagePatient = new javax.swing.JButton();
         btnManagestaff = new javax.swing.JButton();
         btnLogout = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        Hospitalmain.setBackground(new java.awt.Color(255, 255, 255));
+        Hospitalmain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Broadway", 1, 48)); // NOI18N
-        jLabel1.setText("WELCOME TO < value>");
+        jLabel1.setText("WELCOME !!!");
+        Hospitalmain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 440, 41));
 
         btnManagePatient.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnManagePatient.setText("Manage Patient");
@@ -58,6 +63,7 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
                 btnManagePatientActionPerformed(evt);
             }
         });
+        Hospitalmain.add(btnManagePatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 540, -1, -1));
 
         btnManagestaff.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnManagestaff.setText("Manage Staff");
@@ -66,6 +72,7 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
                 btnManagestaffActionPerformed(evt);
             }
         });
+        Hospitalmain.add(btnManagestaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, -1, -1));
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
         btnLogout.setText("jLabel3");
@@ -74,43 +81,10 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
                 btnLogoutMouseClicked(evt);
             }
         });
+        Hospitalmain.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 20, 40, -1));
 
-        javax.swing.GroupLayout HospitalmainLayout = new javax.swing.GroupLayout(Hospitalmain);
-        Hospitalmain.setLayout(HospitalmainLayout);
-        HospitalmainLayout.setHorizontalGroup(
-            HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HospitalmainLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HospitalmainLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(HospitalmainLayout.createSequentialGroup()
-                        .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(HospitalmainLayout.createSequentialGroup()
-                                    .addGap(532, 532, 532)
-                                    .addComponent(btnManagestaff, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(HospitalmainLayout.createSequentialGroup()
-                                    .addGap(524, 524, 524)
-                                    .addComponent(btnManagePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(472, Short.MAX_VALUE))
-        );
-        HospitalmainLayout.setVerticalGroup(
-            HospitalmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HospitalmainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout)
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                .addComponent(btnManagestaff)
-                .addGap(109, 109, 109)
-                .addComponent(btnManagePatient)
-                .addGap(324, 324, 324))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hospital logo.png"))); // NOI18N
+        Hospitalmain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 260, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,5 +125,6 @@ public class HospitalAdministrationArea extends javax.swing.JPanel {
     private javax.swing.JButton btnManagePatient;
     private javax.swing.JButton btnManagestaff;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
