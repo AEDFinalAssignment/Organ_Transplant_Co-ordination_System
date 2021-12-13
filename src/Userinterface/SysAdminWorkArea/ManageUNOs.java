@@ -64,6 +64,7 @@ public class ManageUNOs extends javax.swing.JPanel {
         txtUnomail = new javax.swing.JTextField();
         txtUnopassword = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -108,6 +109,9 @@ public class ManageUNOs extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/d8.jpg"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 880));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -205,6 +209,7 @@ public class ManageUNOs extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtUnologin;
     private javax.swing.JTextField txtUnomail;

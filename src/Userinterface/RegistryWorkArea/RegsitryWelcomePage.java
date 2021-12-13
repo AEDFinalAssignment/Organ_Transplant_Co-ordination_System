@@ -9,6 +9,7 @@ import System.EcoSystem;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -23,12 +24,22 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
      private EcoSystem system;
     private JSplitPane jSplitPane1;
     String Username;
+
     public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system,String Username) throws SQLException {
+    JPanel jPanel2;
+    
+    
+    public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system,String Username,JPanel jPanel2) {
+
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
+
         system.getDBRegistryDirectory().getRegistryDirectory();
+        this.jPanel2=jPanel2;
+       // this.RegistrationPane= RegistrationPane;
+
     }
     
 
@@ -41,8 +52,11 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+
+        RegistrationPane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -56,6 +70,60 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
         });
 
         jButton2.setText("Register");
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
+        btnLogout.setText("jLabel3");
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Register");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RegistrationPaneLayout = new javax.swing.GroupLayout(RegistrationPane);
+        RegistrationPane.setLayout(RegistrationPaneLayout);
+        RegistrationPaneLayout.setHorizontalGroup(
+            RegistrationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                .addGroup(RegistrationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                        .addGap(468, 468, 468)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(349, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistrationPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
+            .addGroup(RegistrationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                    .addGap(474, 474, 474)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(714, Short.MAX_VALUE)))
+        );
+        RegistrationPaneLayout.setVerticalGroup(
+            RegistrationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnLogout)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(416, Short.MAX_VALUE))
+            .addGroup(RegistrationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegistrationPaneLayout.createSequentialGroup()
+                    .addGap(274, 274, 274)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(548, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,6 +172,42 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
+            .addComponent(RegistrationPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(RegistrationPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(jPanel2);
+    }//GEN-LAST:event_btnLogoutMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        DonorRegistration dr = new DonorRegistration(jSplitPane1, system, jPanel2,RegistrationPane);
+        jSplitPane1.setRightComponent(dr);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+         requestWorkArea rw = new requestWorkArea(jSplitPane1, system, jPanel2, RegistrationPane);
+        jSplitPane1.setRightComponent(rw);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel RegistrationPane;
+    private javax.swing.JLabel btnLogout;
+
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

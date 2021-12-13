@@ -83,12 +83,13 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientdetails = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnAddTransplantdetails = new javax.swing.JButton();
         btnChechEgdonor = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         btnManageTransplantdetails = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,21 +138,25 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPatientdetails);
 
-        jButton1.setText("SEARCH");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 112, 1368, 418));
 
+        btnAddTransplantdetails.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAddTransplantdetails.setText("Add Transplant Details ");
         btnAddTransplantdetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTransplantdetailsActionPerformed(evt);
             }
         });
+        add(btnAddTransplantdetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 592, 282, 30));
 
+        btnChechEgdonor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChechEgdonor.setText("Check Eligibility as Donor");
         btnChechEgdonor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChechEgdonorActionPerformed(evt);
             }
         });
+        add(btnChechEgdonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 597, 250, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,6 +220,7 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
                     .addComponent(btnManageTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(258, Short.MAX_VALUE))
         );
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 36, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransplantdetailsActionPerformed
@@ -297,9 +303,9 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
     private javax.swing.JButton btnChechEgdonor;
     private javax.swing.JButton btnManageTransplantdetails;
     private javax.swing.JButton jButton1;
+
     private javax.swing.JLabel jLabel16;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblPatientdetails;
     // End of variables declaration//GEN-END:variables
 }

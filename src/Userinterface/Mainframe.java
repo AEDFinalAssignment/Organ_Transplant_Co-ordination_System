@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import static java.time.Clock.system;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -224,7 +225,7 @@ public class Mainframe extends javax.swing.JFrame {
                 
             }
             else if(Useraccount.contains("Registry")){
-                RegsitryWelcomePage regPage = new RegsitryWelcomePage(jSplitPane1,system,txtUsername.getText());
+                RegsitryWelcomePage regPage = new RegsitryWelcomePage(jSplitPane1,system,txtUsername.getText(),jPanel2);
                 jSplitPane1.setRightComponent(regPage);
                 
             }
@@ -235,6 +236,9 @@ public class Mainframe extends javax.swing.JFrame {
             else if(Useraccount.contains("UNO")){
                 UnosHomePage unosHomePage = new UnosHomePage(jSplitPane1,system);
                 jSplitPane1.setRightComponent(unosHomePage);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Invalid User name or Password");            
             }
             
             txtUsername.setText("");

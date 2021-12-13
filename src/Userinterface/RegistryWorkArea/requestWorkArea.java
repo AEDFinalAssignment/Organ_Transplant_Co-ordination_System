@@ -20,12 +20,21 @@ import static java.time.Clock.system;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+
 
 /**
  *
  * @author sanjeev
  */
 public class requestWorkArea extends javax.swing.JPanel {
+    
+    EcoSystem system;
+    JSplitPane jSplitPane1;
+    JPanel jPanel2;
+    JPanel RegistrationPane;
+    
 
     /**
      * Creates new form requestWorkArea
@@ -33,11 +42,13 @@ public class requestWorkArea extends javax.swing.JPanel {
     EcoSystem system;
     private JSplitPane jSplitPane1;
     String Username;
-    public requestWorkArea(JSplitPane jSplitPane1,EcoSystem system,String Username) throws SQLException {
+    public requestWorkArea(JSplitPane jSplitPane1,EcoSystem system,JPanel jPanel2, JPanel RegistrationPane,String Username) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
+        this.jPanel2 = jPanel2;
+        this.RegistrationPane = RegistrationPane;
         populateTable();
     }
     public String removeBrackets(String sample)
@@ -45,6 +56,7 @@ public class requestWorkArea extends javax.swing.JPanel {
         sample = sample.replace("{", "");
         sample = sample.replace("}", "");
         return sample;
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +72,8 @@ public class requestWorkArea extends javax.swing.JPanel {
         tblRequests = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JLabel();
 
         jLabel1.setText("MANAGE REQUESTS:");
 
@@ -98,6 +112,21 @@ public class requestWorkArea extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-shutdown-40.png"))); // NOI18N
+        btnLogout.setText("jLabel3");
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,11 +144,21 @@ public class requestWorkArea extends javax.swing.JPanel {
                         .addGap(84, 84, 84)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(924, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(216, 216, 216))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogout))
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,6 +169,7 @@ public class requestWorkArea extends javax.swing.JPanel {
                 .addContainerGap(472, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -180,12 +220,26 @@ public class requestWorkArea extends javax.swing.JPanel {
             Logger.getLogger(requestWorkArea.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(RegistrationPane);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+        // TODO add your handling code here:
+
+        jSplitPane1.setRightComponent(jPanel2);
+    }//GEN-LAST:event_btnLogoutMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnLogout;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRequests;
     // End of variables declaration//GEN-END:variables

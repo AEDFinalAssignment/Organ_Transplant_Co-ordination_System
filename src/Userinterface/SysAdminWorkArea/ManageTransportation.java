@@ -59,7 +59,6 @@ public class ManageTransportation extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
         btntransupdate = new javax.swing.JButton();
         txtTransportlogin = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -67,7 +66,6 @@ public class ManageTransportation extends javax.swing.JPanel {
         tblTransportation = new javax.swing.JTable();
         txtTransportcity = new javax.swing.JTextField();
         txtTransportaddress = new javax.swing.JTextField();
-        txtHospitalsearch = new javax.swing.JTextField();
         btnTransdelete = new javax.swing.JButton();
         btnHospitalsave = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -82,19 +80,25 @@ public class ManageTransportation extends javax.swing.JPanel {
         txtTransportpassword = new javax.swing.JPasswordField();
         txtAvailtrans = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("State");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 353, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
         jLabel1.setText("MANAGE TRANSPORTATION");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 60, -1, -1));
 
         jLabel5.setText("Address Line ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 272, -1, -1));
 
         jLabel3.setText("Login Name");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 190, -1, -1));
 
         jLabel9.setText("Available Mode of Transports");
-
-        btnSearch.setText("Search");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 444, -1, -1));
 
         btntransupdate.setText("Update");
         btntransupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -102,14 +106,17 @@ public class ManageTransportation extends javax.swing.JPanel {
                 btntransupdateActionPerformed(evt);
             }
         });
+        jPanel1.add(btntransupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 520, -1, -1));
 
         txtTransportlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTransportloginActionPerformed(evt);
             }
         });
+        jPanel1.add(txtTransportlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 190, 261, -1));
 
         jLabel8.setText("Zip Code");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 394, -1, -1));
 
         tblTransportation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,12 +150,17 @@ public class ManageTransportation extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblTransportation);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 777, 262));
+        jPanel1.add(txtTransportcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 311, 261, -1));
+        jPanel1.add(txtTransportaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 269, 261, -1));
+
         btnTransdelete.setText("Delete");
         btnTransdelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransdeleteActionPerformed(evt);
             }
         });
+        jPanel1.add(btnTransdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1259, 524, -1, -1));
 
         btnHospitalsave.setText("SAVE");
         btnHospitalsave.addActionListener(new java.awt.event.ActionListener() {
@@ -156,10 +168,13 @@ public class ManageTransportation extends javax.swing.JPanel {
                 btnHospitalsaveActionPerformed(evt);
             }
         });
+        jPanel1.add(btnHospitalsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 570, -1, -1));
 
         jLabel4.setText("Password");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 227, -1, -1));
 
         jLabel6.setText("City");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 314, -1, -1));
 
         btnTransview.setText("View ");
         btnTransview.addActionListener(new java.awt.event.ActionListener() {
@@ -167,10 +182,19 @@ public class ManageTransportation extends javax.swing.JPanel {
                 btnTransviewActionPerformed(evt);
             }
         });
+        jPanel1.add(btnTransview, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 520, -1, -1));
+        jPanel1.add(txtTransportname, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 153, 261, -1));
+        jPanel1.add(txtTransportstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 353, 261, -1));
+        jPanel1.add(txtTransportzipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 391, 261, -1));
 
         jLabel2.setText("Name");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 156, -1, -1));
 
         jLabel19.setText("Mail ID ");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, -1, -1));
+        jPanel1.add(txtTransportationmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 261, -1));
+        jPanel1.add(txtTransportpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 227, 261, -1));
+        jPanel1.add(txtAvailtrans, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 441, 261, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,128 +202,10 @@ public class ManageTransportation extends javax.swing.JPanel {
                 jLabel10MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel9))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtTransportname, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportlogin, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportaddress, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportcity, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportstate, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportzipcode, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                        .addComponent(txtTransportpassword)
-                                        .addComponent(txtAvailtrans)))
-                                .addComponent(jLabel2)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel19)
-                                    .addGap(67, 67, 67)
-                                    .addComponent(txtTransportationmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(236, 236, 236)
-                                .addComponent(btnHospitalsave)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnTransview)
-                                .addGap(261, 261, 261)
-                                .addComponent(btntransupdate)
-                                .addGap(241, 241, 241)
-                                .addComponent(btnTransdelete)
-                                .addGap(141, 141, 141))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtHospitalsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(btnSearch)
-                                .addGap(521, 521, 521))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTransportname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtTransportlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(txtTransportpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtTransportaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtTransportcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(txtTransportstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtTransportzipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtAvailtrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(txtTransportationmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addComponent(btnHospitalsave)
-                        .addContainerGap(222, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtHospitalsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch))
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btntransupdate)
-                            .addComponent(btnTransview)
-                            .addComponent(btnTransdelete))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/d8.jpg"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1470, 820));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -425,7 +331,7 @@ public class ManageTransportation extends javax.swing.JPanel {
             validation=0;
         }
 
-        if(txtTransportationmail.getText().contains("@")&& (txtTransportationmail.getText().contains(".com"))){
+        if(!txtTransportationmail.getText().contains("@")){
             JOptionPane.showMessageDialog(null, "Enter valid email id");
             validation=0;
         }
@@ -580,12 +486,12 @@ public class ManageTransportation extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHospitalsave;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnTransdelete;
     private javax.swing.JButton btnTransview;
     private javax.swing.JButton btntransupdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -599,7 +505,6 @@ public class ManageTransportation extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblTransportation;
     private javax.swing.JTextField txtAvailtrans;
-    private javax.swing.JTextField txtHospitalsearch;
     private javax.swing.JTextField txtTransportaddress;
     private javax.swing.JTextField txtTransportationmail;
     private javax.swing.JTextField txtTransportcity;

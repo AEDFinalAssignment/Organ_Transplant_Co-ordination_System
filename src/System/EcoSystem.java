@@ -17,8 +17,7 @@ import System.Hospital.Patient.VitalSigns.VitalSigns;
 import System.Hospital.Patient.VitalSigns.VitalSignsDirectory;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
-import System.Pharmacy.Pharmacy;
-import System.Pharmacy.PharmacyDirectory;
+
 import System.Registry.Registry;
 import System.Registry.RegistryDirectory;
 import System.Transportation.TransportDirectory;
@@ -41,7 +40,7 @@ public class EcoSystem{
     private RegistryDirectory RegistryDirectory;
     private TransportDirectory TransportDirectory;
     private UNO UNO;
-    private PharmacyDirectory PharmacyDirectory;
+    
     
     public String removeBrackets(String sample)
     {
@@ -56,7 +55,7 @@ public class EcoSystem{
             this.HospitalDirectory = new HospitalDirectory(); 
             this.RegistryDirectory= new RegistryDirectory();
             this.TransportDirectory= new TransportDirectory();
-            this.PharmacyDirectory= new PharmacyDirectory();
+            
             
     }
 
@@ -112,18 +111,6 @@ public class EcoSystem{
         return uno;
     }
 
-    public PharmacyDirectory getPharmacyDirectory() {
-        return PharmacyDirectory;
-    }
-
-    public void setPharmacyDirectory(PharmacyDirectory PharmacyDirectory) {
-        this.PharmacyDirectory = PharmacyDirectory;
-    }
-     public Pharmacy addPharmacy(){
-        Pharmacy phar = new Pharmacy();
-        PharmacyDirectory.getPharmacyDirectory().add(phar);
-        return phar;
-     }
     
     public String AuthenticateUser(String Username, String Password) throws SQLException
     {
@@ -411,62 +398,7 @@ public class EcoSystem{
         stat.execute(query1);
     }
        
-       public void savePharmacyDB(Pharmacy phar) throws SQLException {
-        String query = "INSERT INTO public.\"Pharmacy\"(\"Name\",\"Username\",\"Password\",\"Address\",\"State\",\"City\",\"Zipcode\",\"EmailID\")\n" +
-                       "VALUES ('{"+ phar.getName() + "}','{"+ phar.getUserName() + "}','{"+ phar.getPassword() + "}','{"+ phar.getAddress() + "}','{" + phar.getState() + "}','{"+ phar.getCity() + "}'," + String.valueOf(phar.getZipCode()) + ",'{" + phar.getEmail() + "}'" +");";
-        java.sql.Statement stat = sqlConnect.retStatement();
-        stat.execute(query);
-        
-        String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
-                         "VALUES ('{"+ phar.getUserName() + "}','{"+ phar.getPassword() +"}','{Pharmacy}');";
-        stat.execute(query1);
-    }
-    public void updatePharmacyDB(Pharmacy phar) throws SQLException {
-        System.out.println(phar.getUserName()); 
-        String query = "UPDATE public.\"Pharmacy\" SET \"Name\"='{" + phar.getName() + "}',\"Username\"='{" + phar.getUserName() + "}',\"Password\"='{" + phar.getPassword() + "}',\"Address\"='{" + phar.getAddress() + "}',\"State\"='{" + phar.getState() + "}',\"City\"='{"+ phar.getCity() +"}',\"Zipcode\"="+ String.valueOf(phar.getZipCode()) +",\"EmailID\"='{"+phar.getEmail()+"}'\n" +
-                       "WHERE \"Username\"='{"+ phar.getUserName() +"}';";
-        System.out.println(query);
-        java.sql.Statement stat = sqlConnect.retStatement();
-        stat.execute(query);
-        
-        String query1 = "UPDATE public.\"Useraccount\" SET \"Username\"='{" + phar.getUserName() + "}',\"Password\"='{" + phar.getPassword() + "}',\"TypeID\"='{Pharmacy}'\n" +
-                        "WHERE \"Username\"='{"+ phar.getUserName() +"}';";
-        stat.execute(query1);
-    } 
-    
-    public void deletePharmacyDB(Pharmacy phar) throws SQLException {
-        String query = "DELETE FROM public.\"Pharmacy\" WHERE \"Username\"='{"+ phar.getUserName() + "}';";
-        java.sql.Statement stat = sqlConnect.retStatement();
-        stat.execute(query);
-        
-        String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ phar.getUserName() +"}';";
-        stat.execute(query1);
-    }
-
-    public PharmacyDirectory getDBPharmacyDirectory() throws SQLException {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        PharmacyDirectory pharDirectory = new PharmacyDirectory();
-        Pharmacy phar;
-        String query = "SELECT * FROM public.\"Pharmacy\"";
-        java.sql.Statement stat = sqlConnect.retStatement();
-        java.sql.ResultSet rs = stat.executeQuery(query);
-            while(rs.next())
-            {
-                phar = new Pharmacy();
-                pharDirectory.getPharmacyDirectory().add(phar);
-                phar.setName(removeBrackets(rs.getString(1)));
-                
-                phar.setUserName(removeBrackets(rs.getString(2)));
-                phar.setPassword(removeBrackets(rs.getString(3)));
-                phar.setAddress(removeBrackets(rs.getString(4)));
-                phar.setState(removeBrackets(rs.getString(6)));
-                phar.setCity(removeBrackets(rs.getString(5)));
-                phar.setZipCode(Integer.parseInt(removeBrackets(rs.getString(7))));
-                if(rs.getString(8)!=null)
-                phar.setEmail(removeBrackets(rs.getString(8)));
-            }
-            return pharDirectory;
-    }
+       
         public StaffDirectory getDBStaffDirectory() throws SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         StaffDirectory stfDirectory = new StaffDirectory();

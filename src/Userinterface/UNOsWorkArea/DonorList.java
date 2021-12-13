@@ -55,7 +55,14 @@ public class DonorList extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+
         tblDonar.setModel(new javax.swing.table.DefaultTableModel(
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -102,9 +109,14 @@ public class DonorList extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDonar);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 124, 859, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Donor List");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 61, 164, 24));
 
         jButton1.setText("MATCH");
+
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -138,6 +150,9 @@ public class DonorList extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addContainerGap(240, Short.MAX_VALUE))
         );
+
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 619, -1, -1));
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
