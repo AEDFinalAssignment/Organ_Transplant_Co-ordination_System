@@ -16,6 +16,7 @@ import System.UNOs.UNO;
 import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
 import Userinterface.HospitalAdminWorkArea.ManagePatient;
 import Userinterface.RegistryWorkArea.RegsitryWelcomePage;
+import Userinterface.RegistryWorkArea.requestWorkArea;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
 import java.sql.SQLException;

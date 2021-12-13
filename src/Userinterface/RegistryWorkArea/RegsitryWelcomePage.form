@@ -23,11 +23,18 @@
                       <Component id="jLabel1" min="-2" pref="895" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="428" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="437" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="408" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="262" max="-2" attributes="0"/>
+                  <EmptySpace pref="750" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -36,9 +43,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="58" max="-2" attributes="0"/>
-              <EmptySpace pref="490" max="32767" attributes="0"/>
+              <EmptySpace pref="395" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace pref="480" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,6 +67,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Accept Requests"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>

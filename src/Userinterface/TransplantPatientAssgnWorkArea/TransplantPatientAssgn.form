@@ -28,6 +28,8 @@
                           <Component id="btnChechEgdonor" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                           <Component id="btnAddTransplantdetails" min="-2" pref="282" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnManageTransplantdetails" min="-2" pref="282" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -66,6 +68,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAddTransplantdetails" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnChechEgdonor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnManageTransplantdetails" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
@@ -218,6 +221,14 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel16MouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnManageTransplantdetails">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manage Transplant Details "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageTransplantdetailsActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

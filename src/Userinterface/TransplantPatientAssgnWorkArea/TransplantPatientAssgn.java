@@ -88,6 +88,7 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         btnAddTransplantdetails = new javax.swing.JButton();
         btnChechEgdonor = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        btnManageTransplantdetails = new javax.swing.JButton();
 
         tblPatientdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,6 +160,13 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
             }
         });
 
+        btnManageTransplantdetails.setText("Manage Transplant Details ");
+        btnManageTransplantdetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageTransplantdetailsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,7 +181,9 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
                             .addGap(254, 254, 254)
                             .addComponent(btnChechEgdonor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(186, 186, 186)
-                            .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(btnManageTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,15 +211,33 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChechEgdonor))
+                    .addComponent(btnChechEgdonor)
+                    .addComponent(btnManageTransplantdetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTransplantdetailsActionPerformed
         // TODO add your handling code here:
-         Transplantdetails td = new Transplantdetails(jSplitPane1,system);
-                jSplitPane1.setRightComponent(td);
+         int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to request.");
+            return;
+        }
+        
+        DefaultTableModel modeldoc = (DefaultTableModel) tblPatientdetails.getModel();
+        Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
+        
+        Transplantdetails td;
+         try {
+             td = new Transplantdetails(jSplitPane1,system,Username,selectedPatient.getPatientID());
+             jSplitPane1.setRightComponent(td);
+         } catch (SQLException ex) {
+             Logger.getLogger(TransplantPatientAssgn.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
     }//GEN-LAST:event_btnAddTransplantdetailsActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
@@ -232,13 +260,14 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         Patient selectedPatient = (Patient) modeldoc.getValueAt(selectedRowIndex, 0);
         String selectedPatientStatus = (String) modeldoc.getValueAt(selectedRowIndex, 14);
         System.out.println(selectedPatientStatus);
-        if(!selectedPatientStatus.equals("Requested") && !selectedPatientStatus.equals("Request Accepted") && !selectedPatientStatus.equals("Request Declined"))
+        if(!selectedPatientStatus.equals("Requested") && !selectedPatientStatus.equals("\"Request Accepted\"") && !selectedPatientStatus.equals("\"Request Declined\""))
         {
         try {
              system.requestRegistry(selectedPatient);
          } catch (SQLException ex) {
              Logger.getLogger(TransplantPatientAssgn.class.getName()).log(Level.SEVERE, null, ex);
          }
+        JOptionPane.showMessageDialog(this, "The request has been sent.");
          try {
              populateTable(Username);
          } catch (SQLException ex) {
@@ -250,10 +279,17 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnChechEgdonorActionPerformed
 
+    private void btnManageTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTransplantdetailsActionPerformed
+        // TODO add your handling code here:
+        ManageTransplantpatients mtp = new ManageTransplantpatients(jSplitPane1,system,managepatient);
+        jSplitPane1.setRightComponent(mtp);
+    }//GEN-LAST:event_btnManageTransplantdetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTransplantdetails;
     private javax.swing.JButton btnChechEgdonor;
+    private javax.swing.JButton btnManageTransplantdetails;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JScrollPane jScrollPane1;

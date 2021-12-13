@@ -7,6 +7,7 @@ package System.Hospital;
 
 import System.Hospital.Patient.Patient;
 import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Patient.TransplantPatientDirectory;
 import System.Hospital.Staff.Staff;
 import System.Hospital.Staff.StaffDirectory;
 import System.Organization;
@@ -20,6 +21,7 @@ public class Hospital extends Organization {
     private String TransplantEquipped;
     private StaffDirectory StaffDirectory;
     private PatientDirectory PatientDirectory;
+    private TransplantPatientDirectory TransplantPatientDirectory;
 
     public PatientDirectory getPatientDirectory() {
         return PatientDirectory;
@@ -33,6 +35,7 @@ public class Hospital extends Organization {
     public Hospital() {
         this.StaffDirectory = new StaffDirectory();
         this.PatientDirectory = new PatientDirectory();
+        this.TransplantPatientDirectory = new TransplantPatientDirectory();
     }
 
     

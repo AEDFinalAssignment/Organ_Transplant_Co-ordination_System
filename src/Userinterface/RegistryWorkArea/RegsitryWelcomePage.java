@@ -6,6 +6,9 @@
 package Userinterface.RegistryWorkArea;
 
 import System.EcoSystem;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -20,11 +23,12 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
      private EcoSystem system;
     private JSplitPane jSplitPane1;
     String Username;
-    public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system,String Username) {
+    public RegsitryWelcomePage(JSplitPane jSplitPane1,EcoSystem system,String Username) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.Username = Username;
+        system.getDBRegistryDirectory().getRegistryDirectory();
     }
     
 
@@ -37,48 +41,71 @@ public class RegsitryWelcomePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setText("ORGAN DONATION REGISTRATION :");
 
-        jButton1.setText("Register");
+        jButton1.setText("Accept Requests");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
+        jButton2.setText("Register");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(428, 428, 428)
+                        .addGap(437, 437, 437)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(408, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(438, 438, 438)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(750, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170)
+                .addGap(265, 265, 265)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(490, Short.MAX_VALUE))
-
+                .addContainerGap(395, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(342, 342, 342)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(480, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+             // TODO add your handling code here:
+             requestWorkArea reqWorkArea = new requestWorkArea(jSplitPane1,system,Username);
+             jSplitPane1.setRightComponent(reqWorkArea);
+         } catch (SQLException ex) {
+             Logger.getLogger(RegsitryWelcomePage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-
     // End of variables declaration//GEN-END:variables
 }
