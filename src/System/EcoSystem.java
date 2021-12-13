@@ -11,6 +11,8 @@ import System.Hospital.Hospital;
 import System.Hospital.HospitalDirectory;
 import System.Hospital.Patient.Patient;
 import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Patient.TransplantPatient;
+import System.Hospital.Patient.TransplantPatientDirectory;
 import System.Hospital.Patient.VitalSigns.VitalSigns;
 import System.Hospital.Patient.VitalSigns.VitalSignsDirectory;
 import System.Hospital.Staff.Staff;
@@ -187,6 +189,12 @@ public class EcoSystem{
             return hosDirectory;
     }
     
+    public void updateRequestTable(String HealthID, String Status) throws SQLException{
+        String query = "UPDATE public.\"RequestIsDonar\" SET \"DonarStatus\"='{"+Status+"}',\"OrganDonated\"='{Heart}'\n" +
+                       "WHERE \"Patient_HealthID\"="+ HealthID +";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
     public void saveHosStaffDB(Staff stf) throws SQLException {
         String query = "INSERT INTO public.\"HospitalStaff\"(\"Staff_ID\",\"Name\",\"ConNumber\",\"EmailID\",\"Designation\",\"Qualification\",\"Specialization\",\"Authorised\",\"HospitalUsername\")\n" +
                        "VALUES ("+ String.valueOf(stf.getStaff_ID()) + " ,'{" + stf.getName() +"}'," + String.valueOf(stf.getConNumber()) + ",'{" + stf.getEmailID() +"}','{" + stf.getDesignation() +"}','{" + stf.getQualification() +"}','{" + stf.getSpecialization() +"}',"+ String.valueOf(stf.isAuthorization()) +",'{" + stf.getHospitalUsername() +"}');";
@@ -208,8 +216,8 @@ public class EcoSystem{
     }
         
         public void requestRegistry(Patient pat) throws SQLException {
-        String query = "INSERT INTO public.\"RequestIsDonar\"(\"Patient_HealthID\",\"Name\",\"DonarStatus\")\n" +
-                       "VALUES ("+String.valueOf(pat.getHealthID())+",'{"+ pat.getName() +"}','{Requested}');";
+        String query = "INSERT INTO public.\"RequestIsDonar\"(\"Patient_HealthID\",\"Name\",\"DonarStatus\",\"State\")\n" +
+                       "VALUES ("+String.valueOf(pat.getHealthID())+",'{"+ pat.getName() +"}','{Requested}','{"+pat.getState()+"}');";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
     }
@@ -226,6 +234,12 @@ public class EcoSystem{
             }
             return "No Requests";
         }
+   public java.sql.ResultSet regRequestData(String State) throws SQLException{
+       String query = "SELECT * FROM public.\"RequestIsDonar\" WHERE \"State\"='{"+State+"}';";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+        return rs;
+   }
         
    public void savePatientDB(Patient pat) throws SQLException {
         String query = "INSERT INTO public.\"Patient\"(\"HealthID\",\"PatientID\",\"Name\",\"Age\",\"Gender\",\n" +
@@ -290,6 +304,7 @@ public class EcoSystem{
         String query1 = "DELETE FROM public.\"Useraccount\" WHERE \"Username\"='{"+ reg.getUserName() +"}';";
         stat.execute(query1);
     }
+    
 
     public RegistryDirectory getDBRegistryDirectory() throws SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -319,7 +334,6 @@ public class EcoSystem{
                        "VALUES ('{"+ trans.getName() +"}','{"+ trans.getUserName() +"}','{"+ trans.getPassword() +"}','{"+ trans.getAddress() +"}','{"+ trans.getCity() +"}','{"+ trans.getState() +"}',"+ String.valueOf(trans.getZipCode()) +",'{"+ trans.getEmail() +"}','{"+ trans.getModesOfTransportation() +"}');";
         java.sql.Statement stat = sqlConnect.retStatement();
         stat.execute(query);
-         System.out.println("111111111");
         
         String query1 = "INSERT INTO public.\"Useraccount\"(\"Username\",\"Password\",\"TypeID\")\n" + 
                          "VALUES ('{"+ trans.getUserName() + "}','{"+ trans.getPassword() +"}','{Transportation}');";
@@ -458,5 +472,38 @@ public class EcoSystem{
                 vs.setPatientID(Integer.parseInt(removeBrackets(rs.getString(15))));
             }
             return vsDirectory;
+    }
+  public TransplantPatientDirectory getDBTransplantDirectory() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TransplantPatientDirectory tpDirectory = new TransplantPatientDirectory();
+        TransplantPatient tp;
+        String query = "SELECT * FROM public.\"TransplantPatient\"";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        java.sql.ResultSet rs = stat.executeQuery(query);
+            while(rs.next())
+            {
+                tp = new TransplantPatient();
+                tpDirectory.getTranplantPatientDirectory().add(tp);
+                tp.setHealthID(Integer.parseInt(removeBrackets(rs.getString(1))));
+                tp.setPatientID(Integer.parseInt(removeBrackets(rs.getString(2))));
+                tp.setName(removeBrackets(rs.getString(3)));
+                tp.setPhysician(removeBrackets(rs.getString(4)));
+                tp.setOrgansNeeded(removeBrackets(rs.getString(5)));
+                tp.setStatus(removeBrackets(rs.getString(6)));
+                tp.setHosUsername(removeBrackets(rs.getString(7)));
+            }
+            return tpDirectory;
+    }
+  public void addTransplantDB(TransplantPatient transPatient) throws SQLException {
+        String query = "INSERT INTO public.\"TransplantPatient\"(\"HealthID\",\"PatientID\",\"Name\",\"Physician\",\"OrgansNeeded\",\"Status\",\"HospitalUsername\")\n" +
+                       "VALUES ("+String.valueOf(transPatient.getHealthID())+","+String.valueOf(transPatient.getPatientID())+",'{"+transPatient.getName()+"}','{"+transPatient.getPhysician()+"}','{"+transPatient.getOrgansNeeded()+"}','{"+transPatient.getStatus()+"}','{"+transPatient.getHosUsername()+"}');";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
+    }
+    public void updateTransplantDB(TransplantPatient transPatient) throws SQLException {
+        String query = "UPDATE public.\"TransplantPatient\" SET \"Status\"='{OrganTransplanted}'\n" +
+                       "WHERE \"HealthID\"="+String.valueOf(transPatient.getHealthID())+";";
+        java.sql.Statement stat = sqlConnect.retStatement();
+        stat.execute(query);
     }
 }

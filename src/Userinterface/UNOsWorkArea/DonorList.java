@@ -6,7 +6,15 @@
 package Userinterface.UNOsWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
+import System.Registry.Registry;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +27,18 @@ public class DonorList extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public DonorList(JSplitPane jSplitPane1,EcoSystem system) {
+    public DonorList(JSplitPane jSplitPane1,EcoSystem system) throws SQLException {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        
+        populateTable(system);
+    }
+    public String removeBrackets(String sample)
+    {
+        sample = sample.replace("{", "");
+        sample = sample.replace("}", "");
+        return sample;
     }
 
     /**
@@ -35,59 +51,63 @@ public class DonorList extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDonar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+
+
+        tblDonar.setModel(new javax.swing.table.DefaultTableModel(
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Health ID", "Donor ID", "Name", "Age", "Gender", "Hospital name", "Available Organ", "City"
+                "Health ID", "Name", "Age", "Gender", "Hospital name", "City", "OrganDonated"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDonar);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 124, 859, -1));
 
@@ -96,14 +116,109 @@ public class DonorList extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 61, 164, 24));
 
         jButton1.setText("MATCH");
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(515, 515, 515)
+                        .addComponent(jButton1)))
+                .addContainerGap(512, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(jButton1)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 619, -1, -1));
+
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                int selectedRowIndex = tblDonar.getSelectedRow();
+        
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a donor to match.");
+            return;
+        }
+        
+        Patient selectedPatient = (Patient) tblDonar.getValueAt(selectedRowIndex, 0);
+        String Organ = (String) tblDonar.getValueAt(selectedRowIndex, 6);
+        
+        
+        MatchingWorkArea matchingWorkArea;
+         try {
+             matchingWorkArea = new MatchingWorkArea(jSplitPane1,system,selectedPatient,Organ);
+             jSplitPane1.setRightComponent(matchingWorkArea);
+         } catch (SQLException ex) {
+             Logger.getLogger(DonorList.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblDonar;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable(EcoSystem system) throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       DefaultTableModel model = (DefaultTableModel) tblDonar.getModel();
+        model.setRowCount(0);
+        
+        PatientDirectory PatientDirectory;
+        PatientDirectory = system.getDBPatientDirectory();
+        
+        
+        
+        for(Patient p: PatientDirectory.getPatientDirectory())
+        {
+       for(Registry r: system.getDBRegistryDirectory().getRegistryDirectory())
+       {
+       java.sql.ResultSet rs = system.regRequestData(r.getState());
+       while(rs.next())
+            {   
+           if(Integer.parseInt(removeBrackets(rs.getString(1)))==p.getHealthID() && removeBrackets(rs.getString(3)).equals("\"Request Accepted\""))
+           {
+            Object[] row = new Object[7];
+             row[0]=p;
+             row[1]=p.getName();
+             row[2]=p.getAge();
+             row[3]=p.getGender();
+             row[4]=p.getHospitalUsername();
+             row[5]=p.getCity();
+             row[6]=removeBrackets(rs.getString(5));
+             
+             model.addRow(row);
+           }
+            }
+       }
+        }
+    }
 }

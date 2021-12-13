@@ -16,8 +16,10 @@ import System.UNOs.UNO;
 import Userinterface.HospitalAdminWorkArea.HospitalAdministrationArea;
 import Userinterface.HospitalAdminWorkArea.ManagePatient;
 import Userinterface.RegistryWorkArea.RegsitryWelcomePage;
+import Userinterface.RegistryWorkArea.requestWorkArea;
 import Userinterface.SysAdminWorkArea.ManageHospital;
 import Userinterface.SysAdminWorkArea.ManageJpanel;
+import Userinterface.UNOsWorkArea.UnosHomePage;
 import java.sql.SQLException;
 import static java.time.Clock.system;
 import java.util.logging.Level;
@@ -232,8 +234,8 @@ public class Mainframe extends javax.swing.JFrame {
                 
             }
             else if(Useraccount.contains("UNO")){
-                this.id = Integer.parseInt(Useraccount.replace("UNO", ""));
-                
+                UnosHomePage unosHomePage = new UnosHomePage(jSplitPane1,system);
+                jSplitPane1.setRightComponent(unosHomePage);
             }
             else {
                 JOptionPane.showMessageDialog(this, "Invalid User name or Password");            

@@ -6,6 +6,9 @@
 package Userinterface.UNOsWorkArea;
 
 import System.EcoSystem;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -43,7 +46,15 @@ public class UnosHomePage extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("List of Transplant Patients");
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 369, -1, -1));
+
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("List of Donors");
@@ -60,7 +71,28 @@ public class UnosHomePage extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        DonorList donorList;
+         try {
+             donorList = new DonorList(jSplitPane1,system);
+             jSplitPane1.setRightComponent(donorList);
+         } catch (SQLException ex) {
+             Logger.getLogger(UnosHomePage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PatientList patientList;
+         try {
+             patientList = new PatientList(jSplitPane1,system);
+             jSplitPane1.setRightComponent(patientList);
+         } catch (SQLException ex) {
+             Logger.getLogger(UnosHomePage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

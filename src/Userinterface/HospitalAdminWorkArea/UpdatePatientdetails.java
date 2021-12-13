@@ -234,11 +234,11 @@ public class UpdatePatientdetails extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-                int selectedRowIndex = tblPatientdetails.getSelectedRow();
+        int selectedRowIndex = tblPatientdetails.getSelectedRow();
         
         if(selectedRowIndex<0)
         {
-            JOptionPane.showMessageDialog(this, "Select a Staff to delete.");
+            JOptionPane.showMessageDialog(this, "Select a Patient to delete.");
             return;
         }
         

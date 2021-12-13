@@ -6,7 +6,11 @@
 package Userinterface.UNOsWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Patient.TransplantPatient;
+import System.Hospital.Patient.TransplantPatientDirectory;
+import java.sql.SQLException;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +23,12 @@ public class PatientList extends javax.swing.JPanel {
      */
      private EcoSystem system;
     private JSplitPane jSplitPane1;
-    public PatientList(JSplitPane jSplitPane1,EcoSystem system) {
+    public PatientList(JSplitPane jSplitPane1,EcoSystem system) throws SQLException {
         initComponents();
          this.jSplitPane1 = jSplitPane1;
         this.system = system;
+        
+        populateTable(system);
     }
 
     /**
@@ -35,58 +41,59 @@ public class PatientList extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPatients = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Health ID", "Patient ID", "Name", "Age", "Gender", "Hospital name", "Required Organ", "City"
+                "Health ID", "Patient ID", "Name", "Organ Needed", "Status", "Hospital name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPatients);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 106, 859, -1));
 
@@ -99,6 +106,28 @@ public class PatientList extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPatients;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable(EcoSystem system) throws SQLException {
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+        model.setRowCount(0);
+        
+        TransplantPatientDirectory TransplantPatientDirectory;
+        TransplantPatientDirectory = system.getDBTransplantDirectory();   
+        
+        for(TransplantPatient t: TransplantPatientDirectory.getTranplantPatientDirectory())
+        {
+            Object[] row = new Object[6];
+             row[0]=t;
+             row[1]=t.getPatientID();
+             row[2]=t.getName();
+             row[3]=t.getPhysician();
+             row[4]=t.getOrgansNeeded();
+             row[5]=t.getStatus();
+             
+             model.addRow(row);
+        }
+    }
 }
