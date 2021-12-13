@@ -437,10 +437,10 @@ public class ManageTransportation extends javax.swing.JPanel {
 
         //Unique Check for username
 
-        /* if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
+         if (TransportationDirectory.searchRegistry(txtTransportlogin.getText())!=null){
             JOptionPane.showMessageDialog(null, "Enter a unique Username");
             validation=0;
-        }*/
+        }
 
         if(validation==1){
 
