@@ -190,6 +190,7 @@ public class Transplantdetails extends javax.swing.JPanel {
                transplantPatient.setName(txtName.getText());
                transplantPatient.setOrgansNeeded(txtOrgans.getText());
                transplantPatient.setStatus("Requested");
+               transplantPatient.setHosUsername(Username);
          try {
              system.addTransplantDB(transplantPatient);
          } catch (SQLException ex) {

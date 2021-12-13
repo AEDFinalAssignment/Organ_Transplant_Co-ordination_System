@@ -281,8 +281,14 @@ public class TransplantPatientAssgn extends javax.swing.JPanel {
 
     private void btnManageTransplantdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTransplantdetailsActionPerformed
         // TODO add your handling code here:
-        ManageTransplantpatients mtp = new ManageTransplantpatients(jSplitPane1,system,managepatient);
-        jSplitPane1.setRightComponent(mtp);
+        ManageTransplantpatients mtp;
+         try {
+             mtp = new ManageTransplantpatients(jSplitPane1,system,managepatient,Username);
+             jSplitPane1.setRightComponent(mtp);
+         } catch (SQLException ex) {
+             Logger.getLogger(TransplantPatientAssgn.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
     }//GEN-LAST:event_btnManageTransplantdetailsActionPerformed
 
 

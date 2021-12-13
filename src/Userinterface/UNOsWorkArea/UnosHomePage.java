@@ -6,6 +6,9 @@
 package Userinterface.UNOsWorkArea;
 
 import System.EcoSystem;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSplitPane;
 
 /**
@@ -38,6 +41,11 @@ public class UnosHomePage extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
 
         jButton1.setText("List of Transplant Patients");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("List of Donors");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +78,28 @@ public class UnosHomePage extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        DonorList donorList;
+         try {
+             donorList = new DonorList(jSplitPane1,system);
+             jSplitPane1.setRightComponent(donorList);
+         } catch (SQLException ex) {
+             Logger.getLogger(UnosHomePage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PatientList patientList;
+         try {
+             patientList = new PatientList(jSplitPane1,system);
+             jSplitPane1.setRightComponent(patientList);
+         } catch (SQLException ex) {
+             Logger.getLogger(UnosHomePage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

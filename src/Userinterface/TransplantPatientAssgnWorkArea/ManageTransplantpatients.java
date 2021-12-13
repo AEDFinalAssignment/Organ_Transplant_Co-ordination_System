@@ -6,8 +6,14 @@
 package Userinterface.TransplantPatientAssgnWorkArea;
 
 import System.EcoSystem;
+import System.Hospital.Patient.Patient;
+import System.Hospital.Patient.PatientDirectory;
+import System.Hospital.Patient.TransplantPatient;
+import System.Hospital.Patient.TransplantPatientDirectory;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,12 +27,16 @@ public class ManageTransplantpatients extends javax.swing.JPanel {
      private EcoSystem system;
     private JSplitPane jSplitPane1;
     JPanel managepatient;
+    String Username;
     
-    public ManageTransplantpatients(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient) {
+    public ManageTransplantpatients(JSplitPane jSplitPane1,EcoSystem system,JPanel managepatient,String Username) throws SQLException {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
         this.system = system;
         this.managepatient=managepatient;
+        this.Username = Username;
+        
+        populateTable(system,Username);
     }
     
 
@@ -84,6 +94,11 @@ public class ManageTransplantpatients extends javax.swing.JPanel {
         jButton1.setText("SEARCH");
 
         jButton2.setText("Assign for Transplant ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,6 +159,10 @@ public class ManageTransplantpatients extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(managepatient);
     }//GEN-LAST:event_jLabel16MouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -154,4 +173,29 @@ public class ManageTransplantpatients extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblTransplantpatients;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable(EcoSystem system, String Username) throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblTransplantpatients.getModel();
+        model.setRowCount(0);
+        
+        TransplantPatientDirectory TransplantPatientDirectory;
+        TransplantPatientDirectory = system.getDBTransplantDirectory();   
+        
+        for(TransplantPatient t: TransplantPatientDirectory.getTranplantPatientDirectory())
+        {
+            if(t.getHosUsername().equals(Username))
+            {
+            Object[] row = new Object[6];
+             row[0]=t;
+             row[1]=t.getPatientID();
+             row[2]=t.getName();
+             row[3]=t.getPhysician();
+             row[4]=t.getOrgansNeeded();
+             row[5]=t.getStatus();
+             
+             model.addRow(row);
+            }
+        }
+    }
 }

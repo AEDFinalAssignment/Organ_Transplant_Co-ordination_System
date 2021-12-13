@@ -16,6 +16,7 @@ public class TransplantPatient {
     private String Physician;
     private String OrgansNeeded;
     private String Status;
+    private String HosUsername;
 
     public int getHealthID() {
         return HealthID;
@@ -55,6 +56,14 @@ public class TransplantPatient {
 
     public void setOrgansNeeded(String OrgansNeeded) {
         this.OrgansNeeded = OrgansNeeded;
+    }
+
+    public String getHosUsername() {
+        return HosUsername;
+    }
+
+    public void setHosUsername(String HosUsername) {
+        this.HosUsername = HosUsername;
     }
 
     public String getStatus() {
