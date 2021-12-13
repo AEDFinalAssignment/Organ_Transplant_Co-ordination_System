@@ -359,6 +359,9 @@ public class ManageRegistry extends javax.swing.JPanel {
             txtRegzipcode.setForeground(Color.red);
         }
           
+          
+         txtHospitalsearch.add(this);
+          
          //Null Value Check
          
          if (txtRegname.getText().isEmpty()
